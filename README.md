@@ -78,5 +78,6 @@ The application allows adding items to buy to the list, editing, deleting the it
  - Tutorial on differences between MVC and MVT - https://www.youtube.com/watch?v=zhrLVCjNbyk
 
 - Vibhor Chandels YouTube channel on Agile methodology - https://www.youtube.com/watch?v=C2boBomE4aM&list=PLxO4vxvvorbtqmkL7sYi0Qc4kX-0RE9fp
+- Mark Shead YouTube channel on Agile -  https://www.youtube.com/c/MarkShead
 
 ## Credits:
