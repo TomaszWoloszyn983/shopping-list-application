@@ -12,7 +12,7 @@ def say_hello(request):
 class ItemsList(ListView):
     model = Item
     queryset = Item.objects.order_by('-bought')
-    template_name = 'base.html'
+    template_name = 'items.html'
 
 def test(request):
     print("Run testing view")
