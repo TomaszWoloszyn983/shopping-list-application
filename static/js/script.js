@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var sidebar = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sidebar);
+    print("Hello from js sidebar")
+    let sidenav = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(sidenav);
   });

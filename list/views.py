@@ -5,14 +5,18 @@ from .models import Item
 
 
 # Create your views here.
-def say_hello(request):
-    print("Hello world")
-    return render(request, "../templates/hello.html")
-
 class ItemsList(ListView):
     model = Item
     queryset = Item.objects.order_by('-bought')
     template_name = 'items.html'
+
+def addItem(request):
+    print("Add items method")
+    return render('templates/add_item.html')
+
+def say_hello(request):
+    print("Hello world")
+    return render(request, "../templates/hello.html")
 
 def test(request):
     print("Run testing view")
