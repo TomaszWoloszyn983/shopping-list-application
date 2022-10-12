@@ -20,9 +20,11 @@ from list import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('', include('list.urls'), name='list_urls'),
+    path('', include('list.urls'), name='home'),
     path('hello/', include('list.urls'), name='hello'),
     path('test/', include('list.urls'), name='list_urls'),
     path('testwo/', include('list.urls'), name='list_urls2'),
     path('additem/', include('list.urls'), name='addItem'),
+    path('items/', include('list.urls'), name='items'),
+    path('home/', include('list.urls'), name='home'),
 ]

@@ -10,6 +10,12 @@ class ItemsList(ListView):
     queryset = Item.objects.order_by('-bought')
     template_name = 'items.html'
 
+def home(request):
+    return render(request, 'home.html')
+
+def items(request):
+    return render(request, 'items.html')
+
 def addItem(request):
     print("Add items method")
     return render(request, 'add_item.html')
