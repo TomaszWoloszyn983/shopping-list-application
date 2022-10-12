@@ -12,7 +12,7 @@ class ItemsList(ListView):
 
 def addItem(request):
     print("Add items method")
-    return render('templates/add_item.html')
+    return render(request, 'add_item.html')
 
 def say_hello(request):
     print("Hello world")
