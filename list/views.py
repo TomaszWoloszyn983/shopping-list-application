@@ -7,8 +7,16 @@ from .models import Item
 # Create your views here.
 class ItemsList(ListView):
     model = Item
-    queryset = Item.objects.order_by('-bought')
+    itemslist = Item.objects.order_by('-bought')
     template_name = 'items.html'
+
+def showItems(request):
+    items = Item.objects.order_by('bought')
+    output = ', '.join([item.name for item in items])
+    print('views / item function')
+    print(items)
+    print(output)
+    return HttpResponse(output)
 
 def home(request):
     return render(request, 'home.html')
