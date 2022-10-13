@@ -12,3 +12,11 @@ body {
     color: blue;
     font-size: 500%;
   }
+
+.left {
+    float: none;
+}
+
+.collection-with-header {
+   float: clear;
+}

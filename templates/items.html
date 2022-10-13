@@ -5,21 +5,17 @@
 
 <div class="container_fluid">
     <div class="row">
-        <h4>We're trying to display all items</h4>
-
-        <div class="col-12 mt-3 left">
+        <div class="col-12 mt-1 left">
             <div class="row">
-                <p>Items list shoul be displayed below</p>
-            
-                    {% for item in items %}
-                        <li><a href="#">Item: {{ item.name }}</a></li>
-                    {% endfor %}
-               
+                <ul class="collection with-header, col-6 mt-1 left">
+                    <li class="collection-header"><h4>Items List</h4></li>
+                        {% for item in items %}
+                            <li class="collection-item"><div><a href="#">{{ item.name }} - {{ item.quantity }}</a><a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                        {% endfor %}
+                </ul>
             </div>
         </div>
-
     </div>
-
 </div>
 
 <div class="row">

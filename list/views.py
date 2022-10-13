@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views.generic import ListView
 from .models import Item
 
@@ -13,10 +12,9 @@ class ItemsList(ListView):
 def showItems(request):
     items = Item.objects.order_by('bought')
     output = ', '.join([item.name for item in items])
-    print('views / item function')
-    print(items)
+    context = {'items': items}
     print(output)
-    return HttpResponse(output)
+    return render(request, 'items.html', context)
 
 def home(request):
     return render(request, 'home.html')
