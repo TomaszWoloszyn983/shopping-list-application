@@ -11,4 +11,5 @@ urlpatterns = [
     path('items/', views.showItems, name='items'),
     path('home/', views.home, name='home'),
     path('lists/', views.lists, name='lists'),
+    path('create_list/', views.create_list, name='create_list'),
 ]

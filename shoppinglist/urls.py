@@ -28,4 +28,5 @@ urlpatterns = [
     path('items/', include('list.urls'), name='items'),
     path('home/', include('list.urls'), name='home'),
     path('lists/', include('list.urls'), name='lists'),
+    path('add_list/', include('list.urls'), name='create_list'),
 ]

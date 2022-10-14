@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import date
+from django.utils import timezone
 
 
 class Item(models.Model):
@@ -21,9 +21,10 @@ class Item(models.Model):
 
 
 class List(models.Model):
-    create_date = date.today().strftime("%b-%d-%Y")
+    create_date = models.DateField(default=timezone.now)
     name = models.CharField(blank=False, max_length=50, unique=True, default=("New List", create_date))
     slug = models.CharField(blank=False, max_length=50, unique=True, default=("New List", create_date))
+    items = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     # class Meta:
     #     ordering = ['-create_date']
