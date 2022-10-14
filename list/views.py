@@ -15,7 +15,6 @@ def showItems(request):
     items = Item.objects.order_by('bought')
     output = ', '.join([item.name for item in items])
     context = {'items': items}
-    print(output)
     return render(request, 'items.html', context)
 
 def home(request):
@@ -29,12 +28,14 @@ def create_list(request):
 
 def add_list(request):
     print('Creating new list')
-    list = get_object_or_404(List, )
     if request.method == "POST":
-        list = List(lists_name=request.form.get_object_or_404("lists_name"))
-        print(list)
-        return render(request, 'list.html')
-    return HttpResponseRedirect(reverse, 'add_list.html')
+        print('The Method is POST')
+        # username = request.GET.get('username','')
+        # list = List(lists_name=request.form.get("lists_name"))
+        list = request.GET.get("lists_name")
+        print(f'New lists name is {list}')
+        return render(request, 'add_list.html', list)
+    return render(request, 'add_list.html')
 
 def items(request):
     return render(request, 'items.html')
