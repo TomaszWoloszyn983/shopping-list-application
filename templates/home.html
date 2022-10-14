@@ -1,35 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="light-blue-text text-darken-4 center-align">Shopping List</h3>
+<h3 class="light-blue-text text-darken-4 center-align">Home</h3>
 
-<ul>
-    <li>Temporaty item #1</li>
-    <li>Temporaty item #2</li>
-    <li>Temporaty item #3</li>
-</ul>
-
-<div class="container_fluid">
-    <div class="row">
-        <h3>List container:</h3>
-
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for items in items_list %}
-
-
-                {% endfor %}
-            </div>
-        </div>
-
-    </div>
-
+<div>
+    <h4 class="light-blue-text text-darken-4 laft">Recent lists</h4>
+    <ul>
+        <li>Temporaty list #1</li>
+        <li>Temporaty list #2</li>
+        <li>Temporaty list #3</li>
+    </ul>
 </div>
+    
 
 <div class="row">
     <div class="col s12 center-align">
         <a href="{% url 'addItem' %}" class="btn-large light-blue darken-2">
-            Add Item <i class="fas fa-plus-square right"></i>
+            Create new List <i class="fas fa-plus-square right"></i>
         </a>
     </div>
 </div>

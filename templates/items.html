@@ -5,12 +5,17 @@
 
 <div class="container_fluid">
     <div class="row">
-        <div class="col-12 mt-1 left">
+        <div class="col-12 mt-1 center">
             <div class="row">
-                <ul class="collection with-header, col-6 mt-1 left">
+                <ul class="collection with-header, col-6 mt-1 center">
                     <li class="collection-header"><h4>Items List</h4></li>
                         {% for item in items %}
-                            <li class="collection-item"><div><a href="#">{{ item.name }} - {{ item.quantity }}</a><a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                            <li class="collection-item">
+                                <div>
+                                    <a href="#">{{ item.name }} - {{ item.quantity }}</a>
+                                    <a href="#!" class="secondary-content"><i class="material-icons">Edit</i></a>
+                                </div>
+                            </li>
                         {% endfor %}
                 </ul>
             </div>

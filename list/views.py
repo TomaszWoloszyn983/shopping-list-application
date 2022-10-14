@@ -19,6 +19,9 @@ def showItems(request):
 def home(request):
     return render(request, 'home.html')
 
+def lists(request):
+    return render(request, 'list.html')
+
 def items(request):
     return render(request, 'items.html')
 

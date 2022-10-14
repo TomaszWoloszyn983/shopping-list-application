@@ -10,4 +10,5 @@ urlpatterns = [
     path('additem/', views.addItem, name='addItem'),
     path('items/', views.showItems, name='items'),
     path('home/', views.home, name='home'),
+    path('lists/', views.lists, name='lists'),
 ]

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 
 class Item(models.Model):
@@ -14,6 +15,18 @@ class Item(models.Model):
     class Meta:
         # Items displaying order. Its going to have to be modified.
         ordering = ['-bought']
+
+    def __str__(self):
+        return self.name
+
+
+class List(models.Model):
+    create_date = date.today().strftime("%b-%d-%Y")
+    name = models.CharField(blank=False, max_length=50, unique=True, default=("New List", create_date))
+    slug = models.CharField(blank=False, max_length=50, unique=True, default=("New List", create_date))
+
+    # class Meta:
+    #     ordering = ['-create_date']
 
     def __str__(self):
         return self.name
