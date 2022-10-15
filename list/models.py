@@ -13,7 +13,6 @@ class Item(models.Model):
     bought = models.BooleanField(default=False)
 
     class Meta:
-        # Items displaying order. Its going to have to be modified.
         ordering = ['-bought']
 
     def __str__(self):

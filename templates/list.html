@@ -8,9 +8,6 @@
         <div class="col-12 mt-1 center">
             <div class="row">
                 <ul class="collection with-header, col-6 mt-1 center">
-                    <li class="collection-header">
-                        <h4>Items List</h4>
-                    </li>
                     {% for item in items %}
                         <li class="collection-item">
                             <div>
@@ -26,9 +23,26 @@
 </div>
 
 <div class="row">
+    {% for list in lists %}
+    <div class="col s12 m12">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">{% list.name %}</span>
+          <p>I am a very simple card.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">Edit</a>
+          <a href="#">Delete</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+<div class="row">
     <div class="col s12 center-align">
         <a href="{% url 'create_list' %}" class="btn-large light-blue darken-2">
-            Add List <i class="fas fa-plus-square right"></i>
+            Add New List <i class="fas fa-plus-square right"></i>
         </a>
     </div>
 </div>

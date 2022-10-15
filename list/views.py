@@ -1,8 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView
-from .models import Item
-from .models import List
+from .models import List, Item
 
 
 # Create your views here.
@@ -27,15 +26,18 @@ def create_list(request):
     return render(request, 'add_list.html')
 
 def add_list(request):
-    print('Creating new list')
     if request.method == "POST":
-        print('The Method is POST')
-        # username = request.GET.get('username','')
-        # list = List(lists_name=request.form.get("lists_name"))
-        list = request.GET.get("lists_name")
-        print(f'New lists name is {list}')
-        return render(request, 'add_list.html', list)
+        list = request.POST.get("lists_name")
+        print(f'Create a new list: {list}')
+        context = {'list': list}
+        return render(request, 'add_list.html', context)
     return render(request, 'add_list.html')
+
+def show_lists(request):
+    lists = List.objects.order_by('-create_date')
+    output = ', '.join([list.name for list in lists])
+    context = {'lists': lists}
+    return render(request, 'list.html', context)
 
 def items(request):
     return render(request, 'items.html')
