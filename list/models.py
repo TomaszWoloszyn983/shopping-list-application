@@ -6,7 +6,6 @@ from django.utils import timezone
 class List(models.Model):
     # id = models.IntegerField(primary_key=True)
     create_date = models.DateField(default=timezone.now)
-    date = str(timezone.now)
     name = models.CharField(blank=False, max_length=50, unique=True, default=("New List"))
     slug = models.SlugField(blank=False, max_length=50, unique=True, default=(""))
     # items = models.ForeignKey(Item, on_delete=models.CASCADE)

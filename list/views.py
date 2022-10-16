@@ -29,8 +29,10 @@ def add_list(request):
     if request.method == "POST":
         list = request.POST.get("lists_name")
         print(f'Create a new list: {list}')
-        context = {'list': list}
-        return render(request, 'add_list.html', context)
+        # context = {'list': list}
+        new_list = List(name = list)
+        new_list.save()
+        return render(request, 'list.html', context)
     return render(request, 'add_list.html')
 
 def show_lists(request):
