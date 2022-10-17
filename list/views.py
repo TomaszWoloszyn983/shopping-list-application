@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView
+from django.utils.text import slugify
 from .models import List, Item
 
 
@@ -30,9 +31,12 @@ def add_list(request):
         list = request.POST.get("lists_name")
         print(f'Create a new list: {list}')
         # context = {'list': list}
-        new_list = List(name = list)
+        # The line below is causing an error. If I replace list value 
+        # with any string value new List will be added to the database.
+        slugified = slugify(list)
+        new_list = List(name = list, slug = slugified)
         new_list.save()
-        return render(request, 'list.html', context)
+        return render(request, 'list.html')
     return render(request, 'add_list.html')
 
 def show_lists(request):

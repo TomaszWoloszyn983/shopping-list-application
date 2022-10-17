@@ -7,7 +7,7 @@ class List(models.Model):
     # id = models.IntegerField(primary_key=True)
     create_date = models.DateField(default=timezone.now)
     name = models.CharField(blank=False, max_length=50, unique=True, default=("New List"))
-    slug = models.SlugField(blank=False, max_length=50, unique=True, default=(""))
+    slug = models.SlugField(blank=False, max_length=50, unique=True, default=("new_list"))
     # items = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     # class Meta:
