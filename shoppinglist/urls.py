@@ -22,11 +22,11 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', include('list.urls'), name='home'),
     path('hello/', include('list.urls'), name='hello'),
-    path('test/', include('list.urls'), name='test'),
     path('testwo/', include('list.urls'), name='list_urls2'),
     path('additem/', include('list.urls'), name='addItem'),
     path('items/', include('list.urls'), name='items'),
     path('home/', include('list.urls'), name='home'),
     path('lists/', include('list.urls'), name='lists'),
     path('add_list/', include('list.urls'), name='create_list'),
+    path('lists/<slug:slug>/', include('list.urls'), name='edit_list'),
 ]

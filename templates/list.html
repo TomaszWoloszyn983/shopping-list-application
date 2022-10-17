@@ -31,9 +31,9 @@
           <p>Created on {{ list.create_date }}</p>
         </div>
         <div class="card-action">
-          <a href="#">Show</a>
-          <a href="#">Edit</a>
-          <a href="#">Delete</a>
+          <a href="#" class="btn blue">Show</a>
+          <a href="{% url 'edit_list' list.slug %}" class="btn blue-grey">Edit</a>
+          <a href="#" class="btn red">Delete</a>
         </div>
       </div>
     </div>

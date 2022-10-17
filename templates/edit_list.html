@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="light-blue-text text-darken-4 center-align">Rename your list</h3>
+
+
+<div class="row light-blue-text text-darken-4">
+    <form class="col s12 " method="POST" action="{% url 'edit_list' %}">
+      {% csrf_token %}
+      <div class="row ">
+        <div class="input-field col s6 center-align">
+          <input placeholder="{{ slug.name }}" id="lists_name" name="lists_name" type="text" class="validate" required>
+          <label for="lists_name">Enter New Name</label>
+        </div>
+
+        <div class="row">
+            <divc class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
+                    Submit changes <i class="fas fa plus=square right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+  </div>
+
+{% endblock %}
