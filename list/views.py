@@ -27,16 +27,19 @@ def create_list(request):
     return render(request, 'add_list.html')
 
 def add_list(request):
+    # Validation has to be added to prevent posting elements 
+    # with dublicated names.
     if request.method == "POST":
         list = request.POST.get("lists_name")
         print(f'Create a new list: {list}')
-        # context = {'list': list}
-        # The line below is causing an error. If I replace list value 
-        # with any string value new List will be added to the database.
         slugified = slugify(list)
         new_list = List(name = list, slug = slugified)
         new_list.save()
-        return render(request, 'list.html')
+
+        lists = List.objects.order_by('-create_date')
+        output = ', '.join([list.name for list in lists])
+        context = {'lists': lists}
+        return render(request, 'list.html', context)
     return render(request, 'add_list.html')
 
 def show_lists(request):
