@@ -5,9 +5,9 @@
 
 
 <div class="row light-blue-text text-darken-4">
-    <form class="col s12 " method="POST" action="{% url 'edit_list' %}">
+    <form class="col s12 " method="POST" action="{% url 'edit_list' slug %}">
       {% csrf_token %}
-      <div class="row ">
+      <div class="row">
         <div class="input-field col s6 center-align">
           <input placeholder="{{ slug.name }}" id="lists_name" name="lists_name" type="text" class="validate" required>
           <label for="lists_name">Enter New Name</label>

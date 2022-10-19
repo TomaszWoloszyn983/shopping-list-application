@@ -53,14 +53,24 @@ def show_lists(request):
     return render(request, 'list.html', context)
 
 def edit_list(request, slug):
-    lists_slug = get_object_or_404(List, slug = slug)
+    lists_slug = get_object_or_404(List, slug=slug)
     print(f'Editing {lists_slug} element')
+    context = {'slug': slug}
 
     if request.method == "POST":
         list = request.POST.get("lists_name")
         print(f'POST method on: {list}')
+        slugified = slugify(list)
+        new_list = List(name = list, slug = slugified)
+        new_list.save()
 
-    return render(request, 'edit_list.html')
+        # Redirecting to the page that displays all lists.
+        lists = List.objects.order_by('-create_date')
+        output = ', '.join([list.name for list in lists])
+        # context = {'slug': slug}
+        return render(request, 'list.html', context)
+
+    return render(request, 'edit_list.html', context)
 
 def items(request):
     return render(request, 'items.html')
