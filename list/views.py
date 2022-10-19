@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView
 from django.utils.text import slugify
@@ -55,22 +55,32 @@ def show_lists(request):
 def edit_list(request, slug):
     lists_slug = get_object_or_404(List, slug=slug)
     print(f'Editing {lists_slug} element')
-    context = {'slug': slug}
 
     if request.method == "POST":
         list = request.POST.get("lists_name")
-        print(f'POST method on: {list}')
+        print(f'Received from POST: {list}')
         slugified = slugify(list)
+        # lists_slug.name = list
+        # lists_slug.slug = slugified
         new_list = List(name = list, slug = slugified)
         new_list.save()
 
         # Redirecting to the page that displays all lists.
         lists = List.objects.order_by('-create_date')
         output = ', '.join([list.name for list in lists])
-        # context = {'slug': slug}
+        context = {'list': list}
         return render(request, 'list.html', context)
 
+    context = {'slug': slug}
     return render(request, 'edit_list.html', context)
+
+def delete_list(request, slug):
+    to_delete = get_object_or_404(List, slug=slug)
+    print(f'Deleteing {to_delete} element')
+    to_delete.delete()
+    context = {'slug': slug}
+    return render(request, 'delete_list.html', context)
+
 
 def items(request):
     return render(request, 'items.html')

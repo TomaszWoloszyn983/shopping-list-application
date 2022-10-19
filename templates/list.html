@@ -33,7 +33,7 @@
         <div class="card-action">
           <a href="#" class="btn blue">Show</a>
           <a href="{% url 'edit_list' list.slug %}" class="btn blue-grey">Edit</a>
-          <a href="#" class="btn red">Delete</a>
+          <a href="{% url 'delete_list' list.slug %}" class="btn red">Delete</a>
         </div>
       </div>
     </div>

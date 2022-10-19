@@ -9,5 +9,6 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('lists/', views.show_lists, name='lists'),
     path('add_list/', views.add_list, name='create_list'),
-    path('<slug:slug>/', views.edit_list, name='edit_list'),
+    path('edit_list/<slug:slug>/', views.edit_list, name='edit_list'),
+    path('delete_list/<slug:slug>/', views.delete_list, name='delete_list'),
 ]
