@@ -69,6 +69,36 @@ The application allows adding items to buy to the list, editing, deleting the it
 
 ## Testing
 
+## Errors
+
+When I click on items list, instead of diplaying the items list I get an error:
+
+ProgrammingError at /admin/list/item/
+column list_item.list_name_id does not exist
+LINE 1: ...g", "list_item"."quantity", "list_item"."bought", "list_item...
+
+![Help section image](images/errors/er1.jpg)
+
+![Help section image](images/errors/er2.jpg)
+
+The same thing happens when I try to delete any list in my application.
+
+![Help section image](images/errors/er4.jpg)
+
+![Help section image](images/errors/er5.jpg)
+
+The source of the error seems to be the underlined line of code, where I try to assign the Item object to a List. 
+I try to use List as the foreign key, but the system expects to find list_name_id
+
+![Help section image](images/errors/er6.jpg)
+
+
+P.S. Item model displays in the admin panel when I click the 'add' button, but when I try to 'save' the Item the error mentioned above show up.
+
+![Help section image](images/errors/er3.jpg)
+
+
+
 ## Deployment
 
 ### Local Deployment

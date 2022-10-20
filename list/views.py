@@ -60,15 +60,16 @@ def edit_list(request, slug):
         list = request.POST.get("lists_name")
         print(f'Received from POST: {list}')
         slugified = slugify(list)
-        # lists_slug.name = list
-        # lists_slug.slug = slugified
+        lists_slug.name = list
+        lists_slug.slug = slugified
         new_list = List(name = list, slug = slugified)
         new_list.save()
+        # lists_slug.update(name='list', slug=slugified)
 
         # Redirecting to the page that displays all lists.
         lists = List.objects.order_by('-create_date')
         output = ', '.join([list.name for list in lists])
-        context = {'list': list}
+        context = {'slug': slug}
         return render(request, 'list.html', context)
 
     context = {'slug': slug}
