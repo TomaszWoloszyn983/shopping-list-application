@@ -18,7 +18,6 @@ class List(models.Model):
 class Item(models.Model):
     # quantity variable type is set to char, because 
     # the quantity douesn't have to be one or two units,
-    id = models.AutoField(primary_key=True)
     name = models.CharField(blank=False, max_length=50, unique=True, default="")
     slug = models.SlugField(blank=False, max_length=50, unique=True, default="")
     quantity = models.CharField(max_length=5, default='1')
