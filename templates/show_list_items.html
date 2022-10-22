@@ -9,8 +9,10 @@
             {% for item in items %}
                 <li class="collection-item avatar">
                     <span class="title">{{ item.name }}</span>
-                        <p>Quantity: {{ item.quantity }} </p>
-                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                    <p>Quantity: {{ item.quantity }} </p>
+                    <a href="#!" class="secondary-content">
+                        <i class="material-icons">Mark</i>
+                    </a>
                 </li>
             {% endfor %}
     </ul>
@@ -19,7 +21,7 @@
 
 <div class="row">
     <div class="col s12 center-align">
-        <a href="#" class="btn-large light-blue darken-2">
+        <a href="{% url 'add_item' %}" class="btn-large light-blue darken-2">
             Add New Item <i class="fas fa-plus-square right"></i>
         </a>
     </div>

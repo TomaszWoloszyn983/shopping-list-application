@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView
 from django.utils.text import slugify
 from .models import List, Item
-from .forms import ListForm
+from .forms import ListForm, ItemForm
 
 
 # Create your views here.
@@ -84,11 +84,13 @@ def delete_list(request, slug):
 
 
 def show_list_items(request, slug):
-    slug_name= request.GET.get(slug)
-    print(f'Requested slug:{slug_name}')
+    # I get the list slug and I get 
+    # The thing is that when I update Lists name the list slug is not gettting updated too
+    # So the slugs and names are not always equal.
+    lists_slug = get_object_or_404(List, slug=slug)
+    print(f'Requested slug:{lists_slug}')
     items = Item.objects.filter().order_by('bought')
     print(f'Display {slug} items: {items}')
-    print(f'List name: {items[0].list_name}')
     context = {
         'slug' : slug,
         'items': items
@@ -98,7 +100,10 @@ def show_list_items(request, slug):
 def add_item(request):
 # 
 # 
-# 
+    items = Item.objects.filter().order_by('bought')
+    # I'm not sure about the code below. It's suppose to initailize the item form
+    # item_slug = get_object_or_404(Item, slug=slug)
+    item_form = ItemForm(request.POST or None)
     if item_form.is_valid():
         item = request.POST.get("name")
         print(f'Creating a new item: {item}')
@@ -116,4 +121,4 @@ def add_item(request):
         # output = ', '.join([list.name for list in lists])
         # context = {'lists': lists}
         # return render(request, 'list.html', context)
-    return render(request, 'add_list.html')
+    return render(request, 'add_item.html')
