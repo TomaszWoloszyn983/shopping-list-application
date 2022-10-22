@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="light-blue-text text-darken-4 center-align">Display List</h3>
+
+<div>
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>List name</h4></li>
+            {% for item in items %}
+                <li class="collection-item avatar">
+                    <span class="title">{{ item.name }}</span>
+                        <p>Quantity: {{ item.quantity }} </p>
+                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+            {% endfor %}
+    </ul>
+</div>
+    
+
+<div class="row">
+    <div class="col s12 center-align">
+        <a href="#" class="btn-large light-blue darken-2">
+            Add New Item <i class="fas fa-plus-square right"></i>
+        </a>
+    </div>
+</div>
+
+
+
+{% endblock %}

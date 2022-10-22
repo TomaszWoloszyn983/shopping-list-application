@@ -83,8 +83,17 @@ def delete_list(request, slug):
     return render(request, 'delete_list.html', context)
 
 
-def items(request):
-    return render(request, 'items.html')
+def show_list_items(request, slug):
+    slug_name= request.GET.get(slug)
+    print(f'Requested slug:{slug_name}')
+    items = Item.objects.filter().order_by('bought')
+    print(f'Display {slug} items: {items}')
+    print(f'List name: {items[0].list_name}')
+    context = {
+        'slug' : slug,
+        'items': items
+    }
+    return render(request, 'show_list_items.html', context)
 
 def add_item(request):
 # 

@@ -11,5 +11,6 @@ urlpatterns = [
     path('add_list/', views.add_list, name='create_list'),
     path('edit_list/<slug:slug>/', views.edit_list, name='edit_list'),
     path('delete_list/<slug:slug>/', views.delete_list, name='delete_list'),
+    path('show_list_items/<slug:slug>/', views.show_list_items, name='show_list_items'),
     path('add_item/', views.add_item, name='add_item'),
 ]
