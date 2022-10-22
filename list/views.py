@@ -98,27 +98,28 @@ def show_list_items(request, slug):
     return render(request, 'show_list_items.html', context)
 
 def add_item(request):
-# 
-# 
-    items = Item.objects.filter().order_by('bought')
+    lists = List.objects.order_by('-create_date')
+    print(lists)
     # I'm not sure about the code below. It's suppose to initailize the item form
     # item_slug = get_object_or_404(Item, slug=slug)
-    item_form = ItemForm(request.POST or None)
-    if item_form.is_valid():
-        item = request.POST.get("name")
-        print(f'Creating a new item: {item}')
-        slugified = slugify(item)
-        item_form.name = item
-        item_form.slug = slugified
-        item_form.quantity = quantity
+    # item_form = ItemForm(request.POST or None)
+    # if item_form.is_valid():
+    if request.method == "POST":
+        name = request.POST.get("items_name")
+        quantity = request.POST.get("quantity")
+        slugified = slugify(name)
+        list_name = request.POST.get("list_name")
+        print(f'Creating a new item: {name}, quantity: {quantity}')
+        new_item = Item(name = request.POST.get("items_name"), 
+                    slug = slugified, 
+                    quantity = request.POST.get("quantity"),
+                    list_name = request.POST.get("list_name")
+                    )
+        new_item.save()
+        # item_form.name = item
+        # item_form.slug = slugified
+        # item_form.quantity = quantity
         # item_list = list that we add this item to.
-        # new_item = Item(name=)
-        item_form.save()
+        # item_form.save()
         return redirect(reverse("lists"))
-
-# The Code below populates the list template. It should replaced with something better.
-        # lists = List.objects.order_by('-create_date')
-        # output = ', '.join([list.name for list in lists])
-        # context = {'lists': lists}
-        # return render(request, 'list.html', context)
-    return render(request, 'add_item.html')
+    return render(request, 'add_item.html', {'lists': lists})

@@ -8,12 +8,33 @@
       {% csrf_token %}
       <div class="row ">
         <div class="input-field col s6 center-align">
-          {{ item_form.as_p }}
+          <!-- {{ item_form.as_p }} -->
         </div>
-
+        <div class="input-field col s6 left">
+          <!-- Items name -->
+          <div>
+            <label for="items_name">Items Name</label>
+            <input placeholder="Item" id="items_name" name="items_name" type="text" class="validate" required>
+          </div>
+          <!-- Items Quantity -->
+          <div>
+            <label for="quantity">Quantity</label>
+            <input placeholder="1" id="quantity" name="quantity" type="text" class="validate" required>
+          </div>
+          <!-- List names selection -->
+          <div>
+            <label for="quantity">Choose List</label>
+            <select id="list_name" name="list_name" class="validate" required>
+              <option value="" disabled selected>Choose List</option>
+              {% for list in lists %}
+                <option value="{{ list.name }}">{{ list.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
         <div class="row">
-            <divc class="col s12 center-align">
-                <button type="submit" href="{% url 'lists' %}" class="btn-large light-blue darken-1">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
                     Add Item <i class="fas fa plus=square right"></i>
                 </button>
             </div>
