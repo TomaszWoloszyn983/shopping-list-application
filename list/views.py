@@ -6,13 +6,6 @@ from .models import List, Item
 from .forms import ListForm, ItemForm
 
 
-# Create your views here.
-class ItemsList(ListView):
-# This function has home ulr (""). To be deleted in the future.
-    model = Item
-    itemslist = Item.objects.order_by('-bought')
-    template_name = 'items.html'
-
 def showItems(request):
     items = Item.objects.order_by('bought')
     output = ', '.join([item.name for item in items])
@@ -99,22 +92,29 @@ def show_list_items(request, slug):
 
 def add_item(request):
     lists = List.objects.order_by('-create_date')
-    print(lists)
     # I'm not sure about the code below. It's suppose to initailize the item form
-    # item_slug = get_object_or_404(Item, slug=slug)
-    # item_form = ItemForm(request.POST or None)
+    # item_slug = get_object_or_404(Item)
+    item_form = ItemForm(request.POST or None)
     # if item_form.is_valid():
     if request.method == "POST":
         name = request.POST.get("items_name")
         quantity = request.POST.get("quantity")
         slugified = slugify(name)
-        list_name = request.POST.get("list_name")
+        list_name = List(request.POST.get("list_name")).id
+        list_id = 0
+        for list in lists:
+            if(list.name==list_name):
+                print(f'\n\nCondition met for: {list.name}. Compare to {list_name}')
+                list_id = list.id
+
+        print(f'Try to dispaly {list_name} id: {list_id}')
         print(f'Creating a new item: {name}, quantity: {quantity}')
-        new_item = Item(name = request.POST.get("items_name"), 
-                    slug = slugified, 
-                    quantity = request.POST.get("quantity"),
-                    list_name = request.POST.get("list_name")
-                    )
+        new_item = Item(
+                name = name, 
+                slug = slugified, 
+                quantity = quantity,
+                list_name = List(request.POST.get('list_id'))
+        )
         new_item.save()
         # item_form.name = item
         # item_form.slug = slugified
@@ -123,3 +123,31 @@ def add_item(request):
         # item_form.save()
         return redirect(reverse("lists"))
     return render(request, 'add_item.html', {'lists': lists})
+
+def delete_item(request, slug):
+    to_delete = get_object_or_404(Item, slug=slug)
+    print(f'Deleteing {to_delete} element')
+    to_delete.delete()
+    context = {'slug': slug}
+    return render(request, 'delete_item.html', context)
+
+def edit_item(request, slug):
+    items_slug = get_object_or_404(Item, slug=slug)
+    print(f'Editing {items_slug} element')
+    item_form = ItemForm(request.POST or None, instance=items_slug)
+
+    if request.method == "POST":
+        if item_form.is_valid():
+            item = request.POST.get("name")
+            print(f'Received from POST: {item}')
+            slugified = slugify(list)
+            item_form.name = item
+            item_form.slug = slugified
+            item_form.save()
+            return redirect(reverse("items"))
+
+    context = {
+        'slug': slug,
+        "item_form": item_form,
+    }
+    return render(request, 'edit_item.html', context)

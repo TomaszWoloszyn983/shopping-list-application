@@ -29,6 +29,7 @@
               {% for list in lists %}
                 <option value="{{ list.name }}">{{ list.name }}</option>
               {% endfor %}
+              {% csrf_token %}
             </select>
           </div>
         </div>

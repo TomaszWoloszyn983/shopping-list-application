@@ -10,4 +10,4 @@ class ListForm(forms.ModelForm):
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ("name", "quantity",)
+        fields = ("name", "quantity", "list_name")
