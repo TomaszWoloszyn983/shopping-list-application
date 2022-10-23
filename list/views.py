@@ -8,7 +8,7 @@ from .forms import ListForm, ItemForm
 
 def showItems(request):
     items = Item.objects.order_by('bought')
-    output = ', '.join([item.name for item in items])
+    # output = ', '.join([item.name for item in items])
     context = {'items': items}
     return render(request, 'items.html', context)
 
@@ -123,6 +123,36 @@ def add_item(request):
         # item_form.save()
         return redirect(reverse("lists"))
     return render(request, 'add_item.html', {'lists': lists})
+
+def create_item(request):
+    item_form = ItemForm(request.POST or None)
+
+    if request.method == "POST":
+        if item_form.is_valid():
+            item = request.POST.get("name")
+            quantity = request.POST.get("quantity")
+            print(f'Received from POST: {item}')
+            slugified = slugify(item)
+            # item_form.name = item
+            # item_form.slug = slugified
+
+            print(f'Create_item: {item} slug {slugified}')
+
+            new_item = Item(
+                name = item, 
+                slug = slugified, 
+                quantity = quantity,
+                list_name = List(request.POST.get('list_id'))
+            )
+            print(f'\nPrinting the new item: {new_item}')
+            # item_form.save()
+            new_item.save()
+            return redirect(reverse("items"))
+
+    context = {
+        "item_form": item_form,
+    }
+    return render(request, 'create_item.html', context)
 
 def delete_item(request, slug):
     to_delete = get_object_or_404(Item, slug=slug)
