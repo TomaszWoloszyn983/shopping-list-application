@@ -182,12 +182,12 @@ def edit_item(request, slug):
     }
     return render(request, 'edit_item.html', context)
 
-def mark_as_bought(request):
+def mark_as_bought(request, slug):
 # mark_as_bought method is nothing but items update method, where
 # we only update one element of the item, which is 'bought' variable.
 # The only problem may be to call the mark_as_bought method.
-    # items_slug = get_object_or_404(Item, slug=slug)
-    item = request.POST.get_object_or_404('bought_checkbox')
+    items_slug = get_object_or_404(Item, slug=slug)
+    # item = request.POST.get_object_or_404('bought_checkbox')
     print(f'Marking {items_slug} as bought/notbought')
 
     if request.method == "POST":
@@ -202,4 +202,4 @@ def mark_as_bought(request):
         'slug': slug,
         # "item_form": item_form,
     }
-    return render(request, 'items.html', context)
+    return render(request, 'mark_as_bought', context)

@@ -8,53 +8,81 @@
         <div class="col-12 mt-1 center">
             <div class="row">
                 <ul class="collection with-header, col-6 mt-1 center">
+<!-- Items List: Items that are NOT marked as bought -->
                     {% for item in items %}
+                    {% if item.bought %}
                         <div class="col s12 m12">
                             <div class="card blue-grey darken-0">
-                              <div class="card-content white-text">
-                                <span class="card-title">{{ item.name }}</span>
-                                <p>Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }}
-                                </p>
-                              </div>
-                              <div class="card-action">
-                                <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
-                                <a href="{% url 'delete_item' item.slug %}" class="btn red">Delete</a>
-                                <a>
-                                    <label>
-                                      <input type="checkbox" class="filled-in btn blue" />
-                                      <span>Mark As Bought</span>
-                                    </label>
-                                </a>
+                                <div class="card-content white-text">
+                                    <span class="card-title">{{ item.name }}</span>
+                                    <p>
+                                        Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }}
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
+                                    <a href="{% url 'delete_item' item.slug %}" class="btn red">Delete</a>
+                                    <form class="" action="{% url 'mark_as_bought' item.slug %}" method="POST">
+                                        {% csrf_token %}
+                                        {% if item.bought %}
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" checked="checked" value="{{ item.slug }}"/>
+                                                <span>Mark As Bought</span>
+                                            </label>
+                                        </p>
+                                        {% else %}
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" value="{{ item.slug }}"/>
+                                                <span>Mark As Bought</span>
+                                            </label>
+                                        </p>
+                                        {% endif %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>   
+                    {% endif %}
+                    {% endfor %}
+                    <h4>Bought Items</h4>
+<!-- Items List: Items that are marked as bought -->
+                    {% for item in items %}
+                    {% if item.bought %}
+                        <div class="col s12 m12">
+                            <div class="card blue-grey darken-0">
+                                <div class="card-content white-text">
+                                    <span class="card-title">{{ item.name }}</span>
+                                    <p>
+                                        Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }}
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
+                                    <a href="{% url 'delete_item' item.slug %}" class="btn red">Delete</a>
+                                    <form class="" action="{% url 'mark_as_bought' item.slug %}" method="POST">
+                                        {% csrf_token %}
+                                        {% if item.bought %}
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" checked="checked" value="{{ item.slug }}"/>
+                                                <span>Mark As Bought</span>
+                                            </label>
+                                        </p>
+                                        {% else %}
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" value="{{ item.slug }}"/>
+                                                <span>Mark As Bought</span>
+                                            </label>
+                                        </p>
+
+                                        {% endif %}
+                                    </form>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                        <div>
-                            <ul class="collapsible">
-                                <li>
-                                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-                                        <div class="card-content white-text">
-                                            <span class="card-title">{{ item.name }}</span>
-                                            <p>Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <div class="card-action">
-                                            <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
-                                            <a href="{% url 'delete_item' item.slug %}" class="btn red">Delete</a>
-                                            <a>
-                                                <label>
-                                                  <input type="checkbox" id="bought_checkbox" class="filled-in btn blue" method="POST" 
-                                                        action="mark_as_bought" name="bought_checkbox"/>
-                                                  <span>Mark As Bought</span>
-                                                </label>
-                                            </a>
-                                          </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        </div>  
+                    {% endif %}          
                     {% endfor %}
                 </ul>
             </div>
