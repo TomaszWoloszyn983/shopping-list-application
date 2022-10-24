@@ -20,3 +20,12 @@ body {
 .collection-with-header {
    float: clear;
 }
+
+.my-checkbox {
+  height: 38px;
+  width: 35px;
+  background-color: transparent;
+  border: 3px solid #5a5a5a;
+  top: -4px;
+  z-index: 0;
+}

@@ -13,16 +13,48 @@
                             <div class="card blue-grey darken-0">
                               <div class="card-content white-text">
                                 <span class="card-title">{{ item.name }}</span>
-                                <p>Quantity: {{ item.quantity }}<br>
-                                    {{ item.list_name }}
+                                <p>Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }}
                                 </p>
                               </div>
                               <div class="card-action">
                                 <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
                                 <a href="{% url 'delete_item' item.slug %}" class="btn red">Delete</a>
+                                <a>
+                                    <label>
+                                      <input type="checkbox" class="filled-in btn blue" />
+                                      <span>Mark As Bought</span>
+                                    </label>
+                                </a>
                               </div>
                             </div>
                           </div>
+                        </div>
+                        <div>
+                            <ul class="collapsible">
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+                                        <div class="card-content white-text">
+                                            <span class="card-title">{{ item.name }}</span>
+                                            <p>Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <div class="card-action">
+                                            <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
+                                            <a href="{% url 'delete_item' item.slug %}" class="btn red">Delete</a>
+                                            <a>
+                                                <label>
+                                                  <input type="checkbox" id="bought_checkbox" class="filled-in btn blue" method="POST" 
+                                                        action="mark_as_bought" name="bought_checkbox"/>
+                                                  <span>Mark As Bought</span>
+                                                </label>
+                                            </a>
+                                          </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     {% endfor %}
                 </ul>
             </div>
