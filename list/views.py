@@ -56,8 +56,9 @@ def edit_list(request, slug):
         if list_form.is_valid():
             list = request.POST.get("name")
             print(f'Received from POST: {list}')
-            slugified = slugify(list)
             list_form.name = list
+            slugified = slugify(list)
+            print(f'Slugified: {slugified}')
             list_form.slug = slugified
             list_form.save()
             return redirect(reverse("lists"))
@@ -77,13 +78,14 @@ def delete_list(request, slug):
 
 
 def show_list_items(request, slug):
-    # I get the list slug and I get 
-    # The thing is that when I update Lists name the list slug is not gettting updated too
-    # So the slugs and names are not always equal.
+    # Get requested elements slug
+    # Get list of items filterd by mathing to the slug
+    # Pass the list of items to the template
     lists_slug = get_object_or_404(List, slug=slug)
-    print(f'Requested slug:{lists_slug}')
-    items = Item.objects.filter().order_by('bought')
-    print(f'Display {slug} items: {items}')
+    print(f'\n\nRequested slug for :{lists_slug}')
+    items = Item.objects.filter(list_name=lists_slug).order_by('bought')
+    # items = Item.objects.filter().order_by('bought')
+    print(f'Display items {items}')
     context = {
         'slug' : slug,
         'items': items

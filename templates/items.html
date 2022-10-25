@@ -10,7 +10,7 @@
                 <ul class="collection with-header, col-6 mt-1 center">
 <!-- Items List: Items that are NOT marked as bought -->
                     {% for item in items %}
-                    {% if item.bought %}
+                    {% if not item.bought %}
                         <div class="col s12 m12">
                             <div class="card blue-grey darken-0">
                                 <div class="card-content white-text">
