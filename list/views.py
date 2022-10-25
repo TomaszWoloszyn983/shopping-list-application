@@ -82,10 +82,7 @@ def show_list_items(request, slug):
     # Get list of items filterd by mathing to the slug
     # Pass the list of items to the template
     lists_slug = get_object_or_404(List, slug=slug)
-    print(f'\n\nRequested slug for :{lists_slug}')
     items = Item.objects.filter(list_name=lists_slug).order_by('bought')
-    # items = Item.objects.filter().order_by('bought')
-    print(f'Display items {items}')
     context = {
         'slug' : slug,
         'items': items
