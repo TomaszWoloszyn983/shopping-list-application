@@ -21,10 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', include('list.urls'), name='home'),
-    # path('additem/', include('list.urls'), name='addItem'),
-    # path('items/', include('list.urls'), name='items'),
-    # path('home/', include('list.urls'), name='home'),
-    # path('lists/', include('list.urls'), name='lists'),
-    # path('add_list/', include('list.urls'), name='create_list'),
-    # path('<slug:slug>/', include('list.urls'), name='edit_list'),
+    path('accounts/', include('allauth.urls')),
 ]
