@@ -5,17 +5,19 @@
 
 <div>
     <ul class="collection with-header">
-        <li class="collection-header"><h4>List Name</h4></li>
+        <li class="collection-header"><h4>List: {{ slug }}</h4></li>
         {% for item in items %}
         {% if not item.bought %}
-            <ul class="collapsible">
+            <ul class="collapsible card blue-grey darken-0">
                 <li>
                     <div class="collapsible-header brand-logo card blue-grey darken-0 white-text">
-                        <h5>{{ item.name }}:{{ item.quantity }}</h5>
+                        <h5>{{ item.name }}: {{ item.quantity }}</h5>
+                    </div>
+                    <div class="card blue-grey darken-0 white-text align-center">
                         <a href="{% url 'mark_as_bought' item.slug %}" 
-                                class="btn-floating btn-large waves-effect waves-light green grey-text"
-                                method="POST">
-                            <i class="material-icons">+</i>
+                            class="btn-floating btn-large waves-effect waves-light green grey-text"
+                            method="POST">
+                            <i class="material-icons">  +  </i>
                         </a>
                     </div>
                     <div class="collapsible-body card blue-grey lighten-3 white-text">
@@ -36,16 +38,22 @@
             <ul class="collapsible card blue-grey darken-0">
                 <li>
                     <div class="collapsible-header brand-logo card blue-grey darken-0 white-text">
-                        <h5>{{ item.name }}:{{ item.quantity }}</h5>
-                        <a href="#" 
-                        class="btn-floating btn-large waves-effect waves-light red grey-text">
-                            <i class="material-icons">-</i></a>
+                        <h5>{{ item.name }}: {{ item.quantity }}</h5>
+                    </div>
+                    <div>
+                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                    </div>
+                    <div class="card blue-grey darken-0 white-text">
+                        <a href="{% url 'mark_as_bought' item.slug %}" 
+                            class="btn-floating btn-large waves-effect waves-light red grey-text"
+                            method="POST">
+                            <i class="material-icons">  -  </i>
                         </a>
                     </div>
                     <div class="collapsible-body card blue-grey lighten-3 white-text">
                         <span>
                             <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
-                            <a href="{% url 'edit_item' item.slug %}" class="btn red">Delete</a>
+                            <a href="{% url 'delete_item' item.slug %}" class="btn red">Delete</a>
                         </span>
                     </div>
                 </li>

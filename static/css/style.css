@@ -21,11 +21,13 @@ body {
    float: clear;
 }
 
-.my-checkbox {
-  height: 38px;
-  width: 35px;
-  background-color: transparent;
-  border: 3px solid #5a5a5a;
-  top: -4px;
-  z-index: 0;
+.buy_button {
+  font-size: 1.6rem;
+  text-align: center;
+  width: inherit;
+  display: inline-block;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 40px;
+
 }
