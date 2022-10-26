@@ -6,7 +6,26 @@
 <div class="container_fluid">
     <div class="row">
         <div class="col-12 mt-1 center">
+            
             <div class="row">
+            {% for message in messages %}
+                {%if "edit" in message.tags %}
+                    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
+                {% endif %}
+                {%if "delete" in message.tags %}
+                    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
+                {% endif %}
+                {%if "invalid_name" in message.tags %}
+                    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
+                {% endif %}
+            {% endfor %}
+            
+            {% for message in messages %}
+                {%if "hello" in message.tags %}
+                    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
+                {% endif %}
+            {% endfor %}
+                
                 <ul class="collection with-header, col-6 mt-1 center">
                     {% for item in items %}
                         <li class="collection-item">

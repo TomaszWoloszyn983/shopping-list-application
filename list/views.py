@@ -2,13 +2,14 @@ from django.shortcuts import get_object_or_404, render, redirect, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView
 from django.utils.text import slugify
+from django.contrib import messages
+from django.db import IntegrityError
 from .models import List, Item
 from .forms import ListForm, ItemForm
 
 
 def showItems(request):
     items = Item.objects.order_by('bought')
-    # output = ', '.join([item.name for item in items])
     context = {'items': items}
     return render(request, 'items.html', context)
 
@@ -28,15 +29,18 @@ def add_list(request):
     # Lists that contain every item with bought status should be 
     # mark with a different color than the list with not bought items.
     if request.method == "POST":
-        list = request.POST.get("lists_name")
-        print(f'Create a new list: {list}')
-        slugified = slugify(list)
-        new_list = List(name = list, slug = slugified)
-        new_list.save()
+        try:
+            list = request.POST.get("lists_name")
+            print(f'Create a new list: {list}')
+            slugified = slugify(list)
+            new_list = List(name = list, slug = slugified)
+            new_list.save()
+            messages.success(request, "A new list has been created!", extra_tags='hello')
+        except IntegrityError as e:
+            messages.error(request, f"List {list} already exists! Choose a different name.", extra_tags='invalid_name')
 
         # Redirecting to the page that displays all lists.
         lists = List.objects.order_by('-create_date')
-        output = ', '.join([list.name for list in lists])
         context = {'lists': lists}
         return render(request, 'list.html', context)
     return render(request, 'add_list.html')
@@ -61,6 +65,7 @@ def edit_list(request, slug):
             print(f'Slugified: {slugified}')
             list_form.slug = slugified
             list_form.save()
+            messages.success(request, "The list has been updated!", extra_tags='edit')
             return redirect(reverse("lists"))
 
     context = {
@@ -71,8 +76,9 @@ def edit_list(request, slug):
 
 def delete_list(request, slug):
     to_delete = get_object_or_404(List, slug=slug)
-    print(f'Deleteing {to_delete} element')
+    print(f'Deleteing {to_delete} list')
     to_delete.delete()
+    messages.success(request, "The list has been successfully deleted!", extra_tags='delete')
     context = {'slug': slug}
     return render(request, 'delete_list.html', context)
 

@@ -2,6 +2,8 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background: url(../images/shopping-list.jpg);
+    background-size: cover;
   }
 
   main {
@@ -22,12 +24,15 @@ body {
 }
 
 .buy_button {
-  font-size: 1.6rem;
-  text-align: center;
-  width: inherit;
-  display: inline-block;
-  color: #fff;
-  font-size: 1.6rem;
-  line-height: 40px;
+  position: absolute;
+  right: 41px;
+  bottom: 33px;
 
+}
+
+
+.btn-floating.halfway-fab {
+    position: absolute;
+    right: 41px;
+    bottom: 33px;
 }
