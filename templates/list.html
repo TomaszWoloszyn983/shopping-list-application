@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="light-blue-text text-darken-4 center-align">List</h3>
+<h3 class="light-blue-text text-darken-4 center-align">My Lists</h3>
 
 <div class="container_fluid">
     <div class="row">
@@ -9,19 +9,16 @@
             
             <div class="row">
             {% for message in messages %}
-                {%if "edit" in message.tags %}
+                {%if "deleteitem" in message.tags %}
                     <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
                 {% endif %}
-                {%if "delete" in message.tags %}
+                {%if "deletelist" in message.tags %}
+                    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
+                {% endif %}
+                {%if "editlist" in message.tags %}
                     <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
                 {% endif %}
                 {%if "invalid_name" in message.tags %}
-                    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
-                {% endif %}
-            {% endfor %}
-            
-            {% for message in messages %}
-                {%if "hello" in message.tags %}
                     <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
                 {% endif %}
             {% endfor %}

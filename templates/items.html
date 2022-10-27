@@ -7,6 +7,12 @@
     <div class="row">
         <div class="col-12 mt-1 center">
             <div class="row">
+                {%if "deleteitem" in message.tags %}
+                    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
+                {% endif %}
+                {%if "updateitem" in message.tags %}
+                    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
+                {% endif %}
                 <ul class="collection with-header, col-6 mt-1 center">
 <!-- Items List: Items that are NOT marked as bought -->
                     {% for item in items %}

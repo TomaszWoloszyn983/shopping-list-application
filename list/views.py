@@ -35,7 +35,7 @@ def add_list(request):
             slugified = slugify(list)
             new_list = List(name = list, slug = slugified)
             new_list.save()
-            messages.success(request, "A new list has been created!", extra_tags='hello')
+            messages.success(request, f"New list {list} has been created!", extra_tags='hello')
         except IntegrityError as e:
             messages.error(request, f"List {list} already exists! Choose a different name.", extra_tags='invalid_name')
 
@@ -65,7 +65,7 @@ def edit_list(request, slug):
             print(f'Slugified: {slugified}')
             list_form.slug = slugified
             list_form.save()
-            messages.success(request, "The list has been updated!", extra_tags='edit')
+            messages.success(request, f"List {list} has been updated!", extra_tags='editlist')
             return redirect(reverse("lists"))
 
     context = {
@@ -78,9 +78,20 @@ def delete_list(request, slug):
     to_delete = get_object_or_404(List, slug=slug)
     print(f'Deleteing {to_delete} list')
     to_delete.delete()
-    messages.success(request, "The list has been successfully deleted!", extra_tags='delete')
+    messages.success(request, f"The list {to_delete} has been successfully deleted!", extra_tags='deletelist')
     context = {'slug': slug}
     return render(request, 'delete_list.html', context)
+
+def clear_list(request, slug):
+    lists_slug = get_object_or_404(List, slug=slug)
+    items = Item.objects.filter(list_name=lists_slug).order_by('bought')
+    items.delete()
+
+    context = {
+        'slug' : slug,
+        'items': items
+    }
+    return render(request, 'show_list_items.html', context)
 
 
 def show_list_items(request, slug):
@@ -121,12 +132,8 @@ def add_item(request):
                 list_name = List(request.POST.get('list_id'))
         )
         new_item.save()
-        # item_form.name = item
-        # item_form.slug = slugified
-        # item_form.quantity = quantity
-        # item_list = list that we add this item to.
-        # item_form.save()
         return redirect(reverse("lists"))
+
     return render(request, 'add_item.html', {'lists': lists})
 
 def create_item(request):
@@ -149,7 +156,7 @@ def create_item(request):
                 quantity = quantity,
                 list_name = List(request.POST.get('list_id'))
             )
-            print(f'\nPrinting the new item: {new_item}')
+            print(f'\Create the new item: {new_item}')
             # item_form.save()
             new_item.save()
             return redirect(reverse("items"))
@@ -161,8 +168,9 @@ def create_item(request):
 
 def delete_item(request, slug):
     to_delete = get_object_or_404(Item, slug=slug)
-    print(f'Deleteing {to_delete} element')
+    print(f'Deleteing {to_delete} item')
     to_delete.delete()
+    messages.success(request, f"Item {to_delete} has been successfully deleted!", extra_tags='deleteitem')
     context = {'slug': slug}
     return render(request, 'delete_item.html', context)
 
@@ -179,6 +187,7 @@ def edit_item(request, slug):
             item_form.name = item
             item_form.slug = slugified
             item_form.save()
+            messages.success(request, f"Item {item} has been successfully updated!", extra_tags='updateitem')
             return redirect(reverse("items"))
 
     context = {
@@ -190,7 +199,7 @@ def edit_item(request, slug):
 def mark_as_bought(request, slug):
 # mark_as_bought method is nothing but items update method, where
 # we only update one element of the item, which is 'bought' variable.
-# The only problem may be to call the mark_as_bought method.
+# The problem may be to call the mark_as_bought method.
     items_slug = get_object_or_404(Item, slug=slug)
     # lists_slug = get_object_or_404(List, slug=slug)
     # items = Item.objects.filter(list_name=lists_slug).order_by('bought')

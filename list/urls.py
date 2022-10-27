@@ -10,10 +10,11 @@ urlpatterns = [
     path('edit_list/<slug:slug>/', views.edit_list, name='edit_list'),
     path('delete_list/<slug:slug>/', views.delete_list, name='delete_list'),
     path('show_list_items/<slug:slug>/', views.show_list_items, name='show_list_items'),
+    path('clear_list/<slug:slug>/', views.clear_list, name='clear_list'),
     # path('show_list_items/<slug:slug>/add_item/', views.add_item, name='add_item'),
     # path('add_item/', views.add_item, name='add_item'),
     path('add_item/', views.create_item, name='add_item'),
     path('delete_item/<slug:slug>/', views.delete_item, name='delete_item'),
     path('edit_item/<slug:slug>/', views.edit_item, name='edit_item'),
-    path('bought/<slug:slug>/', views.mark_as_bought, name='mark_as_bought'),
+    path('mark_as_bought/<slug:slug>/', views.mark_as_bought, name='mark_as_bought'),
 ]
