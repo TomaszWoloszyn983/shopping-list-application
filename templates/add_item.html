@@ -4,7 +4,7 @@
 <h3 class="light-blue-text text-darken-4 center-align">Add Items</h3>
 
 <div class="row light-blue-text text-darken-4">
-    <form class="col s12 " method="POST" action="{% url 'add_item' %}">
+    <form class="col s12 " method="POST" action="{% url 'add_item' slug %}">
       {% csrf_token %}
       <div class="row ">
         <div class="input-field col s6 center-align">
@@ -43,5 +43,21 @@
     </form>
   </div>
 
+{% endblock %}
 
+{% block js %}
+<script>
+  // convert Item name to slug-format on front-end
+  /* jshint esversion: 11 */
+  let itemName = document.getElementById("id_name");
+  let slug = document.getElementById("id_slug");
+  itemName?.addEventListener("keyup", convertToSlug);
+  slug?.addEventListener("keyup", convertToSlug);
+
+  function convertToSlug() {
+    slug.value = itemName.value.toLowerCase()
+               .replace(/ /g, '-')
+               .replace(/[^\w-]+/g, '');
+  }
+</script>
 {% endblock %}
