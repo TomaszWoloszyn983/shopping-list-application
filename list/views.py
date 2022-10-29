@@ -99,10 +99,12 @@ def show_list_items(request, slug):
     # Get list of items filterd by mathing to the slug
     # Pass the list of items to the template
     lists_slug = get_object_or_404(List, slug=slug)
+    lists = List.objects.order_by('-create_date')
     items = Item.objects.filter(list_name=lists_slug).order_by('bought')
     context = {
         'slug' : slug,
-        'items': items
+        'items': items,
+        'lists': lists
     }
     return render(request, 'show_list_items.html', context)
 

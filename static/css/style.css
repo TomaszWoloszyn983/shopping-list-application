@@ -1,19 +1,20 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    background: url(../images/shopping-list.jpg);
-    background-size: cover;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-image: url("/static/images/shopping_list_001.jpg");
+  background-size: cover;
+  background: rgba(0, 0, 0, 0.6);
+}
 
-  main {
-    flex: 1 0 auto;
-  }
+main {
+  flex: 1 0 auto;
+}
 
-  h1 {
-    color: blue;
-    font-size: 500%;
-  }
+h1 {
+  color: blue;
+  font-size: 500%;
+}
 
 .left {
     float: none;
@@ -27,12 +28,22 @@ body {
   position: absolute;
   right: 41px;
   bottom: 33px;
-
 }
 
-
 .btn-floating.halfway-fab {
-    position: absolute;
-    right: 41px;
-    bottom: 33px;
+  position: absolute;
+  right: 41px;
+  bottom: 33px;
+}
+.items_btn_container {
+  padding: 20px;
+  margin-bottom: 520px;
+}
+
+.login-panel {
+    background-image: url("/static/images/shopping-list.jpg");
+    background-size: cover; 
+}
+.login-panel .card-action{
+  background: rgba(0, 0, 0, 0.6);
 }

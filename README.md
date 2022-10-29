@@ -110,4 +110,8 @@ P.S. Item model displays in the admin panel when I click the 'add' button, but w
 - Vibhor Chandels YouTube channel on Agile methodology - https://www.youtube.com/watch?v=C2boBomE4aM&list=PLxO4vxvvorbtqmkL7sYi0Qc4kX-0RE9fp
 - Mark Shead YouTube channel on Agile -  https://www.youtube.com/c/MarkShead
 
+- How to create Modals using Materialize YouTube tutorial - https://www.youtube.com/watch?v=GAQoVIgjeZA&list=TLPQMjkxMDIwMjJbjtPeibmcMA&index=2
+
+- How to create a ncie login form using Materialize YouTube tutorial = https://www.youtube.com/watch?v=2lbiRNNnAx8&t=1s
+
 ## Credits:

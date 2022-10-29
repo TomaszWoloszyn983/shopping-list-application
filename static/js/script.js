@@ -18,5 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
 // Modal initialization
 document.addEventListener('DOMContentLoaded', function() {
   let elems = document.querySelectorAll('.modal');
-  M.Modal.init(elems, {});
+  M.Modal.init(elems, {
+    opacity:0.8,
+    inDuration:300,
+    outDUration:400
+  });
 });
