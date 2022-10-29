@@ -106,35 +106,6 @@ def show_list_items(request, slug):
     }
     return render(request, 'show_list_items.html', context)
 
-# def add_item(request, slug):
-#     lists = List.objects.order_by('-create_date')
-#     # I'm not sure about the code below. It's suppose to initailize the item form
-#     # item_slug = get_object_or_404(Item)
-#     item_form = ItemForm(request.POST or None)
-#     # if item_form.is_valid():
-#     if request.method == "POST":
-#         name = request.POST.get("items_name")
-#         quantity = request.POST.get("quantity")
-#         slugified = slugify(name)
-#         list_name = List(request.POST.get("list_name")).id
-#         list_id = 0
-#         for list in lists:
-#             if(list.name==list_name):
-#                 print(f'\n\nCondition met for: {list.name}. Compare to {list_name}')
-#                 list_id = list.id
-
-#         print(f'Try to dispaly {list_name} id: {list_id}')
-#         print(f'Creating a new item: {name}, quantity: {quantity}')
-#         new_item = Item(
-#                 name = name, 
-#                 slug = slugified, 
-#                 quantity = quantity,
-#                 list_name = List(request.POST.get('list_id'))
-#         )
-#         new_item.save()
-#         return redirect(reverse("lists"))
-
-#     return render(request, 'add_item.html', {'lists': lists})
 
 def create_item(request, slug):
     list = get_object_or_404(List, slug=slug)
@@ -142,24 +113,10 @@ def create_item(request, slug):
 
     if request.method == "POST":
         if item_form.is_valid():
-            # item = request.POST.get("name")
-            # quantity = request.POST.get("quantity")
-          
             item_form.instance.slug = slugify(request.POST.get("name"))
             item_form.instance.list_name = list
-            # item_form.name = item
-            # item_form.slug = slugified
-
-
-            # new_item = Item(
-            #     name = item, 
-            #     slug = slugified, 
-            #     quantity = quantity,
-            #     list_name = List(request.POST.get('list_id'))
-            # )
-            # item_form.save()
             item_form.save()
-            return redirect(reverse("items"))
+            return redirect(reverse("show_list_items", args=[list.slug]))
 
     context = {
         "item_form": item_form,
@@ -170,8 +127,10 @@ def create_item(request, slug):
 def delete_item(request, slug):
     to_delete = get_object_or_404(Item, slug=slug)
     print(f'Deleteing {to_delete} item')
-    to_delete.delete()
-    messages.success(request, f"Item {to_delete} has been successfully deleted!", extra_tags='deleteitem')
+    if to_delete.delete():
+        messages.success(request, f"Item {to_delete} has been successfully deleted!", extra_tags='deleteitem')
+        return redirect(reverse('show_list_items', args=[to_delete.list_name.slug]))
+    
     context = {'slug': slug}
     return render(request, 'delete_item.html', context)
 
@@ -182,11 +141,6 @@ def edit_item(request, slug):
 
     if request.method == "POST":
         if item_form.is_valid():
-            # item = request.POST.get("name")
-            # print(f'Received from POST: {item}')
-            # slugified = slugify(list)
-            # item_form.name = item
-            # item_form.slug = slugified
             item_form.save()
             messages.success(request, f"Item has been successfully updated!", extra_tags='updateitem')
             return redirect(reverse('show_list_items', args=[items_slug.list_name.slug]))
@@ -203,8 +157,6 @@ def mark_as_bought(request, slug):
 # The problem may be to call the mark_as_bought method.
     item = get_object_or_404(Item, slug=slug)
     list = get_object_or_404(List, slug=item.list_name.slug)
-    # lists_slug = get_object_or_404(List, slug=slug)
-    # items = Item.objects.filter(list_name=lists_slug).order_by('bought')
     print(f'\n\nMarking {item} as bought/notbought')
 
     if item.bought:
@@ -215,9 +167,4 @@ def mark_as_bought(request, slug):
         item.bought = True
         print(f'Update {item} to True')
         item.save()
-
-    # context = {
-    #     'slug': slug,
-    #     'items': items
-    # }
     return redirect(reverse('show_list_items', args=[list.slug]))
