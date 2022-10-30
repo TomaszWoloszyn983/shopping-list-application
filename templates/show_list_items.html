@@ -21,12 +21,15 @@
             {%if "updateitem" in message.tags %}
                 <p class="messages alert alert-success center-align">  {{message}} </p> 
             {% endif %}
+            {%if "clearlist" in message.tags %}
+                <p class="messages alert alert-success center-align">  {{message}} </p> 
+        {% endif %}
         {% endfor %}
 
             <!-- Displays the list of items that are NOT marked as bought-->
             {% for item in items %}
             {% if not item.bought %}
-            <ul class="collapsible card hoverable darken-0">
+            <ul class="collapsible card hoverable">
                 <li class="flow-text">
                     <div class="collapsible-header brand-logo card ">
                         <h5>{{ item.name }}: {{ item.quantity }}</h5>
@@ -76,7 +79,7 @@
             {% if item.bought %}
             <ul class="collapsible card">
                 <li>
-                    <div class="collapsible-header brand-logo card">
+                    <div class="collapsible-header hoverable brand-logo card">
                         <h5>{{ item.name }}: {{ item.quantity }}</h5>
                     </div>
                     <div class="card">
@@ -121,6 +124,8 @@
         <a href="{% url 'add_item' slug %}" class="btn-large light-blue darken-2">Add Item</a>
         <a href="{% url 'clear_list' slug %}" class="btn-large btn red lighten-1">Delete All Items</a>
     </div>
+    <!-- Modal has to be added here. But I dont have access to Items  -->
+    
 </div>
 
 {% endblock %}

@@ -27,15 +27,14 @@ h2, h3, h4 {
   float: none;
 }
 
-.collection-with-header {
+/* .collection-with-header {
   float: clear;
 }
 .collection-header {
   background-color: rgb(153, 144, 23, 0.6);
   color: rgb(0, 120, 150);
   opacity: 0.1;
-
-}
+} */
 
 .buy_button {
   position: absolute;
@@ -66,10 +65,15 @@ h2, h3, h4 {
   background-color: rgba(252, 87, 87, 0.3);
   color: #00345c;
 }
-/* .card-content {
-  opacity: 0.4;
-} */
 
+/* Item Card (Collapsible) */
+.collapsible-body {
+  background-color: rgba(252, 87, 87, 0.1);
+  padding: 10px 30px;
+}
+.collapsible-body :active{
+  background-color: rgba(252, 87, 87, 0.8);
+}
 
 /* Modals */
 .modal{

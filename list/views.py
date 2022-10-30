@@ -85,7 +85,9 @@ def delete_list(request, slug):
 def clear_list(request, slug):
     lists_slug = get_object_or_404(List, slug=slug)
     items = Item.objects.filter(list_name=lists_slug).order_by('bought')
-    items.delete()
+    if items.delete():
+        messages.success(request, "All Items have been successfully deleted from the List", extra_tags='clearlist')
+        return redirect(reverse('show_list_items', args=[lists_slug.slug]))
 
     context = {
         'slug' : slug,
