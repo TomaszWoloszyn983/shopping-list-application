@@ -6,6 +6,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
+  
 }
 
 main {
@@ -15,6 +16,11 @@ main {
 h1 {
   color: blue;
   font-size: 500%;
+  font-family: 'Nanum Pen Script', cursive;
+}
+h2, h3, h4 {
+  font-size: 400%;
+  font-family: 'Nanum Pen Script', cursive;
 }
 
 .left {
@@ -27,6 +33,7 @@ h1 {
 .collection-header {
   background-color: rgb(153, 144, 23, 0.6);
   color: rgb(0, 120, 150);
+  opacity: 0.1;
 
 }
 
@@ -53,6 +60,16 @@ h1 {
 .login-panel .card-action{
   background: rgba(0, 0, 0, 0.6);
 }
+
+/* List cards */
+.card {
+  background-color: rgba(252, 87, 87, 0.3);
+  color: #00345c;
+}
+/* .card-content {
+  opacity: 0.4;
+} */
+
 
 /* Modals */
 .modal{
