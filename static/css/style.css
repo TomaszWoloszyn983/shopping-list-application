@@ -3,8 +3,9 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-image: url("/static/images/shopping_list_001.jpg");
+  background-attachment: fixed;
   background-size: cover;
-  background: rgba(0, 0, 0, 0.6);
+  -webkit-background-size: cover;
 }
 
 main {
@@ -17,11 +18,16 @@ h1 {
 }
 
 .left {
-    float: none;
+  float: none;
 }
 
 .collection-with-header {
-   float: clear;
+  float: clear;
+}
+.collection-header {
+  background-color: rgb(153, 144, 23, 0.6);
+  color: rgb(0, 120, 150);
+
 }
 
 .buy_button {
@@ -46,4 +52,21 @@ h1 {
 }
 .login-panel .card-action{
   background: rgba(0, 0, 0, 0.6);
+}
+
+/* Modals */
+.modal{
+  background: rgba(179, 54, 38, 0.6);
+  color: white;
+}
+.modal-footer{
+  background: rgba(223, 124, 111, 0.8);
+}
+
+/* Footer */
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
 }
