@@ -1,16 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="light-blue-text text-darken-4 center-align">Home</h3>
-
 <div>
     <h4 class="light-blue-text text-darken-4 laft">Welcome to the page.</h4>
-    <img url="/static/images/shopping-list.jpg">
-    <ul>
-        <li>Temporaty list #1</li>
-        <li>Temporaty list #2</li>
-        <li>Temporaty list #3</li>
-    </ul>
+    <p>Create your shopping list.</p>
+</div>
+
+<div class="row">
+    {% for list in lists|slice:":3" %}
+    <div class="col s12 m12">
+      <div class="card hoverable accent-3 darken-1">
+        <div class="card-content">
+          <span class="card-title">{{ list.name }}</span>
+          <p>Created on {{ list.create_date }}</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'show_list_items' list.slug %}" class="btn green darken-2">Show</a>
+          <a href="{% url 'edit_list' list.slug %}" class="btn blue darken-2">Edit</a>
+          <a href="{% url 'delete_list' list.slug %}" class="btn red darken-2">Delete</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
 </div>
     
 
