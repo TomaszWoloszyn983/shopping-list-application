@@ -42,11 +42,7 @@ h2, h3, h4 {
   bottom: 33px;
 }
 
-.btn-floating.halfway-fab {
-  position: absolute;
-  right: 41px;
-  bottom: 33px;
-}
+
 .items_btn_container {
   padding: 20px;
   margin-bottom: 520px;
@@ -64,6 +60,8 @@ h2, h3, h4 {
 .card {
   background-color: rgba(252, 87, 87, 0.3);
   color: #00345c;
+  text-align: center;
+  line-height: -1;
 }
 
 /* Item Card (Collapsible) */
@@ -74,6 +72,17 @@ h2, h3, h4 {
 .collapsible-body :active{
   background-color: rgba(252, 87, 87, 0.8);
 }
+.btn-floating.halfway-fab {
+  position: absolute;
+  right: 41px;
+  bottom: 33px;
+  vertical-align: baseline;
+}
+.material-symbols-outlined {
+  line-height: -1;
+  font-size: 32px;
+  font-weight: 200;
+}
 
 /* Modals */
 .modal{
@@ -83,6 +92,10 @@ h2, h3, h4 {
 .modal-footer{
   background: rgba(223, 124, 111, 0.8);
 }
+.modal p{
+  font-size: 250%;
+  color: blue;
+}
 
 /* Footer */
 .fixed-footer {
@@ -91,3 +104,10 @@ h2, h3, h4 {
   right: 0;
   z-index: 3;
 }
+
+/* Icons setting. Don't work*/
+/* .material-icons {
+  font-size: 2rem;
+  color: black;
+  background-color: red;
+} */
