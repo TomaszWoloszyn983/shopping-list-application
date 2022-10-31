@@ -14,10 +14,11 @@ def showItems(request):
     return render(request, 'items.html', context)
 
 def home(request):
-    return render(request, 'home.html')
-
-def lists(request):
-    return render(request, 'list.html')
+    lists = List.objects.order_by("-id")
+    context = {
+        'lists': lists
+    }
+    return render(request, 'home.html', context)
 
 def create_list(request):
     return render(request, 'add_list.html')
@@ -47,6 +48,7 @@ def add_list(request):
 
 def show_lists(request):
     lists = List.objects.order_by('-create_date', "-id")
+    # Output isn't propably used.
     output = ', '.join([list.name for list in lists])
     context = {'lists': lists}
     return render(request, 'list.html', context)
@@ -103,10 +105,15 @@ def show_list_items(request, slug):
     lists_slug = get_object_or_404(List, slug=slug)
     lists = List.objects.order_by('-create_date')
     items = Item.objects.filter(list_name=lists_slug).order_by('bought')
+    bought_items = items.filter(bought=True)
+    items_to_buy = items.filter(bought=False)
+    print(f"\nBought items: {bought_items}")
     context = {
         'slug' : slug,
         'items': items,
-        'lists': lists
+        'lists': lists,
+        'bought_items': bought_items,
+        'items_to_buy': items_to_buy
     }
     return render(request, 'show_list_items.html', context)
 

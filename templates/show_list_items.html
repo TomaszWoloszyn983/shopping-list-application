@@ -27,12 +27,11 @@
         {% endfor %}
 
             <!-- Displays the list of items that are NOT marked as bought-->
-            {% for item in items %}
-            {% if not item.bought %}
+            {% for item in items_to_buy %}
             <ul class="collapsible card hoverable">
                 <li class="flow-text">
                     <div class="collapsible-header brand-logo card ">
-                        <h5>{{ item.name }}: {{ item.quantity }}</h5>
+                        <h5>{{forloop.counter}}. {{ item.name }}: {{ item.quantity }}</h5>
                     </div>
                     <div class="card center">
                         <a href="{% url 'mark_as_bought' item.slug %}" 
@@ -64,12 +63,19 @@
                 <a class="modal-close waves-effect waves-green btn-flat">NO</a>
                 </div>
             </div>
-            {% endif %}
+            {% empty %}
+                <h4>No items to buy on this list!</h4>
+                <h5>Click "ADD ITEM" button to add items.</h5>
             {% endfor %}
     </ul>
-
-    <!-- Divider which separates item to buy from bought items -->
-    <h3 class="light-blue-text text-darken-4 center-align">Bought Items:</h3>
+    
+    <!-- Divider which separates item to buy from bought items. 
+        Dispalys nothing if the is no items. -->
+    {% for item in bought_items %}
+    {% if forloop.counter == 1 %}
+        <h3 class="light-blue-text text-darken-4 center-align">Bought Items:</h3>
+    {% endif %}
+    {% endfor %}
 
     <ul>
             <!-- Displays the list of items that are NOT marked as bought-->
