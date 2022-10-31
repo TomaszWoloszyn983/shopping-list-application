@@ -11,16 +11,15 @@
     <div class="col s12 m12">
       <div class="card hoverable accent-3 darken-1">
         <div class="card-content">
-          <span class="card-title">{{ list.name }}</span>
-          <p>Created on {{ list.create_date }}</p>
-        </div>
-        <div class="card-action">
-          <a href="{% url 'show_list_items' list.slug %}" class="btn green darken-2">Show</a>
-          <a href="{% url 'edit_list' list.slug %}" class="btn blue darken-2">Edit</a>
-          <a href="{% url 'delete_list' list.slug %}" class="btn red darken-2">Delete</a>
+          <a href="{% url 'show_list_items' list.slug %}">
+            <span class="card-title">{{ list.name }}</span>
+            <p>Created on {{ list.create_date }}</p>
+          </a>
         </div>
       </div>
     </div>
+    {% empty %}
+      <h4>No recently added lists! Click button below to create a new Shopping List</h4>
     {% endfor %}
 </div>
     
