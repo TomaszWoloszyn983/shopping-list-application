@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="light-blue-text text-darken-4 center-align">
+<div class="light-blue-text text-darken-4 center">
     {% for list in lists %}
         {% if list.slug == slug %}
-            <h3>{{ list.name }}</h3>
+            <h1>{{ list.name }}</h1>
             <p>Created on {{ list.create_date }}</p>
         {% endif %}
     {% endfor %}

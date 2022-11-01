@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="light-blue-text text-darken-4 center-align">My Lists</h3>
+<h1 class="light-blue-text text-darken-4 center-align">My Lists</h1>
+<p>Add modals to delete buttons!!!</p>
 
 <div class="container_fluid">
     <div class="row">
@@ -53,6 +54,11 @@
         </div>
       </div>
     </div>
+    {% empty %}
+        <div class="center">
+            <h2>No Shopping Lists.</h2>
+            <h3>Click "Add New List" button to create a new list.</h3>
+        </div>
     {% endfor %}
   </div>
 

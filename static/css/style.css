@@ -14,7 +14,7 @@ main {
 }
 
 h1 {
-  color: blue;
+  /* color: blue; */
   /* font-size: 500%; */
   font-family: 'Nanum Pen Script', cursive;
 }
@@ -25,6 +25,9 @@ h2, h3, h4{
 h5 {
   /* font-size: 200%; */
   font-family: 'Nanum Pen Script', cursive;
+}
+p {
+  font-size: 20px;
 }
 
 .left {
@@ -65,7 +68,7 @@ h5 {
   background-color: rgba(252, 87, 87, 0.3);
   color: #00345c;
   text-align: center;
-  line-height: -1;
+  /* line-height: -1; */
 }
 
 .card p {
@@ -74,7 +77,7 @@ h5 {
 }
 .card span {
   color: rgb(0, 38, 141);
-  font-weight: 800;
+  font-weight: 200;
 }
 
 /* Item Card (Collapsible) */
