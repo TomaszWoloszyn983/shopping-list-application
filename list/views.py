@@ -20,6 +20,9 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
+def about(request):
+    return render(request, 'about.html')
+
 def create_list(request):
     return render(request, 'add_list.html')
 

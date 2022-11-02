@@ -4,8 +4,8 @@
 <div>
     <h1 class="light-blue-text text-darken-4 center">Welcome to the Shopping List Application.</h1>
     {% for list in lists %}
-      {% if forloop.counter == 2 %}
-        <h3 class="center">Choose one of the list below or click "Go To Your Lists" button to manage your lists.</h3>
+      {% if forloop.counter == 1 %}
+        <h2 class="center">Choose one of the list below or click "Go To Your Lists" button to manage your lists.</h2>
       {% endif %}
     {% empty %}
     {% endfor %}
@@ -28,7 +28,6 @@
     {% endfor %}
 </div>
     
-
 <div class="row">
     <div class="col s12 center-align">
         <a href="{% url 'lists' %}" class="btn-large light-blue darken-2">
@@ -36,7 +35,5 @@
         </a>
     </div>
 </div>
-
-
 
 {% endblock %}

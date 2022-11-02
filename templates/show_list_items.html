@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Header -->
 <div class="light-blue-text text-darken-4 center">
     {% for list in lists %}
         {% if list.slug == slug %}
@@ -26,7 +27,7 @@
         {% endif %}
         {% endfor %}
 
-        <!-- Displays the list of items that are NOT marked as bought-->
+        <!-- List of Items to buy -->
         {% for item in items_to_buy %}
         <ul class="collapsible card hoverable">
             <li class="flow-text">
@@ -41,11 +42,8 @@
                 </div>
                 <div class="collapsible-body card">
                     <span>
-                        <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
-                        <a href="{% url 'delete_item' item.slug %}" class="btn red">Delete</a>
-
-                            <!-- Modal Trigger. Has to replace the Delete button-->
-                        <a href="delete_{{item.slug}}" class="waves-effect waves-light btn modal-trigger" data-target="delete_{{item.slug}}">Delete</a>
+                        <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit Item</a>
+                        <a href="delete_{{item.slug}}" class="waves-effect waves-light btn red modal-trigger" data-target="delete_{{item.slug}}">Delete Item</a>
 
                     </span>
                 </div>
@@ -64,8 +62,10 @@
             </div>
         </div>
         {% empty %}
+        <div class="center">
             <h4>No items to buy on this list!</h4>
             <h5>Click "ADD ITEM" button to add items.</h5>
+        </div>
         {% endfor %}
     </ul>
     
@@ -95,11 +95,8 @@
                 </div>
                 <div class="collapsible-body card">
                     <span>
-                        <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
-                        <a href="{% url 'delete_item' item.slug %}" class="btn red">Delete</a>
-                        <!-- Modal Trigger. Has to replace the Delete button-->
-                        <a href="delete_{{item.slug}}" class="waves-effect waves-light btn modal-trigger" data-target="delete_{{item.slug}}">Delete</a>
-
+                        <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit Item</a>
+                        <a href="delete_{{item.slug}}" class="waves-effect waves-light btn red modal-trigger" data-target="delete_{{item.slug}}">Delete Item</a>
                     </span>
                 </div>
             </li>
@@ -107,12 +104,12 @@
         <!-- Delete Item Modal Structure -->
         <div id="delete_{{item.slug}}" class="modal bottom-sheet white-text">
             <div class="modal-content">
-            <h4>Are you sure you want to delete {{ item.name }}?</h4>
-            <p>Click "Yes" to confirm or "No" to return.</p>
+                <h4>Are you sure you want to delete {{ item.name }}?</h4>
+                <p>Click "Yes" to confirm or "No" to return.</p>
             </div>
             <div class="modal-footer">
-            <a href="{% url 'delete_item' item.slug %}" class="waves-effect waves-red btn-flat">YES</a>
-            <buttton class="modal-close waves-effect waves-green btn-flat">NO</buttton>
+                <a href="{% url 'delete_item' item.slug %}" class="waves-effect waves-red btn-flat">YES</a>
+                <buttton class="modal-close waves-effect waves-green btn-flat">NO</buttton>
             </div>
         </div>
         {% endif %}
@@ -120,6 +117,7 @@
     </ul>
 </div>
     
+<!-- Add Item and Delete All buttons -->
 <div class="row">
     <div class="col s12 center-align">
         <a href="{% url 'add_item' slug %}" class="btn-large light-blue darken-2">Add Item</a>
@@ -128,12 +126,12 @@
      <!-- Delete All Modal Structure -->
     <div id="clear_modal" class="modal bottom-sheet">
         <div class="modal-content">
-        <h4>Are you sure you want to delete all Items from the list?</h4>
-        <p>Click "Yes" to confirm or "No" to return.</p>
+            <h4>Are you sure you want to delete all Items from the list?</h4>
+            <p>Click "Yes" to confirm or "No" to return.</p>
         </div>
         <div class="modal-footer">
-        <a href="{% url 'clear_list' slug %}" class="waves-effect waves-red btn-flat">YES</a>
-        <buttton class="modal-close waves-effect waves-green btn-flat">NO</buttton>
+            <a href="{% url 'clear_list' slug %}" class="waves-effect waves-red btn-flat">YES</a>
+            <buttton class="modal-close waves-effect waves-green btn-flat">NO</buttton>
     </div>
 </div>
 

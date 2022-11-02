@@ -7,6 +7,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Shopping List Application">
+    <meta name="keywords" content="shopping, list, application">
+    <meta name="author" content="Tomasz Woloszyn">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
@@ -15,14 +20,14 @@
     <title>Shopping List</title>
 </head>
 <body>
-    <!-- top navbar -->
+<!-- top navbar -->
     <header>
       <div class="navbar-fixed">
-        <nav class="navbar-fixed blue darken-1">
+        <nav class="navbar-fixed light-blue darken-3">
           <div class="nav-wrapper">
             <a href="{% url 'home' %}" class="brand-logo">Shopping List</a>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+            <a data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
             <ul class="right hide-on-med-and-down">
               <li><a href="{% url 'lists' %}">Lists</a></li>
               {% if user.is_authenticated %}
@@ -38,13 +43,13 @@
               <a class="nav-link" href="{% url 'account_login' %}">Login</a>
             </li>
             {% endif %}
-            <li><a href="#">About</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
           </ul>
         </div>
       </nav>
     </div>
       
-      <!-- mobile sidebar -->
+<!-- mobile sidebar -->
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{% url 'lists' %}">Lists</a></li>
         {% if user.is_authenticated %}
@@ -60,10 +65,12 @@
             <a class="nav-link" href="{% url 'account_login' %}">Login</a>
         </li>
         {% endif %}
-        <li><a href="#">About</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
       </ul>
     </header>
 
+
+<!-- The pages main content -->
     <main class="container">
       
       {% block content %}
@@ -72,8 +79,8 @@
     </main>
 
     
-      
-    <footer class="page-footer blue darken-1">
+<!-- Footer -->
+    <footer class="page-footer light-blue darken-3">
         <div class="footer-copyright">
           <div class="container">
           © 2014 Copyright Text
