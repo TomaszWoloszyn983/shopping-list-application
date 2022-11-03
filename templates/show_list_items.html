@@ -57,8 +57,8 @@
             </div>
             <div class="modal-footer">
             <!-- <a href="{% url 'delete_item' item.slug %}" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
-            <a href="{% url 'delete_item' item.slug %}" class="waves-effect waves-red btn-flat btn-red">YES</a>
-            <a class="modal-close waves-effect waves-green btn-flat">NO</a>
+            <a href="{% url 'delete_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
+            <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
             </div>
         </div>
         {% empty %}
@@ -108,8 +108,8 @@
                 <p>Click "Yes" to confirm or "No" to return.</p>
             </div>
             <div class="modal-footer">
-                <a href="{% url 'delete_item' item.slug %}" class="waves-effect waves-red btn-flat">YES</a>
-                <buttton class="modal-close waves-effect waves-green btn-flat">NO</buttton>
+                <a href="{% url 'delete_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
+                <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
             </div>
         </div>
         {% endif %}
@@ -130,8 +130,8 @@
             <p>Click "Yes" to confirm or "No" to return.</p>
         </div>
         <div class="modal-footer">
-            <a href="{% url 'clear_list' slug %}" class="waves-effect waves-red btn-flat">YES</a>
-            <buttton class="modal-close waves-effect waves-green btn-flat">NO</buttton>
+            <a href="{% url 'clear_list' slug %}" class="waves-effect waves-red btn red">YES</a>
+            <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
     </div>
 </div>
 

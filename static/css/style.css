@@ -100,7 +100,7 @@ p {
   color: white;
 }
 .modal-footer{
-  background: rgba(223, 124, 111, 0.8);
+  background: rgba(179, 54, 38, 0.6) !important;
 }
 .modal p{
   font-size: 150%;
