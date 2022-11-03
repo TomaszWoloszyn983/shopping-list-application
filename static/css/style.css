@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 body {
   display: flex;
   min-height: 100vh;
@@ -6,6 +8,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
+  font-family: 'Roboto', sans-serif;
   
 }
 
@@ -102,6 +105,9 @@ p {
 .modal p{
   font-size: 150%;
   color: white;
+}
+.modal.h4 {
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Footer */
