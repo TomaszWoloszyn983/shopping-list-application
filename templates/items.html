@@ -28,7 +28,7 @@
                                     </p>
                                 </div>
                                 <div class="card-action">
-                                    <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
+                                    <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue">Edit</a>
                                     <a href="{% url 'delete_ext_item' item.slug %}" class="btn red">Delete</a>
                                     <form class="" action="{% url 'mark_as_bought' item.slug %}" method="POST">
                                         {% csrf_token %}
@@ -68,8 +68,8 @@
                                     </p>
                                 </div>
                                 <div class="card-action">
-                                    <a href="{% url 'edit_item' item.slug %}" class="btn blue">Edit</a>
-                                    <a href="{% url 'delete_item' item.slug %}" class="btn red">Delete</a>
+                                    <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue">Edit</a>
+                                    <a href="{% url 'delete_ext_item' item.slug %}" class="btn red">Delete</a>
                                     <form class="" action="{% url 'mark_as_bought' item.slug %}" method="POST">
                                         {% csrf_token %}
                                         {% if item.bought %}

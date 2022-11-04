@@ -218,7 +218,6 @@ def create_extended_item(request):
     return render(request, 'create_extended_item.html', context)
     
 def delete_ext_item(request, slug):
-    # to_delete = get_object_or_404(List, slug=slug)
     to_delete = get_object_or_404(ItemExtended, slug=slug)
     items = ItemExtended.objects.order_by('bought')
     print(f'Deleteing {to_delete} item')
@@ -229,3 +228,22 @@ def delete_ext_item(request, slug):
     context = {'slug': slug}
     return render(request, 'delete_list.html', context)
     
+
+def edit_ext_item(request, slug):
+    items_slug = get_object_or_404(ItemExtended, slug=slug)
+    items = ItemExtended.objects.order_by('bought')
+    print(f'Editing {items_slug} element')
+    item_form = ItemExForm(request.POST or None, instance=items_slug)
+
+    if request.method == "POST":
+        if item_form.is_valid():
+            item_form.save()
+            messages.success(request, f"Item has been successfully updated!", extra_tags='updateitem')
+            context = {'itemsextended': items}
+            return render(request, 'items.html', context)
+
+    context = {
+        'slug': slug,
+        "item_form": item_form,
+    }
+    return render(request, 'edit_ext_item.html', context)
