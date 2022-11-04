@@ -217,3 +217,15 @@ def create_extended_item(request):
     }
     return render(request, 'create_extended_item.html', context)
     
+def delete_ext_item(request, slug):
+    # to_delete = get_object_or_404(List, slug=slug)
+    to_delete = get_object_or_404(ItemExtended, slug=slug)
+    items = ItemExtended.objects.order_by('bought')
+    print(f'Deleteing {to_delete} item')
+    if to_delete.delete():
+        messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deletelist')
+        context = {'itemsextended': items}
+        return render(request, 'items.html', context)
+    context = {'slug': slug}
+    return render(request, 'delete_list.html', context)
+    
