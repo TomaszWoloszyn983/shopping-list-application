@@ -18,4 +18,7 @@ urlpatterns = [
     path('delete_item/<slug:slug>/', views.delete_item, name='delete_item'),
     path('edit_item/<slug:slug>/', views.edit_item, name='edit_item'),
     path('mark_as_bought/<slug:slug>/', views.mark_as_bought, name='mark_as_bought'),
+
+# urls for logged in users views:
+    path('create_extended_item/', views.create_extended_item, name='create_extended_item'),
 ]

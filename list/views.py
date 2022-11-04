@@ -4,14 +4,19 @@ from django.views.generic import ListView
 from django.utils.text import slugify
 from django.contrib import messages
 from django.db import IntegrityError
-from .models import List, Item
-from .forms import ListForm, ItemForm
+from .models import List, Item, ItemExtended
+from .forms import ListForm, ItemForm, ItemExForm
 
 
 def showItems(request):
-    items = Item.objects.order_by('bought')
+    items = ItemExtended.objects.order_by('bought')
     context = {'items': items}
     return render(request, 'items.html', context)
+
+# 
+#   Log out users.
+# 
+
 
 def home(request):
     lists = List.objects.order_by("-id")
@@ -182,3 +187,31 @@ def mark_as_bought(request, slug):
         print(f'Update {item} to True')
         item.save()
     return redirect(reverse('show_list_items', args=[list.slug]))
+
+# 
+#   Log in users section
+# 
+
+def showItems(request):
+    items = ItemExtended.objects.order_by('bought')
+    context = {'itemsextended': items}
+    return render(request, 'items.html', context)
+
+
+def create_extended_item(request):
+    # list = get_object_or_404(List)
+    item_form = ItemExForm(request.POST or None)
+
+    if request.method == "POST":
+        if item_form.is_valid():
+            item_form.instance.slug = slugify(request.POST.get("name"))
+            item_form.instance.list_name = list
+            item_form.save()
+            return redirect(reverse("items.html"))
+
+    context = {
+        "item_form": item_form,
+        # "slug": slug
+    }
+    return render(request, 'create_extended_item.html', context)
+    

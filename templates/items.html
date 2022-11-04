@@ -16,14 +16,16 @@
                 {% endif %}
                 <ul class="collection with-header, col-6 mt-1 center">
 <!-- Items List: Items that are NOT marked as bought -->
-                    {% for item in items %}
+                    {% for item in itemsextended %}
                     {% if not item.bought %}
                         <li class="col s12 m12">
                             <div class="card blue-grey darken-0">
                                 <div class="card-content white-text">
                                     <span class="card-title">{{ item.name }}</span>
                                     <p>
-                                        Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }}
+                                        Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }} <br>
+                                        Favourite: {{ item.favourite }} <br> Urgent {{ item.urgent }} <br>
+                                        Description {{ item.description }}
                                     </p>
                                 </div>
                                 <div class="card-action">
@@ -54,14 +56,16 @@
                     {% endfor %}
                     <h4>Bought Items</h4>
 <!-- Items List: Items that are marked as bought -->
-                    {% for item in items %}
+                    {% for item in itemsextended %}
                     {% if item.bought %}
                         <div class="col s12 m12">
                             <div class="card blue-grey darken-0">
                                 <div class="card-content white-text">
                                     <span class="card-title">{{ item.name }}</span>
                                     <p>
-                                        Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }}
+                                        Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }} <br>
+                                        Favourite: {{ item.favourite }} <br> Urgent: {{ item.urgent }} <br>
+                                        Description: {{ item.description }}
                                     </p>
                                 </div>
                                 <div class="card-action">
@@ -99,7 +103,7 @@
 
 <div class="row">
     <div class="col s12 center-align">
-        <a href="#" class="btn-large light-blue darken-2">
+        <a href="{% url 'create_extended_item' %}" class="btn-large light-blue darken-2">
             Add Item <i class="fas fa-plus-square right"></i>
         </a>
     </div>
