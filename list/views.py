@@ -199,7 +199,8 @@ def showItems(request):
 
 
 def create_extended_item(request):
-    # list = get_object_or_404(List)
+    list = get_object_or_404(List)
+    items = ItemExtended.objects.order_by('bought')
     item_form = ItemExForm(request.POST or None)
 
     if request.method == "POST":
@@ -207,7 +208,8 @@ def create_extended_item(request):
             item_form.instance.slug = slugify(request.POST.get("name"))
             item_form.instance.list_name = list
             item_form.save()
-            return redirect(reverse("items.html"))
+            context = {'itemsextended': items}
+            return render(request, 'items.html', context)
 
     context = {
         "item_form": item_form,
