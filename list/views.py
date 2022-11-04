@@ -9,7 +9,7 @@ from .forms import ListForm, ItemForm, ItemExForm
 
 
 def showItems(request):
-    items = ItemExtended.objects.order_by('bought')
+    items = ItemExtended.objects.order_by('-id')
     context = {'items': items}
     return render(request, 'items.html', context)
 
@@ -25,11 +25,14 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
+
 def about(request):
     return render(request, 'about.html')
 
+
 def create_list(request):
     return render(request, 'add_list.html')
+
 
 def add_list(request):
     # Validation has to be added to prevent posting elements 
@@ -193,14 +196,14 @@ def mark_as_bought(request, slug):
 # 
 
 def showItems(request):
-    items = ItemExtended.objects.order_by('bought')
+    items = ItemExtended.objects.order_by('-id')
     context = {'itemsextended': items}
     return render(request, 'items.html', context)
 
 
 def create_extended_item(request):
     list = get_object_or_404(List)
-    items = ItemExtended.objects.order_by('bought')
+    items = ItemExtended.objects.order_by('-id')
     item_form = ItemExForm(request.POST or None)
 
     if request.method == "POST":
@@ -213,10 +216,10 @@ def create_extended_item(request):
 
     context = {
         "item_form": item_form,
-        # "slug": slug
     }
     return render(request, 'create_extended_item.html', context)
     
+
 def delete_ext_item(request, slug):
     to_delete = get_object_or_404(ItemExtended, slug=slug)
     items = ItemExtended.objects.order_by('bought')

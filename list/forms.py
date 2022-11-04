@@ -10,10 +10,10 @@ class ListForm(forms.ModelForm):
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ("name", "slug", "quantity", "list_name")
+        fields = ("name", "quantity")
 
 class ItemExForm(forms.ModelForm):
     class Meta:
         model = ItemExtended
-        fields = ("name", "slug", "quantity", "list_name",
+        fields = ("name", "quantity", "list_name",
                   "favourite", "urgent", 'price', 'description')

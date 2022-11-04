@@ -6,6 +6,7 @@
     {% for list in lists %}
       {% if forloop.counter == 1 %}
         <h2 class="center">Choose one of the list below or click "Go To Your Lists" button to manage your lists.</h2>
+        <p>The idea is to hide lists and allow only logged in user to create lists.</p>
       {% endif %}
     {% empty %}
     {% endfor %}
@@ -27,7 +28,8 @@
       <h4>No recently added lists! Click button below to create a new Shopping List</h4>
     {% endfor %}
 </div>
-    
+
+{% if user.is_authenticated %}
 <div class="row">
     <div class="col s12 center-align">
         <a href="{% url 'lists' %}" class="btn-large light-blue darken-2">
@@ -35,5 +37,6 @@
         </a>
     </div>
 </div>
+{% endif %} 
 
 {% endblock %}
