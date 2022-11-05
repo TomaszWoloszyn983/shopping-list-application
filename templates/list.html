@@ -41,6 +41,7 @@
     </div>
 </div>
 
+{% if user.is_authenticated %}
 <!-- List Card -->
 <div class="row">
     {% for list in lists %}
@@ -84,5 +85,11 @@
         </a>
     </div>
 </div>
+{% else %}
+<div class="center">
+    <h2>This page is available for logged in users only.</h2>
+    <h3>Register and Sign Up to display this page.</h3>
+</div>
+{% endif %}
 
 {% endblock %}

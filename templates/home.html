@@ -13,20 +13,34 @@
 </div>
 
 <div class="row">
-    {% for list in lists|slice:":3" %}
-    <div class="col s12 m12">
-      <div class="card hoverable accent-3 darken-1">
-        <div class="card-content">
-          <a href="{% url 'show_list_items' list.slug %}">
-            <span class="card-title">{{ list.name }}</span>
-            <p>Created on {{ list.create_date }}</p>
-          </a>
+    {% if user.is_authenticated %}
+      {% for list in lists|slice:":3" %}
+      <div class="col s12 m12">
+        <div class="card hoverable accent-3 darken-1">
+          <div class="card-content">
+            <a href="{% url 'show_list_items' list.slug %}">
+              <span class="card-title">{{ list.name }}</span>
+              <p>Created on {{ list.create_date }}</p>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    {% empty %}
-      <h4>No recently added lists! Click button below to create a new Shopping List</h4>
-    {% endfor %}
+      {% empty %}
+        <h4>No recently added lists! Click button below to create a new Shopping List</h4>
+      {% endfor %}
+    {% else %}
+      {% for list in lists|slice:":1" %}
+      <div class="col s12 m12">
+        <div class="card hoverable accent-3 darken-1">
+          <div class="card-content">
+            <a href="{% url 'show_list_items' list.slug %}">
+              <span class="card-title">{{ list.name }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% endif %}
 </div>
 
 {% if user.is_authenticated %}

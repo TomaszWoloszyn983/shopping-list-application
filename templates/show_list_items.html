@@ -2,18 +2,134 @@
 {% block content %}
 
 <!-- Header -->
-<div class="light-blue-text text-darken-4 center">
-    {% for list in lists %}
-        {% if list.slug == slug %}
-            <h1>{{ list.name }}</h1>
-            <p>Created on {{ list.create_date }}</p>
-        {% endif %}
-    {% endfor %}
-</div>
+{% if user.is_authenticated %}
+    <div class="light-blue-text text-darken-4 center">
+        {% for list in lists %}
+            {% if list.slug == slug %}
+                <h1>{{ list.name }}</h1>
+                <p>Created on {{ list.create_date }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="light-blue-text text-darken-4 center">
+        {% for list in lists %}
+            {% if list.slug == slug %}
+                <h1>{{ list.name }}</h1>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
 
 <div>
+{% if user.is_authenticated %}
+
+<!-- Logged in Users -->
     <ul class="collection with-header">
+        <h3>Logged in</h3>
+        <!-- Messages -->
+        {% for message in messages %}
+            {%if "deleteitem" in message.tags %}
+                <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
+            {% endif %}
+            {%if "updateitem" in message.tags %}
+                <p class="messages alert alert-success center-align">  {{message}} </p> 
+            {% endif %}
+            {%if "clearlist" in message.tags %}
+                <p class="messages alert alert-success center-align">  {{message}} </p> 
+        {% endif %}
+        {% endfor %}
+
+        <!-- List of Items to buy -->
+        {% for item in items_to_buy_ext %}
+        <ul class="collapsible card hoverable">
+            <li class="flow-text">
+                <div class="collapsible-header brand-logo card ">
+                    <span class="card-title">{{forloop.counter}}. {{ item.name }}: {{ item.quantity }}</span>
+                </div>
+                <div class="card center">
+                    <a href="{% url 'mark_as_bought_ext' item.slug %}" 
+                        class="btn-floating halfway-fab  waves-light lime darken-1 grey-text">
+                        <i class="material-icons indigo-text darken-4" style="font-size: 2rem;">add_shopping_cart</i>
+                    </a>
+                </div>
+                <div class="collapsible-body card">
+                    <span>
+                        <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue">Edit Item</a>
+                        <a href="delete_{{item.slug}}" class="waves-effect waves-light btn red modal-trigger" data-target="delete_{{item.slug}}">Delete Item</a>
+
+                    </span>
+                </div>
+            </li>
+        </ul>
+        <!-- Modal Structure -->
+        <div id="delete_{{item.slug}}" class="modal bottom-sheet">
+            <div class="modal-content">
+            <h4>Are you sure you want to delete {{ item.name }}?</h4>
+            <p>Click "Yes" to confirm or "No" to return.</p>
+            </div>
+            <div class="modal-footer">
+            <a href="{% url 'delete_ext_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
+            <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="center">
+            <h4>No items to buy on this list!</h4>
+            <h5>Click "ADD ITEM" button to add items.</h5>
+        </div>
+        {% endfor %}
+    </ul>
     
+    <!-- Divider which separates item to buy from bought items. 
+        Displays nothing if there is no items. -->
+    {% for item in bought_items_ext %}
+    {% if forloop.counter == 1 %}
+        <h3 class="light-blue-text text-darken-4 center-align">Bought Items:</h3>
+    {% endif %}
+    {% endfor %}
+
+    <ul>
+        <!-- Displays the list of items that are NOT marked as bought-->
+        {% for item in bought_items_ext %}
+        <ul class="collapsible card">
+            <li>
+                <div class="collapsible-header hoverable brand-logo card">
+                    <span class="card-title">{{ item.name }}: {{ item.quantity }}</span>
+                </div>
+                <div class="card">
+                    <a href="{% url 'mark_as_bought_ext' item.slug %}" 
+                        class="btn-floating halfway-fab waves-effect waves-light red"
+                        method="POST">
+                        <i class="material-icons" style="font-size: 3rem;">check</i>
+                    </a>
+                </div>
+                <div class="collapsible-body card">
+                    <span>
+                        <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue">Edit Item</a>
+                        <a href="delete_{{item.slug}}" class="waves-effect waves-light btn red modal-trigger" data-target="delete_{{item.slug}}">Delete Item</a>
+                    </span>
+                </div>
+            </li>
+        </ul>
+        <!-- Delete Item Modal Structure -->
+        <div id="delete_{{item.slug}}" class="modal bottom-sheet white-text">
+            <div class="modal-content">
+                <h4>Are you sure you want to delete {{ item.name }}?</h4>
+                <p>Click "Yes" to confirm or "No" to return.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'delete_ext_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
+                <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
+            </div>
+        </div>
+        {% endfor %}
+    </ul>
+{% else %}
+
+<!-- Not Logged in Users -->
+    <ul class="collection with-header">
+        <h3>Not logged in</h3>
         <!-- Messages -->
         {% for message in messages %}
             {%if "deleteitem" in message.tags %}
@@ -56,7 +172,6 @@
             <p>Click "Yes" to confirm or "No" to return.</p>
             </div>
             <div class="modal-footer">
-            <!-- <a href="{% url 'delete_item' item.slug %}" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
             <a href="{% url 'delete_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
             <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
             </div>
@@ -68,7 +183,7 @@
         </div>
         {% endfor %}
     </ul>
-    
+
     <!-- Divider which separates item to buy from bought items. 
         Displays nothing if there is no items. -->
     {% for item in bought_items %}
@@ -79,8 +194,7 @@
 
     <ul>
         <!-- Displays the list of items that are NOT marked as bought-->
-        {% for item in items %}
-        {% if item.bought %}
+        {% for item in bought_items %}
         <ul class="collapsible card">
             <li>
                 <div class="collapsible-header hoverable brand-logo card">
@@ -112,11 +226,12 @@
                 <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
             </div>
         </div>
-        {% endif %}
         {% endfor %}
     </ul>
+{% endif %}
 </div>
     
+{% if user.is_authenticated %}
 <!-- Add Item and Delete All buttons -->
 <div class="row">
     <div class="col s12 center-align">
@@ -132,7 +247,28 @@
         <div class="modal-footer">
             <a href="{% url 'clear_list' slug %}" class="waves-effect waves-red btn red">YES</a>
             <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
+        </div>
     </div>
 </div>
+{% else %}
+<!-- Add Item and Delete All buttons -->
+    <div class="row">
+        <div class="col s12 center-align">
+            <a href="{% url 'add_item' slug %}" class="btn-large light-blue darken-2">Add Item</a>
+            <a href="clear_modal" class="waves-effect waves-light red btn-large modal-trigger" data-target="clear_modal">Delete All</a>
+        </div>
+        <!-- Delete All Modal Structure -->
+        <div id="clear_modal" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4>Are you sure you want to delete all Items from the list?</h4>
+                <p>Click "Yes" to confirm or "No" to return.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'clear_list' slug %}" class="waves-effect waves-red btn red">YES</a>
+                <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
+            </div>
+        </div>
+    </div>
+{% endif %}
 
 {% endblock %}

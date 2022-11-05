@@ -13,13 +13,38 @@ def showItems(request):
     context = {'items': items}
     return render(request, 'items.html', context)
 
+def show_list_items(request, slug):
+    # Get requested elements slug
+    # Get list of items filterd by mathing to the slug
+    # Pass the list of items to the template
+    lists_slug = get_object_or_404(List, slug=slug)
+    lists = List.objects.order_by('-create_date')
+    items = Item.objects.filter(list_name=lists_slug).order_by('-id')
+    bought_items = items.filter(bought=True)
+    items_to_buy = items.filter(bought=False)
+    items_ext = ItemExtended.objects.filter(list_name=lists_slug).order_by('-id')
+    bought_items_ext = items_ext.filter(bought=True)
+    items_to_buy_ext = items_ext.filter(bought=False)
+    context = {
+        'lists': lists,
+        'slug' : slug,
+        'items': items,
+        'bought_items': bought_items,
+        'items_to_buy': items_to_buy,
+        'items_ext': items_ext,
+        'bought_items_ext': bought_items_ext,
+        'items_to_buy_ext': items_to_buy_ext
+    }
+    return render(request, 'show_list_items.html', context)
+
+
 # 
 #   Log out users.
 # 
 
 
 def home(request):
-    lists = List.objects.order_by("-id")
+    lists = List.objects.order_by("id")
     context = {
         'lists': lists
     }
@@ -105,26 +130,6 @@ def clear_list(request, slug):
     context = {
         'slug' : slug,
         'items': items
-    }
-    return render(request, 'show_list_items.html', context)
-
-
-def show_list_items(request, slug):
-    # Get requested elements slug
-    # Get list of items filterd by mathing to the slug
-    # Pass the list of items to the template
-    lists_slug = get_object_or_404(List, slug=slug)
-    lists = List.objects.order_by('-create_date')
-    items = Item.objects.filter(list_name=lists_slug).order_by('bought')
-    bought_items = items.filter(bought=True)
-    items_to_buy = items.filter(bought=False)
-    print(f"\nBought items: {bought_items}")
-    context = {
-        'slug' : slug,
-        'items': items,
-        'lists': lists,
-        'bought_items': bought_items,
-        'items_to_buy': items_to_buy
     }
     return render(request, 'show_list_items.html', context)
 
@@ -226,8 +231,7 @@ def delete_ext_item(request, slug):
     print(f'Deleteing {to_delete} item')
     if to_delete.delete():
         messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deletelist')
-        context = {'itemsextended': items}
-        return render(request, 'items.html', context)
+        return redirect(reverse("items"))
     context = {'slug': slug}
     return render(request, 'delete_list.html', context)
     
@@ -243,10 +247,29 @@ def edit_ext_item(request, slug):
             item_form.save()
             messages.success(request, f"Item has been successfully updated!", extra_tags='updateitem')
             context = {'itemsextended': items}
-            return render(request, 'items.html', context)
+            # return render(request, 'items.html', context)
+            return redirect(reverse("items"))
 
     context = {
         'slug': slug,
         "item_form": item_form,
     }
     return render(request, 'edit_ext_item.html', context)
+
+def mark_as_bought_ext(request, slug):
+# mark_as_bought method is nothing but items update method, where
+# we only update one element of the item, which is 'bought' variable.
+# The problem may be to call the mark_as_bought method.
+    item = get_object_or_404(ItemExtended, slug=slug)
+    list = get_object_or_404(List, slug=item.list_name.slug)
+    print(f'\n\nMarking {item} as bought/notbought')
+
+    if item.bought:
+        item.bought = False
+        print(f'Update {item} to False')
+        item.save()
+    else:
+        item.bought = True
+        print(f'Update {item} to True')
+        item.save()
+    return redirect(reverse('show_list_items', args=[list.slug]))
