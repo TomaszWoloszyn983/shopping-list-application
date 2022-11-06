@@ -205,9 +205,11 @@ def showItems(request):
     context = {'itemsextended': items}
     return render(request, 'items.html', context)
 
-
+# 
+# I need to extract items list and to get that lists slug
 def create_extended_item(request):
     list = get_object_or_404(List)
+    lists = List.objects.order_by("-id")
     items = ItemExtended.objects.order_by('-id')
     item_form = ItemExForm(request.POST or None)
 
@@ -216,8 +218,9 @@ def create_extended_item(request):
             item_form.instance.slug = slugify(request.POST.get("name"))
             item_form.instance.list_name = list
             item_form.save()
-            context = {'itemsextended': items}
-            return render(request, 'items.html', context)
+            # context = {'itemsextended': items}
+            # return render(request, 'items.html', context)
+            return redirect(reverse('items', instance=lists_slug))
 
     context = {
         "item_form": item_form,
