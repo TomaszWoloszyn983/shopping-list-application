@@ -26,16 +26,15 @@
 
 <!-- Logged in Users -->
     <ul class="collection with-header">
-        <h3>Logged in</h3>
         <!-- Messages -->
         {% for message in messages %}
-            {%if "deleteitem" in message.tags %}
+            {%if "deleteextitem" in message.tags %}
                 <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
             {% endif %}
-            {%if "updateitem" in message.tags %}
+            {%if "deleteextitem" in message.tags %}
                 <p class="messages alert alert-success center-align">  {{message}} </p> 
             {% endif %}
-            {%if "clearlist" in message.tags %}
+            {%if "clearexlist" in message.tags %}
                 <p class="messages alert alert-success center-align">  {{message}} </p> 
         {% endif %}
         {% endfor %}
@@ -140,7 +139,7 @@
             {% endif %}
             {%if "clearlist" in message.tags %}
                 <p class="messages alert alert-success center-align">  {{message}} </p> 
-        {% endif %}
+            {% endif %}
         {% endfor %}
 
         <!-- List of Items to buy -->
@@ -233,23 +232,23 @@
     
 {% if user.is_authenticated %}
 <!-- Add Item and Delete All buttons -->
-<div class="row">
-    <div class="col s12 center-align">
-        <a href="{% url 'add_ext_item' slug %}" class="btn-large light-blue darken-2">Add Item</a>
-        <a href="clear_modal" class="waves-effect waves-light red btn-large modal-trigger" data-target="clear_modal">Delete All</a>
-    </div>
-     <!-- Delete All Modal Structure -->
-    <div id="clear_modal" class="modal bottom-sheet">
-        <div class="modal-content">
-            <h4>Are you sure you want to delete all Items from the list?</h4>
-            <p>Click "Yes" to confirm or "No" to return.</p>
+    <div class="row">
+        <div class="col s12 center-align">
+            <a href="{% url 'add_ext_item' slug %}" class="btn-large light-blue darken-2">Add Item</a>
+            <a href="clear_modal" class="waves-effect waves-light red btn-large modal-trigger" data-target="clear_modal">Delete All</a>
         </div>
-        <div class="modal-footer">
-            <a href="{% url 'clear_list' slug %}" class="waves-effect waves-red btn red">YES</a>
-            <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
+        <!-- Delete All Modal Structure -->
+        <div id="clear_modal" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4>Are you sure you want to delete all Items from the list?</h4>
+                <p>Click "Yes" to confirm or "No" to return.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'clear_ex_list' slug %}" class="waves-effect waves-red btn red">YES</a>
+                <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
+            </div>
         </div>
     </div>
-</div>
 {% else %}
 <!-- Add Item and Delete All buttons -->
     <div class="row">

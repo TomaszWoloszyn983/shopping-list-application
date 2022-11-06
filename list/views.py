@@ -218,14 +218,13 @@ def create_extended_item(request):
             item_form.instance.slug = slugify(request.POST.get("name"))
             # item_form.instance.list_name = list
             item_form.save()
-            # context = {'itemsextended': items}
-            # return render(request, 'items.html', context)
             return redirect(reverse('items'))
 
     context = {
         "item_form": item_form,
     }
     return render(request, 'create_extended_item.html', context)
+
 
 def add_ext_item(request, slug):
     list = get_object_or_404(List, slug=slug)
@@ -237,7 +236,6 @@ def add_ext_item(request, slug):
             item_ex_form.instance.list_name = list
             item_ex_form.save()
             return redirect(reverse("show_list_items", args=[list.slug]))
-
     context = {
         "item_ex_form": item_ex_form,
         "slug": slug
@@ -250,7 +248,7 @@ def delete_ext_item(request, slug):
     items = ItemExtended.objects.order_by('bought')
     print(f'Deleteing {to_delete} item')
     if to_delete.delete():
-        messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deletelist')
+        messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deleteextitem')
         return redirect(reverse("items"))
     context = {'slug': slug}
     return render(request, 'delete_list.html', context)
@@ -265,7 +263,7 @@ def edit_ext_item(request, slug):
     if request.method == "POST":
         if item_form.is_valid():
             item_form.save()
-            messages.success(request, f"Item has been successfully updated!", extra_tags='updateitem')
+            messages.success(request, f"Item has been successfully updated!", extra_tags='updateexitem')
             context = {'itemsextended': items}
             return redirect(reverse("items"))
 
@@ -276,18 +274,18 @@ def edit_ext_item(request, slug):
     return render(request, 'edit_ext_item.html', context)
 
 
-def clear_list(request, slug):
+def clear_ex_list(request, slug):
     lists_slug = get_object_or_404(List, slug=slug)
     items = ItemExtended.objects.filter(list_name=lists_slug).order_by('bought')
     if items.delete():
-        messages.success(request, "All Items have been successfully deleted from the List", extra_tags='clearlist')
+        messages.success(request, "All Items have been successfully deleted from the List", extra_tags='clearexlist')
         return redirect(reverse('show_list_items', args=[lists_slug.slug]))
 
     context = {
         'slug' : slug,
         'items': items
     }
-    return render(request, 'show_list_items.html', context)
+    return render(request, 'clear_ex_list.html', context)
 
 
 def mark_as_bought_ext(request, slug):

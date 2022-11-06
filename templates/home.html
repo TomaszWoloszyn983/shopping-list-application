@@ -6,11 +6,16 @@
     {% for list in lists %}
       {% if forloop.counter == 1 %}
         <h2 class="center">Choose one of the list below or click "Go To Your Lists" button to manage your lists.</h2>
-        <p>The idea is to hide lists and allow only logged in user to create lists.</p>
       {% endif %}
     {% empty %}
     {% endfor %}
 </div>
+
+<h2>Editing elements still doesn't update the slug. 
+  This can cause and error if you try to add 
+  an element with existing slug.
+  You can fix it by catching the IntegrityError
+</h2>
 
 <div class="row">
     {% if user.is_authenticated %}
