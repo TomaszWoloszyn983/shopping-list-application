@@ -2,8 +2,6 @@
 {% block content %}
 
 <h3 class="light-blue-text text-darken-4 center-align">Items</h3>
-<p>Almost whole this template should be closed in "if authenticated" conditional </p>
-<p>Issue!!! Refreshing this page after adding a new item repeats adding the item process. There is the same issue with other functions</p>
 
 {% if user.is_authenticated %}
 <div class="container_fluid">
@@ -28,6 +26,7 @@
                                         Description {{ item.description }}
                                     </p>
                                 </div>
+                                <!-- Toggling between bought and to buy status -->
                                 <div class="card-action">
                                     <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue">Edit</a>
                                     <a href="{% url 'delete_ext_item' item.slug %}" class="btn red">Delete</a>
@@ -68,7 +67,7 @@
 </div>
 {% else %}
 <div class="center">
-    <h2>This page is available for logged in users only.</h2>
+    <h2>This content is available for logged in users only.</h2>
     <h3>Register and Sign Up to display this page.</h3>
 </div>
 {% endif %}

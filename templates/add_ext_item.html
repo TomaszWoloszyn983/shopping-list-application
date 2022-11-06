@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
+{% load material_form %}
 
 <h3 class="light-blue-text text-darken-4 center-align">Create a New Item</h3>
 
 
 <div class="row light-blue-text text-darken-4">
   <p>Authorized. Add extended item</p>
-  <form class="col s12 " method="POST" action="{% url 'add_ext_item' slug %}">
+  <form class="col s12" method="POST" action="{% url 'add_ext_item' slug %}">
     {% csrf_token %}
     <div class="row">
       <div class="input-field col s6 center-align">
-        {{ item_ex_form.as_p }}
+        {% form form=item_ex_form %}{% endform %}
       </div>
     </div>
     <div class="row">
@@ -43,3 +44,6 @@
   }
 </script>
 {% endblock %}
+
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}

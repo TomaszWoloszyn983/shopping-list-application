@@ -206,7 +206,7 @@ def showItems(request):
     return render(request, 'items.html', context)
 
 # 
-# I need to extract items list and to get that lists slug
+# If htere are no errors, delete commented lines. 
 def create_extended_item(request):
     # list = get_object_or_404(List)
     lists = List.objects.order_by("-id")
@@ -308,7 +308,5 @@ def mark_as_bought_ext(request, slug):
         item.save()
     return redirect(reverse('show_list_items', args=[list.slug]))
 
-# Clear extended list function has to be created
-# Add extended item for show_ext_list_item function has to be created.
 # 
 # 

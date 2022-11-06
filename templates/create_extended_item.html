@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% load material_form %}
 
 <h3 class="light-blue-text text-darken-4 center-align">Create a New Item</h3>
 
@@ -9,7 +10,7 @@
       {% csrf_token %}
       <div class="row ">
         <div class="input-field col s6">
-          {{ item_form.as_p }}
+          {% form form=item_form %}{% endform %}
         </div>
 
         <div class="row">
@@ -40,3 +41,6 @@
   }
 </script>
 {% endblock %}
+
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
