@@ -71,6 +71,7 @@ The application allows adding items to buy to the list, editing, deleting the it
 
 ## Errors
 
+### Model Error
 When I click on items list, instead of diplaying the items list I get an error:
 
 ProgrammingError at /admin/list/item/
@@ -97,7 +98,9 @@ P.S. Item model displays in the admin panel when I click the 'add' button, but w
 
 ![Help section image](images/errors/er3.jpg)
 
+    ### Checkbox issue
 
+![Help section image](images/errors/issue_no_checkboxes2.jpg)
 
 ## Deployment
 
@@ -112,6 +115,8 @@ P.S. Item model displays in the admin panel when I click the 'add' button, but w
 
 - How to create Modals using Materialize YouTube tutorial - https://www.youtube.com/watch?v=GAQoVIgjeZA&list=TLPQMjkxMDIwMjJbjtPeibmcMA&index=2
 
-- How to create a ncie login form using Materialize YouTube tutorial = https://www.youtube.com/watch?v=2lbiRNNnAx8&t=1s
+- How to create a nice login form using Materialize YouTube tutorial - https://www.youtube.com/watch?v=2lbiRNNnAx8&t=1s
+
+- Solution how to fix not displaying checkboxes i materialize - https://stackoverflow.com/questions/54500348/django-checkbox-not-showing-up-in-html
 
 ## Credits:

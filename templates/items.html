@@ -26,28 +26,40 @@
                                         Description {{ item.description }}
                                     </p>
                                 </div>
-                                <!-- Toggling between bought and to buy status -->
                                 <div class="card-action">
                                     <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue">Edit</a>
-                                    <a href="{% url 'delete_ext_item' item.slug %}" class="btn red">Delete</a>
+                                    <a href="delete_{{item.slug}}" class="waves-effect waves-light btn red modal-trigger" data-target="delete_{{item.slug}}">Delete</a>
+
+                                    <!-- Toggling between bought and to buy status -->
                                     <form class="" action="{% url 'mark_as_bought' item.slug %}" method="POST">
                                         {% csrf_token %}
                                         {% if item.bought %}
                                         <p>
                                             <label>
                                                 <input type="checkbox" class="filled-in" checked="checked" value="{{ item.slug }}"/>
-                                                <span>Mark As Bought</span>
+                                                <span>Mark As Bought (Not really needed)</span>
                                             </label>
                                         </p>
                                         {% else %}
                                         <p>
                                             <label>
                                                 <input type="checkbox" class="filled-in" value="{{ item.slug }}"/>
-                                                <span>Mark As Bought</span>
+                                                <span>Mark As Bought (Not really needed)</span>
                                             </label>
                                         </p>
                                         {% endif %}
                                     </form>
+                                    <!-- Delete Item Modal Structure -->
+                                    <div id="delete_{{item.slug}}" class="modal bottom-sheet white-text">
+                                        <div class="modal-content">
+                                            <h4>Are you sure you want to delete {{ item.name }}?</h4>
+                                            <p>Click "Yes" to confirm or "No" to return.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="{% url 'delete_ext_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
+                                            <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </li>   
