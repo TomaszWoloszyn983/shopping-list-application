@@ -24,6 +24,7 @@ urlpatterns = [
     path('add_ext_item/<slug:slug>/', views.add_ext_item, name='add_ext_item'),
     path('delete_ext_item/<slug:slug>/', views.delete_ext_item, name='delete_ext_item'),
     path('edit_ext_item/<slug:slug>/', views.edit_ext_item, name='edit_ext_item'),
+    path('edit_list_item/<slug:slug>/', views.edit_list_item, name='edit_list_item'),
     path('mark_as_bought_ext/<slug:slug>/', views.mark_as_bought_ext, name='mark_as_bought_ext'),
     path('clear_ex_list/<slug:slug>/', views.clear_ex_list, name='clear_ex_list'),
 ]

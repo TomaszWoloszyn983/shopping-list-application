@@ -54,7 +54,7 @@
                 </div>
                 <div class="collapsible-body card">
                     <span>
-                        <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue">Edit Item</a>
+                        <a href="{% url 'edit_list_item' item.slug %}" class="btn blue">Edit Item</a>
                         <a href="delete_{{item.slug}}" class="waves-effect waves-light btn red modal-trigger" data-target="delete_{{item.slug}}">Delete Item</a>
 
                     </span>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="collapsible-body card">
                     <span>
-                        <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue">Edit Item</a>
+                        <a href="{% url 'edit_list_item' item.slug %}" class="btn blue">Edit Item</a>
                         <a href="delete_{{item.slug}}" class="waves-effect waves-light btn red modal-trigger" data-target="delete_{{item.slug}}">Delete Item</a>
                     </span>
                 </div>

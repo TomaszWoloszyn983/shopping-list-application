@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+{% load material_form %}
+
+<h3 class="light-blue-text text-darken-4 center-align">Edit Item</h3>
+
+
+<div class="row light-blue-text text-darken-4">
+    <form class="col s12 " method="POST" action="{% url 'edit_list_item' slug %}">
+      {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s6 center-align">
+          {% form form=item_form %}{% endform %}
+        </div>
+
+        <div class="row">
+            <divc class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
+                    Submit changes <i class="fas fa plus=square right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+  </div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+  // convert Item name to slug-format on front-end
+  /* jshint esversion: 11 */
+  let itemName = document.getElementById("id_name");
+  let slug = document.getElementById("id_slug");
+  itemName?.addEventListener("keyup", convertToSlug);
+  slug?.addEventListener("keyup", convertToSlug);
+
+  function convertToSlug() {
+    slug.value = itemName.value.toLowerCase()
+               .replace(/ /g, '-')
+               .replace(/[^\w-]+/g, '');
+  }
+</script>
+{% endblock %}
+
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
