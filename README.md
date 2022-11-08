@@ -6,15 +6,40 @@ The subject of the project is the shopping list.
 The application allows adding items to buy to the list, editing, deleting the items form the list, as well as marking them as done/bought.
 
 ** **
+## Contents:
+1. [Project Overview](#project-overview)
+2. [User Stories](#user-stories)
+3. [Features](#features)
+    * [Home Page](#home-page)
+    * [Item Class](#item-class)
+4. [Future Features](#future-features)
+5. [Technologies Used](#technologies-used)
+6. [Testing](#testing)
+7. [Deployment](#deployment)
+8. [References and Credits](#references-and-credits)
+
+
 
 ## User Stories:
 
-### First time user
-    - As a first time user I would like to be able to create quick and simple shopping list.
-    - As a first time user I would my shopping list to be accessible wherever I am.
+### Non-registered user
+    - As a non-registered user I would like to be able to create quick and simple shopping list.
+    - As a non-registered user I would like to save my shopping list in a database so it will be accessible wherever I am.
+    - As a non-registered user I would like to mark items as bought, so the bought items will be separated from items to buy.
+    - As a non-registered user I would like to mark items as bought, so the bought items will be separated from items to buy.
+    - As a non-registered user I would like to edit or delete items.
+    - As a non-registered user I would like to clear the list with one click after my shoppings are done, so I don't have to delete each item separately.
 
-### Returning user
-    - As an returning user I would like to be able to register and log in to get additional functionalities for ma shopping lists.
+
+### Registered user
+    - As a registered user I would like to be able to log in to get access to additional functions.
+    - As a registered user I would like to be able to create more than just one list, so I can create separate lists for different occasions and different users.
+    - As a registered user I would like to add items to favourite so I can easier add them to my shopping list.
+    - As a registered user I would like to be able to mark items as urgent so they can be highlighted on the list and easier spotted.
+    - As a registered user I would like to be able to share my list with another users.
+    - As a registered user I would like to be able to assign price to items so I can know the assumed price of all items on the list.
+    - As a registered user I would like to be able to print the shopping list, so I can use the list when I have no mobile devices with me.
+
 
 ### As the application creator
     - I want to make the site user friendly
@@ -35,13 +60,7 @@ The application allows adding items to buy to the list, editing, deleting the it
     - Add additional columns for Item attributes such as: price, favorite.
     - Add item to the favourite. Create the Favourite Item column in Database. Favorite item suggested during the search and have predefined price.
 
-- **Item class:**
 
-    - Id
-    - Name
-    - Quantity
-    - Bought
-    - Urgent
 
 - ***Additional Item's attributtes available only for register users***
 
@@ -50,28 +69,49 @@ The application allows adding items to buy to the list, editing, deleting the it
     - Category that will contain different icons for each category
     - Shopping counter showing how many times the item was added to the shopping list.
 
-** **
+## Project Overview
+
+
 ## Features
 
-The application includes following sections. Although accessibilty of those sections depends on whether the user is logged in on not.
+The application includes following sections. Although accessibilty of those sections depends on whether the user is logged in or not.
 
-- **Home Page** 
+### **Home Page**
+Home Page contain a short introduction to the application.
+In case of unlogged in user it displays a default Shopping List where the user can add, delete or update the list. 
+In case of logged in user the Home Page displays last three list previously created by the user. There is also a button which redirects the user to the lists page where he can add more list and to manage already existing lists.
 
-    * **Navigationbar**
+### **Lists Page**
+This page is only accessible for logged in users and it allows users to create new lists and to manage existing lists.
+
+### **Items Page**
+This page is only accessible for logged in users and it allows users to create new items and to edit or delete items, as well as assigning items to lists.
+
+### **Header** this section contains the list of events taking place in 
+
+### **Navigation bar**
   All sections are clearly and simply arranged inside the navigation bar which allows for an easy access to each section. 
 
-    * **Header** this section contains the list of events taking place in 
+### **Shopping List Section** 
 
-    * **Shopping List Section** 
+### **Login/logout Section** 
 
-    * **Login/logout Section** 
+### **Footer**  
 
-    * **Footer**  
 
 - **Add Item** 
 
 - **Item Section** 
     Contains information about item that is added to the shopping list.
+
+## Item class:
+
+    - Id
+    - Name
+    - Quantity
+    - Bought
+    - Urgent
+    - Favourite
 
 ## Future Features
 
@@ -81,6 +121,8 @@ The application includes following sections. Although accessibilty of those sect
     * Materialize
     * Html5
     * CSS
+    * Github
+    * Gitpod
 
 ## Testing
 
