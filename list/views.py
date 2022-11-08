@@ -44,9 +44,12 @@ def show_list_items(request, slug):
 
 
 def home(request):
-    lists = List.objects.order_by("id")
+    lists = List.objects.order_by("-id")
+    first_list = List.objects.order_by("id")
+
     context = {
-        'lists': lists
+        'lists': lists,
+        'first_list': first_list
     }
     return render(request, 'home.html', context)
 

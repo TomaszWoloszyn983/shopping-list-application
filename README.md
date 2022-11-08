@@ -7,7 +7,18 @@ The application allows adding items to buy to the list, editing, deleting the it
 
 ** **
 
-## Plans:
+## User Stories:
+
+### First time user
+    - As a first time user I would like to be able to create quick and simple shopping list.
+    - As a first time user I would my shopping list to be accessible wherever I am.
+
+### Returning user
+    - As an returning user I would like to be able to register and log in to get additional functionalities for ma shopping lists.
+
+### As the application creator
+    - I want to make the site user friendly
+    - 
 
 - **Must do:**
     - Create class Item and the model section for Items.
@@ -41,12 +52,15 @@ The application allows adding items to buy to the list, editing, deleting the it
 
 ** **
 ## Features
-- **Home Page** 
 
-    * **Header** this section contains the list of events taking place in 
+The application includes following sections. Although accessibilty of those sections depends on whether the user is logged in on not.
+
+- **Home Page** 
 
     * **Navigationbar**
   All sections are clearly and simply arranged inside the navigation bar which allows for an easy access to each section. 
+
+    * **Header** this section contains the list of events taking place in 
 
     * **Shopping List Section** 
 
@@ -62,10 +76,11 @@ The application allows adding items to buy to the list, editing, deleting the it
 ## Future Features
 
 ## Technologies used:
-    - Html5
-    - Bootstrap/Materialize
-    - Python
-    - Django
+    * Python - an interpreted, object-oriented, high-level programming language.
+    * Django
+    * Materialize
+    * Html5
+    * CSS
 
 ## Testing
 

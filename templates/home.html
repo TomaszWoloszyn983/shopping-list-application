@@ -11,8 +11,9 @@
     {% endfor %}
 </div>
 
-<h2>I may need to handle server error.
-</h2>
+<p>Fix checkbox in login and register page.</p>
+<p>Add "Logged as" box to the navbar</p>
+<p>I may need to handle server error.</p>
 
 <div class="row">
     {% if user.is_authenticated %}
@@ -31,7 +32,7 @@
         <h4>No recently added lists! Click button below to create a new Shopping List</h4>
       {% endfor %}
     {% else %}
-      {% for list in lists|slice:":1" %}
+      {% for list in first_list|slice:":1" %}
       <div class="col s12 m12">
         <div class="card hoverable accent-3 darken-1">
           <div class="card-content">
