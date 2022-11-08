@@ -118,7 +118,7 @@ def delete_list(request, slug):
     to_delete.delete()
     messages.success(request, f"The list {to_delete} has been successfully deleted!", extra_tags='deletelist')
     context = {'slug': slug}
-    return render(request, 'delete_list.html', context)
+    return redirect(reverse("lists"))
 
 def clear_list(request, slug):
     lists_slug = get_object_or_404(List, slug=slug)
@@ -205,10 +205,8 @@ def showItems(request):
     context = {'itemsextended': items}
     return render(request, 'items.html', context)
 
-# 
-# If htere are no errors, delete commented lines. 
+
 def create_extended_item(request):
-    # list = get_object_or_404(List)
     lists = List.objects.order_by("-id")
     items = ItemExtended.objects.order_by('-id')
     item_form = ItemExForm(request.POST or None)
@@ -216,7 +214,6 @@ def create_extended_item(request):
     if request.method == "POST":
         if item_form.is_valid():
             item_form.instance.slug = slugify(request.POST.get("name"))
-            # item_form.instance.list_name = list
             item_form.save()
             return redirect(reverse('items'))
 
@@ -241,7 +238,20 @@ def add_ext_item(request, slug):
         "slug": slug
     }
     return render(request, 'add_ext_item.html', context)
-    
+
+
+def delete_list_item(request, slug):
+    items_slug = get_object_or_404(ItemExtended, slug=slug)
+    items = ItemExtended.objects.order_by('bought')
+    print(f'Editing {items_slug} element')
+
+    if request.method == "POST":
+        if to_delete.delete():
+            messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deletelistitem')
+            return redirect(reverse('show_list_items', args=[items_slug.list_name.slug]))
+    context = {'slug': slug}
+    return render(request, 'delete_list.html', context)
+
 
 def delete_ext_item(request, slug):
     to_delete = get_object_or_404(ItemExtended, slug=slug)
@@ -253,6 +263,7 @@ def delete_ext_item(request, slug):
     context = {'slug': slug}
     return render(request, 'delete_list.html', context)
     
+
 
 def edit_list_item(request, slug):
     items_slug = get_object_or_404(ItemExtended, slug=slug)
