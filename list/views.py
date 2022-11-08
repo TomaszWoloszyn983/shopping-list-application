@@ -139,11 +139,15 @@ def create_item(request, slug):
     item_form = ItemForm(request.POST or None)
 
     if request.method == "POST":
-        if item_form.is_valid():
-            item_form.instance.slug = slugify(request.POST.get("name"))
-            item_form.instance.list_name = list
-            item_form.save()
-            return redirect(reverse("show_list_items", args=[list.slug]))
+        try:
+            if item_form.is_valid():
+                item_form.instance.slug = slugify(request.POST.get("name"))
+                item_form.instance.list_name = list
+                item_form.save()
+                return redirect(reverse("show_list_items", args=[list.slug]))
+        except IntegrityError as e:
+            messages.error(request, f"Sorry! A problem occured. Please choose another name for this item.", extra_tags='invalid_slug')
+
 
     context = {
         "item_form": item_form,
@@ -228,11 +232,15 @@ def add_ext_item(request, slug):
     item_ex_form = ItemExForm(request.POST or None)
 
     if request.method == "POST":
-        if item_ex_form.is_valid():
-            item_ex_form.instance.slug = slugify(request.POST.get("name"))
-            item_ex_form.instance.list_name = list
-            item_ex_form.save()
-            return redirect(reverse("show_list_items", args=[list.slug]))
+        try:
+            if item_ex_form.is_valid():
+                item_ex_form.instance.slug = slugify(request.POST.get("name"))
+                item_ex_form.instance.list_name = list
+                item_ex_form.save()
+                return redirect(reverse("show_list_items", args=[list.slug]))
+        except IntegrityError as e:
+            messages.error(request, f"Sorry! A problem occured. Please choose another name for this item.", extra_tags='invalid_slug')
+
     context = {
         "item_ex_form": item_ex_form,
         "slug": slug
@@ -290,11 +298,15 @@ def edit_ext_item(request, slug):
     item_form = ItemExForm(request.POST or None, instance=items_slug)
 
     if request.method == "POST":
-        if item_form.is_valid():
-            item_form.save()
-            messages.success(request, f"Item has been successfully updated!", extra_tags='updateexitem')
-            context = {'itemsextended': items}
-            return redirect(reverse("items"))
+        try:
+            if item_form.is_valid():
+                item_form.save()
+                messages.success(request, f"Item has been successfully updated!", extra_tags='updateexitem')
+                context = {'itemsextended': items}
+                return redirect(reverse("items"))
+        except IntegrityError as e:
+            messages.error(request, f"Sorry! A problem occured with {items_slug}. Please choose another name for this item.", extra_tags='invalid_name')
+
 
     context = {
         'slug': slug,
