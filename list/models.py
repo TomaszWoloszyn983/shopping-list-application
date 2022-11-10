@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+# Changes to be made in models: no default description, 
+# prize shouldn't be required, so default value should be added
+# increase max_lenght for quantity.
 
 class List(models.Model):
     create_date = models.DateField(default=timezone.now)

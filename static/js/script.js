@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let elems = document.querySelectorAll('.fixed-action-btn');
   M.FloatingActionButton.init(elems, options);
 
-  direction = 'top'
+  direction = 'right'
   hoverEnabled = "true"
 });
 

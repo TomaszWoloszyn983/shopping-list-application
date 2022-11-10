@@ -21,9 +21,10 @@
                                 <div class="card-content white-text">
                                     <span class="card-title">{{ item.name }}</span>
                                     <p>
-                                        Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }} <br>
-                                        Favourite: {{ item.favourite }} <br> Urgent {{ item.urgent }} <br>
-                                        Description {{ item.description }}
+                                        Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }}
+                                        {% if item.favourite %} <br> Favourite {% endif %} 
+                                        {% if item.urgent %} <br> Urgent {% endif %}
+                                        <br> Description {{ item.description }}
                                     </p>
                                 </div>
                                 <div class="card-action">
@@ -55,7 +56,7 @@
 
 <div class="row">
     <div class="col s12 m12 center">
-        <a href="{% url 'create_extended_item' %}" class="fixed-action-btn btn-large center light-blue darken-2">
+        <a href="{% url 'create_extended_item' %}" class="btn-large waves-effect waves-light blue">
             Add Item <i class="fas fa-plus-square right"></i>
         </a>
     </div>

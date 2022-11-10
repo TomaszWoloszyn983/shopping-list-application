@@ -30,6 +30,7 @@
             <a data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
             <ul class="right hide-on-med-and-down">
               {% if user.is_authenticated %}
+              <li><a href="{% url 'lists' %}">Logged in as {{ user.username }}</a></li>
               <li><a href="{% url 'lists' %}">Lists</a></li>
               <li><a href="{% url 'items' %}">Items</a></li>
             <li class="nav-item">

@@ -98,14 +98,15 @@ p {
 /* Buttons */
 
 /* If you want to remove this: remove this class from html and script.js */
-.fixed-action-btn {
+/* .fixed-action-btn {
+  color: rgba(0, 247, 255, 0.534);
   position: fixed;
-  right: inherit;
+  right: 20px;
   bottom: 80px;
   padding-top: 15px;
   z-index: 997;
   line-height: 26px;
-}
+} */
 
 /* Modals */
 .modal{
