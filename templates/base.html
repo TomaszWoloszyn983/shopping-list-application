@@ -23,7 +23,7 @@
 <!-- top navbar -->
     <header>
       <div class="navbar-fixed">
-        <nav class="navbar-fixed light-green darken-3">
+        <nav class="navbar-fixed">
           <div class="nav-wrapper">
             <a href="{% url 'home' %}" class="brand-logo">Shopping List</a>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -80,19 +80,29 @@
 
     
 <!-- Footer -->
-    <footer class="page-footer light-green darken-3">
-        <div class="footer-copyright">
+      <footer class="page-footer light-green darken-2">
+        <div class="footer-copyright light-green darken-2">
           <div class="container">
-          © All Copyrights Reserved
-          <a class="grey-text text-lighten-4 right" href="https://codeinstitute.net">&copy Code Institute</a>
+            © All Copyrights Reserved
+            <a class="grey-text text-lighten-4 right" href="https://codeinstitute.net">&copy Code Institute</a>
           </div>
         </div>
       </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-    {% block js %}
-    {% endblock %}
+      
+      <style>
+        nav {
+          color: #fff;
+          background-color: #689f388a;
+        }
+        nav :hover{
+          color: #fff;
+          background-color: #689f38de;
+        }
+      </style>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script src="{% static 'js/script.js' %}"></script>
+      {% block js %}
+      {% endblock %}
 
 </body>
 </html>

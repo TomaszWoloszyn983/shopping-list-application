@@ -4,9 +4,15 @@
 {% load account socialaccount %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% load material_form %}
 
 {% block content %}
 
+<style>
+  body{
+    background-image: none;
+  }
+</style>
 
 {% get_providers as socialaccount_providers %}
 
@@ -32,9 +38,9 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
-<form class="login card hoverable black-text" method="POST" action="{% url 'account_login' %}">
+<form class="login black-text" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
-  {{ form.as_p }}
+  {% form form=form %}{% endform %}
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}

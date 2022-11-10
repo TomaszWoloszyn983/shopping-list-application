@@ -17,7 +17,7 @@
                 <ul class="collection with-header, col-6 mt-1 center">
                     {% for item in itemsextended %}
                         <li class="col s12 m12">
-                            <div class="card blue-grey darken-0">
+                            <div class="card">
                                 <div class="card-content white-text">
                                     <span class="card-title">{{ item.name }}</span>
                                     <p>
@@ -31,24 +31,7 @@
                                     <a href="delete_{{item.slug}}" class="waves-effect waves-light btn red modal-trigger" data-target="delete_{{item.slug}}">Delete</a>
 
                                     <!-- Toggling between bought and to buy status -->
-                                    <form class="" action="{% url 'mark_as_bought' item.slug %}" method="POST">
-                                        {% csrf_token %}
-                                        {% if item.bought %}
-                                        <p>
-                                            <label>
-                                                <input type="checkbox" class="filled-in" checked="checked" value="{{ item.slug }}"/>
-                                                <span>Mark As Bought (Not really needed)</span>
-                                            </label>
-                                        </p>
-                                        {% else %}
-                                        <p>
-                                            <label>
-                                                <input type="checkbox" class="filled-in" value="{{ item.slug }}"/>
-                                                <span>Mark As Bought (Not really needed)</span>
-                                            </label>
-                                        </p>
-                                        {% endif %}
-                                    </form>
+                            
                                     <!-- Delete Item Modal Structure -->
                                     <div id="delete_{{item.slug}}" class="modal bottom-sheet white-text">
                                         <div class="modal-content">
@@ -71,8 +54,8 @@
 </div>
 
 <div class="row">
-    <div class="col s12 center-align">
-        <a href="{% url 'create_extended_item' %}" class="btn-large light-blue darken-2">
+    <div class="col s12 m12 center">
+        <a href="{% url 'create_extended_item' %}" class="fixed-action-btn btn-large center light-blue darken-2">
             Add Item <i class="fas fa-plus-square right"></i>
         </a>
     </div>

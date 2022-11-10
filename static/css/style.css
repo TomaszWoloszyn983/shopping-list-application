@@ -17,21 +17,22 @@ main {
 }
 
 h1 {
-  /* color: blue; */
-  /* font-size: 500%; */
   font-family: 'Nanum Pen Script', cursive;
 }
 h2, h3, h4{
-  /* font-size: 400%; */
   font-family: 'Nanum Pen Script', cursive;
 }
 h5 {
-  /* font-size: 200%; */
   font-family: 'Nanum Pen Script', cursive;
+}
+.mymothenig {
+  font-size: 30px;
+  text-align: center;
 }
 p {
   font-size: 20px;
 }
+
 
 .left {
   float: none;
@@ -92,6 +93,18 @@ p {
   line-height: -1;
   font-size: 32px;
   font-weight: 200;
+}
+
+/* Buttons */
+
+/* If you want to remove this: remove this class from html and script.js */
+.fixed-action-btn {
+  position: fixed;
+  right: inherit;
+  bottom: 80px;
+  padding-top: 15px;
+  z-index: 997;
+  line-height: 26px;
 }
 
 /* Modals */

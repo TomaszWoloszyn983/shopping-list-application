@@ -180,6 +180,7 @@ This page is only accessible for logged in users and it allows users to create n
     * CSS3 - A language used to style HTML and XHTML documents presentations in web development.
     * Gitpod - Online integrated development environment.
     * GitHub - Version control service used for storing and sharing development projects.
+    * Heroku - a container-based cloud platform where developers can deploy their projects.
 
 ## Testing
 
