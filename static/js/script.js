@@ -15,12 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
     M.Collapsible.init(elems);
 });
 
-// fixed position add-tiem button
-// document.addEventListener('DOMContentLoaded', function() {
-//   let elems = document.querySelectorAll('.fixed-action-btn');
-//   M.FloatingActionButton.init(elems, options);
-// });
-
 // Modal initialization
 document.addEventListener('DOMContentLoaded', function() {
   let elems = document.querySelectorAll('.modal');
@@ -30,3 +24,5 @@ document.addEventListener('DOMContentLoaded', function() {
     outDUration:400
   });
 });
+
+
