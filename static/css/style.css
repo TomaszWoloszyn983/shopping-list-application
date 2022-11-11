@@ -5,6 +5,8 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-image: url("/static/images/green_shopping_list.jpg");
+  background-color: rgba(150, 151, 91, 0.856);
+  background-blend-mode: color-dodge;
   background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
@@ -57,6 +59,7 @@ p {
   background: rgba(0, 0, 0, 0.6);
 }
 
+
 /* List cards */
 .card {
   background-color: rgba(252, 87, 87, 0.3);
@@ -74,10 +77,16 @@ p {
   font-size: 32px;
   font-weight: 800;
 }
+.urgent {
+  color: rgb(30, 0, 85);
+  font-size: 32px;
+  font-weight: 800;
+}
+
 
 /* Item Card (Collapsible) */
 .collapsible-body {
-  background-color: rgba(252, 87, 87, 0.1);
+  background-color: rgba(252, 87, 87, 0.5);
   padding: 10px 30px;
 }
 .collapsible-body :active{

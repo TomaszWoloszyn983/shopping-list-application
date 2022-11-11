@@ -186,6 +186,8 @@ This page is only accessible for logged in users and it allows users to create n
 
 ## Bugs and Errors
 
+### Integrity Error during adding item with existing slug
+
 ### Model Error
 When I click on items list, instead of diplaying the items list I get an error:
 

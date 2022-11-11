@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // fixed position add-tiem button
-document.addEventListener('DOMContentLoaded', function() {
-  let elems = document.querySelectorAll('.fixed-action-btn');
-  M.FloatingActionButton.init(elems, options);
+// document.addEventListener('DOMContentLoaded', function() {
+//   let elems = document.querySelectorAll('.fixed-action-btn');
+//   M.FloatingActionButton.init(elems, options);
 
-  direction = 'right'
-  hoverEnabled = "true"
-});
+//   direction = 'right'
+//   hoverEnabled = "true"
+// });
 
 // Modal initialization
 document.addEventListener('DOMContentLoaded', function() {

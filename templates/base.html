@@ -52,8 +52,8 @@
       
 <!-- mobile sidebar -->
       <ul class="sidenav" id="mobile-demo">
-        <li><a href="{% url 'lists' %}">Lists</a></li>
         {% if user.is_authenticated %}
+        <li><a href="{% url 'lists' %}">Lists</a></li>
         <li><a href="{% url 'items' %}">Items</a></li>
         <li class="nav-item">
             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
