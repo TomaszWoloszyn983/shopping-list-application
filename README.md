@@ -189,35 +189,26 @@ This page is only accessible for logged in users and it allows users to create n
 ### Integrity Error during adding item with existing slug
 
 ### Model Error
-When I click on items list, instead of diplaying the items list I get an error:
-
-ProgrammingError at /admin/list/item/
-column list_item.list_name_id does not exist
-LINE 1: ...g", "list_item"."quantity", "list_item"."bought", "list_item...
-
-![Help section image](images/errors/er1.jpg)
-
-![Help section image](images/errors/er2.jpg)
-
-The same thing happens when I try to delete any list in my application.
-
-![Help section image](images/errors/er4.jpg)
-
-![Help section image](images/errors/er5.jpg)
-
-The source of the error seems to be the underlined line of code, where I try to assign the Item object to a List. 
-I try to use List as the foreign key, but the system expects to find list_name_id
-
-![Help section image](images/errors/er6.jpg)
-
-
-P.S. Item model displays in the admin panel when I click the 'add' button, but when I try to 'save' the Item the error mentioned above show up.
-
-![Help section image](images/errors/er3.jpg)
 
     ### Checkbox issue
 
-![Help section image](images/errors/issue_no_checkboxes2.jpg)
+A problem occured when I tried to display forms in Materialize templates. 
+The template did not display checkboxes correctly in all of my forms.
+
+![Checkbox issue](documentation/images/bugs_and_errors/issue_no_checkboxes.jpg)
+
+The solution turned out to be instaling Material and displaying the forms as Material forms:
+{% form form=form %}{% endform %}
+
+You can find more detail about how to fix this bug here: https://stackoverflow.com/questions/54500348/django-checkbox-not-showing-up-in-html
+
+![Checkbox issue fixed](documentation/images/bugs_and_errors/issue_no_checkboxes_fixed.jpg)
+
+    ### Integrity Error
+
+
+![integrity error](documentation/images/bugs_and_errors/integrity_error1.jpg)
+![integrity error](documentation/images/bugs_and_errors/integrity_error2.jpg)
 
 ## Deployment
 
