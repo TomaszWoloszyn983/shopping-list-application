@@ -28,8 +28,8 @@
                                     </p>
                                 </div>
                                 <div class="card-action">
-                                    <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue">Edit</a>
-                                    <a href="delete_{{item.slug}}" class="waves-effect waves-light btn red modal-trigger" data-target="delete_{{item.slug}}">Delete</a>
+                                    <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue darken-2">Edit</a>
+                                    <a href="delete_{{item.slug}}" class="waves-effect waves-light white-text btn red darken-2 modal-trigger" data-target="delete_{{item.slug}}">Delete</a>
 
                                     <!-- Toggling between bought and to buy status -->
                             
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <a href="{% url 'delete_ext_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
-                                            <a class="modal-close waves-effect waves-green btn green darken-2">NO</a>
+                                            <a href="#" class="modal-close waves-effect waves-green btn green darken-2">NO</a>
                                         </div>
                                     </div>
                                 </div>

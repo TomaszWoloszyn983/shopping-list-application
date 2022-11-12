@@ -94,6 +94,19 @@ nav :hover{
 
 
 /* Item Card (Collapsible) */
+.collapsible-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  padding: 1rem;
+  /* background-color: #fff; */
+  border-bottom: 1px solid #ddd;
+  margin-right: 70px;
+}
 .collapsible-body {
   background-color: rgba(252, 87, 87, 0.5);
   padding: 10px 30px;
@@ -101,11 +114,14 @@ nav :hover{
 .collapsible-body :active{
   background-color: rgba(252, 87, 87, 0.8);
 }
+.item-name {
+  background-color: rgba(252, 87, 87, 0.0);
+}
 .btn-floating.halfway-fab {
-  position: sticky;
+  position:absolute;
   /* right: 41px; */
   right: 1%;
-  bottom: 5%;
+  bottom: 25px;
   vertical-align: baseline;
 }
 .material-symbols-outlined {
