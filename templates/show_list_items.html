@@ -20,11 +20,11 @@
         {% endfor %}
     </div>
 {% endif %}
-
 <div>
-{% if user.is_authenticated %}
 
-<!-- Logged in Users section-->
+
+<!-- Main content - Logged in Users-->
+{% if user.is_authenticated %}
 
     <!-- Messages -->
     {% for message in messages %}
@@ -66,7 +66,7 @@
             </div>
         </li>
     </ul>
-    <!-- Modal Structure -->
+    <!-- Modal Structure for Delete Item button-->
     <div id="delete_{{item.slug}}" class="modal bottom-sheet">
         <div class="modal-content">
             <h4>Are you sure you want to delete {{ item.name }}?</h4>
@@ -94,9 +94,9 @@
 
     <!-- Displays the list of items that are NOT marked as bought-->
     {% for item in bought_items_ext %}
-    <ul class="collapsible card">
+    <ul class="collapsible hoverable  card">
         <li>
-            <div class="collapsible-header hoverable brand-logo item-name">
+            <div class="collapsible-header brand-logo item-name">
                 <span class="card-title">{{ item.name }}: {{ item.quantity }}</span>
             </div>
             <div class="card">
@@ -164,7 +164,7 @@
             </div>
         </li>
     </ul>
-        <!-- Modal Structure -->
+        <!-- Modal Structure for delete item button-->
         <div id="delete_{{item.slug}}" class="modal bottom-sheet">
             <div class="modal-content">
             <h4>Are you sure you want to delete {{ item.name }}?</h4>

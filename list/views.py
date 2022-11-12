@@ -77,7 +77,7 @@ def add_list(request):
             new_list.save()
             messages.success(request, f"New list {list} has been created!", extra_tags='hello')
         except IntegrityError as e:
-            messages.error(request, f"List {list} already exists! Choose a different name.", extra_tags='invalid_name')
+            messages.error(request, f"Sorry! A problem occured. Please choose another name for this list.", extra_tags='invalid_name')
 
         # Redirecting to the page that displays all lists.
         lists = List.objects.order_by('-create_date')
