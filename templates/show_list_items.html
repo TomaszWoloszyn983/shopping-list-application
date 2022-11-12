@@ -101,8 +101,7 @@
             </div>
             <div class="card">
                 <a href="{% url 'mark_as_bought_ext' item.slug %}" 
-                    class="btn-floating halfway-fab waves-effect waves-light red"
-                    method="POST">
+                    class="btn-floating halfway-fab waves-effect waves-light red">
                     <i class="material-icons" style="font-size: 3rem;">check</i>
                 </a>
             </div>
@@ -200,9 +199,7 @@
                 <span class="card-title">{{ item.name }}: {{ item.quantity }}</span>
             </div>
             <div class="card center">
-                <a href="{% url 'mark_as_bought' item.slug %}" 
-                    class="btn-floating halfway-fab waves-effect waves-light red"
-                    method="POST">
+                <a href="{% url 'mark_as_bought' item.slug %}" class="btn-floating halfway-fab waves-effect waves-light red">
                     <i class="material-icons" style="font-size: 3rem;">check</i>
                 </a>
             </div>

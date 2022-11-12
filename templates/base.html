@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Shopping List</title>
 </head>
@@ -25,7 +25,7 @@
         <nav class="navbar-fixed">
           <div class="nav-wrapper">
             <a href="{% url 'home' %}" class="brand-logo">Shopping List</a>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
             <a data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
             <ul class="right hide-on-med-and-down">
               {% if user.is_authenticated %}
@@ -83,8 +83,8 @@
       <footer class="page-footer light-green darken-2">
         <div class="footer-copyright light-green darken-2">
           <div class="container footer-font">
-            <a class="footer-font">© All Copyrights Reserved</a>
-            <a class="footer-font right" target="_blank" href="https://codeinstitute.net">&copy Code Institute</a>
+            <a href="#" class="footer-font">© All Copyrights Reserved</a>
+            <a href="https://codeinstitute.net" target="_blank" class="footer-font right">&copy; Code Institute</a>
           </div>
         </div>
       </footer>

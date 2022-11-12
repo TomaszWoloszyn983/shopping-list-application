@@ -5,6 +5,7 @@ from django.utils import timezone
 # Changes to be made in models: no default description, 
 # prize shouldn't be required, so default value should be added
 # increase max_lenght for quantity.
+# Decrease max_lenght of Items name to 30.
 
 class List(models.Model):
     create_date = models.DateField(default=timezone.now)

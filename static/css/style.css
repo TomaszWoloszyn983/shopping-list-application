@@ -109,7 +109,7 @@ nav :hover{
   vertical-align: baseline;
 }
 .material-symbols-outlined {
-  line-height: -1;
+  line-height: 0;
   font-size: 32px;
   font-weight: 200;
 }
