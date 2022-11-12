@@ -11,14 +11,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // collapsible initialization
   document.addEventListener('DOMContentLoaded', function() {
-    let elems = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(elems);
+    let collapsible = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(collapsible);
 });
 
 // Modal initialization
 document.addEventListener('DOMContentLoaded', function() {
-  let elems = document.querySelectorAll('.modal');
-  M.Modal.init(elems, {
+  let modal = document.querySelectorAll('.modal');
+  M.Modal.init(modal, {
     opacity:0.8,
     inDuration:300,
     outDUration:400
