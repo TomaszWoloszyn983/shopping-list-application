@@ -19,7 +19,7 @@ main {
 }
 
 h1 {
-  ont-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 h2, h3, h4{
   font-family: 'Nanum Pen Script', cursive;
@@ -27,6 +27,8 @@ h2, h3, h4{
 h5 {
   font-family: 'Roboto', sans-serif;
 }
+
+/* I dont think that this is used */
 .mymothenig {
   font-size: 30px;
   text-align: center;
@@ -35,6 +37,7 @@ p {
   font-size: 20px;
 }
 
+/* Mavbars settings */
 nav {
   color: #fff;
   background-color: #689f388a;
@@ -45,10 +48,22 @@ nav :hover{
 }
 
 
+/* Side navbars settings */
+.my-sidenav {
+  background-color: #689f38de;
+}
+.sidenav-image {
+  width: 300px;
+}
+.sidenav li>a {
+  color: #fff
+}
+
 .left {
   float: none;
 }
 
+/* Mark as bought buttons settings */
 .buy_button {
   position: absolute;
   right: 41px;

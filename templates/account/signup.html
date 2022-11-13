@@ -5,6 +5,18 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
+
+<style>
+  form {
+    background-color: rgba(255, 255, 255, 0.397);
+    background-blend-mode: color-dodge;
+  }
+  .form-text, label, .input-field>label{
+    color: black;
+    font-weight: 700;
+  }
+</style>
+
 <h1 class="black-text">{% trans "Sign Up" %}</h1>
 
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>

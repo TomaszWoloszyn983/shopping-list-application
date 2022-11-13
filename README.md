@@ -227,4 +227,6 @@ You can find more detail about how to fix this bug here: https://stackoverflow.c
 
 - Solution how to fix not displaying checkboxes in materialize - https://stackoverflow.com/questions/54500348/django-checkbox-not-showing-up-in-html
 
+- Sidebar background image: https://creator.nightcafe.studio/u/575RyajOr4V9EM3umpmEZLfLS2w1
+
 ## Credits:
