@@ -139,6 +139,9 @@ nav :hover{
   bottom: 25px;
   vertical-align: baseline;
 }
+.btn-floating.btn-large.halfway-fab {
+  bottom: 12px;
+}
 .material-symbols-outlined {
   line-height: 0;
   font-size: 32px;

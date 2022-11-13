@@ -206,8 +206,27 @@ You can find more detail about how to fix this bug here: https://stackoverflow.c
 
     ### Integrity Error
 
+A problem occured during updating items and lists.
+Edit Items function doesn't update the elements slug.
+So if you update items name from item1 to item2, the items slug will still be item1.
+If you try to add a new item named item1 it will cause Integrity Error beacuse of duplicating slugs.
 
 ![integrity error](documentation/images/bugs_and_errors/integrity_error1.jpg)
+
+I've temporarily solved the problem with handling the error with try/catch statement. 
+It would be useful to add slugs update functionality to Edit Items and Edit Lists functions.
+
+```
+try:
+    if item_form.is_valid():
+        item_form.instance.slug = slugify(request.POST.get("name"))
+        item_form.instance.list_name = list
+        item_form.save()
+        return redirect(reverse("show_list_items", args=[list.slug]))
+    except IntegrityError as e:
+        messages.error(request, f"Sorry! A problem occured. Please choose another name for this item.")
+```
+
 ![integrity error](documentation/images/bugs_and_errors/integrity_error2.jpg)
 
 ## Deployment
