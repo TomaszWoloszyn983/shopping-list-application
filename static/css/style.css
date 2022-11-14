@@ -54,6 +54,7 @@ nav :hover{
 }
 .sidenav-image {
   width: 300px;
+  height: fit-content;
 }
 .sidenav li>a {
   color: #fff

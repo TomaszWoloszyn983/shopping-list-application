@@ -21,10 +21,10 @@
                                 <div class="card-content white-text">
                                     <span class="card-title">{{ item.name }}</span>
                                     <p>
+                                        {{ item.description }} <br>
                                         Quantity: {{ item.quantity }}. <br> List: {{ item.list_name }}
                                         {% if item.favourite %} <br> Favourite {% endif %} 
                                         {% if item.urgent %} <br> Urgent {% endif %}
-                                        <br> Description {{ item.description }}
                                     </p>
                                 </div>
                                 <div class="card-action">
