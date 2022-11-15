@@ -2,7 +2,6 @@
 {% block content %}
 
 <h3 class="light-blue-text text-darken-4 center-align">Edit Item</h3>
-<p>Not logged in user should't be able to choose lists.</p>
 <P>You may need to add try/catch statement to handle Integrity Error in this function</P>
 
 <div class="row light-blue-text text-darken-4">
@@ -31,15 +30,15 @@
 <script>
   // convert Item name to slug-format on front-end
   /* jshint esversion: 11 */
-  let itemName = document.getElementById("id_name");
-  let slug = document.getElementById("id_slug");
-  itemName?.addEventListener("keyup", convertToSlug);
-  slug?.addEventListener("keyup", convertToSlug);
+  // let itemName = document.getElementById("id_name");
+  // let slug = document.getElementById("id_slug");
+  // itemName?.addEventListener("keyup", convertToSlug);
+  // slug?.addEventListener("keyup", convertToSlug);
 
-  function convertToSlug() {
-    slug.value = itemName.value.toLowerCase()
-               .replace(/ /g, '-')
-               .replace(/[^\w-]+/g, '');
-  }
+  // function convertToSlug() {
+  //   slug.value = itemName.value.toLowerCase()
+  //              .replace(/ /g, '-')
+  //              .replace(/[^\w-]+/g, '');
+  // }
 </script>
 {% endblock %}

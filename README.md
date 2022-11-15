@@ -1,6 +1,8 @@
 # Shopping List Application
 
-## Overview.
+![Am I Responsive](documentation/images/components/AmIResponsive.jpg)
+
+## 1. Overview.
 
 The subject of the project is the web shopping list application. 
 The application offers an easy way of adding items to buy, editing and deleting items from the list, as well as marking them as done/bought.
@@ -8,26 +10,27 @@ The application also allows the user to register his own account what gives him 
 
 
 ## Contents:
-1. [Project Overview](#project-overview)
-2. [User Stories](#user-stories)
-3. [Features](#features)
+1. [Project Overview](#1-overview)
+2. [User Stories](#2-user-stories)
+3. [Features](#3-features)
     * [Home Page](#home-page)
     * [List Page](#lists-page)
     * [Shopping List View](#shopping-list-page)
     * [Add Item](#add-item)
     * [Edit Item](#edit-item)
     * [Item Page](#items-page)
+    * [Register, Login/logout](#register-loginlogout-pages)
     * [List class](#list-class)
     * [Item Class](#item-class)
-4. [Future Features](#future-features)
-5. [Technologies Used](#technologies-used)
-6. [Testing](#testing)
-7. [Deployment](#deployment)
-8. [References and Credits](#references-and-credits)
+4. [Future Features](#4-future-features)
+5. [Technologies Used](#5-technologies-used)
+6. [Testing](#6-testing)
+7. [Deployment](#7-deployment)
+8. [References and Credits](#8-references-and-credits)
 
 
 
-## **User Stories:**
+## **2. User Stories:**
 
 ### **Non-registered user**
 
@@ -89,15 +92,19 @@ The application also allows the user to register his own account what gives him 
     - Shopping counter showing how many times the item was added to the shopping list. -->
 
 
-## **Features**
+## **3. Features**
 The application includes following sections. Although accessibilty of those sections depends on whether the user is logged in or not.
 
 
 ### **Home Page**
 Home Page contain a short introduction to the application.
-In case of unlogged in user it displays a default Shopping List where the user can add, delete or update the list. 
+In case of not logged in user it displays a default Shopping List where the user can add, delete or update item. 
+
+![Home Page](documentation/images/components/home_page2.jpg)
+
 In case of logged in user the Home Page displays last three list previously created by the user. There is also a button which redirects the user to the lists page where he can add more list and to manage already existing lists.
 
+![Home Page](documentation/images/components/home_page1.jpg)
 
 #### **Navigation bar**
 All sections are clearly and simply arranged inside the navigation bar which allows for an easy access to applications section depending on whether the user is logged in or not.
@@ -141,27 +148,32 @@ Contains informations about copyrights and link to the Code Institude web page.
 ### **Lists Page**
 This page is only accessible for logged in users and it allows users to create new lists and to manage existing lists.
 
-![Footer](documentation/images/components/lists_1.jpg)
+![List](documentation/images/components/lists_1.jpg)
 
 ### **Shopping List Page**
 
-![Footer](documentation/images/components/list_view_1.jpg)
+![List](documentation/images/components/list_view_1.jpg)
 
 This section displays items added to the list. It also allows to add new Items by cliking Add Item Button or to edit existing Items by clicking Edit Item Button:
 
 In this section the user can also click the green round button:
 
-![Footer](documentation/images/components/button_mark_1.jpg)
+![List](documentation/images/components/button_mark_1.jpg)
 
 to mark the item as bought. Marked item is automatically moved to bought items list which is placed below the Items To Buy list.
 
-![Footer](documentation/images/components/list_view_2.jpg)
+![List](documentation/images/components/list_view_2.jpg)
 
 A bought item can be unmarked and it returns to the items to buy list.
 
-![Footer](documentation/images/components/list_view_2.jpg)
+![List](documentation/images/components/list_view_3.jpg)
 
-# !!! *SOme screenshots of Add Edit and Delete button* !!!
+### **Item View**
+
+Left-click on the item element drop-down menu, where the user can update or delete the item.
+More information about editing items [here](#edit-item)
+
+![Create List](documentation/images/components/list_item1.jpg)
 
 
 ### **Create a new list**
@@ -173,7 +185,9 @@ A bought item can be unmarked and it returns to the items to buy list.
 
 To change the name of a list click Edit button.
 
-![Create List](documentation/images/components/edit_list.jpg)
+![Edit List](documentation/images/components/edit_list.jpg)
+
+![Edit List](documentation/images/components/list_update_message.jpg)
 
 
 ### **Delete list**
@@ -181,6 +195,8 @@ To change the name of a list click Edit button.
 To delete an existing List click Delete button. After approving that you want to delete the List, the list and its content will be removed from the applications memory.
 
 ![Create List](documentation/images/components/del_list.jpg)
+
+
 
 
 ### **Add Item**
@@ -204,18 +220,34 @@ More information about Item classes available in the right section below or [her
 
 ### **Edit Item**
 This function allows user to edit items Name as well as other values.
+Not logged in user has only access to two values: Name and items quantity.
+
+![Edit Item](documentation/images/components/edit_item1.jpg)
+
+Logged in user version of the edit item form.
+
+![Edit Item](documentation/images/components/edit_item2.jpg)
+
+By clicking **Submit Changes** button new values will be submitted and displayed in the updated list view.
 
 ## **Items Page**
-This page is only accessible for logged in users and it allows users to create new items and to edit or delete items, as well as assigning items to lists.
+This page is only accessible for logged in users and it allows users for creating and managing items.
 
 ![Item Page](documentation/images/components/items_page.jpg)
 
 
-## **Login/logout Section** 
+## **Register, Login/logout Pages** 
+Register page display a form where the user can create an account.
+After filling up the form where the user has to enter his user name, email and password. The account will be created and ready to use.
+
+![Item Page](documentation/images/components/signup_page1.jpg)
+
+Login Page allows the user to login to his account what will give him access to additional function of the application.
+
+![Item Page](documentation/images/components/login_page1.jpg)
 
 
-
-
+## **About Page** 
 
 
 ## **List Class:**
@@ -269,14 +301,14 @@ Urgent - allows to mark the items as Urgent. ?????????????????????????????????
 Prize - allows the user to assign the prize of the item what in the future will allow to calculate the extimated value all the items on the list.
 
 
-## **Future Features**
+## **4. Future Features**
 
 - Add a function to share a shopping list with other users.
 - Function that allows to calculate the value of all items on the shopping list based on it prices.
 - Adding profile photos to the side navigation bar.
 
 
-## **Technologies used:**
+## **5. Technologies used:**
 
 * Python - an interpreted, object-oriented, high-level programming language.
 * Django - Framework facilitating building full stack web application.
@@ -289,11 +321,11 @@ Prize - allows the user to assign the prize of the item what in the future will 
 * GitHub - Version control service used for storing and sharing development projects.
 * Heroku - a container-based cloud platform where developers can deploy their projects.
 
-## **Testing**
+## **6. Testing**
 
 The applications code was tested using Pep8 code validator: http://pep8online.com/. More details about tesings are available in the dedicated testing section testing.md [here](TESTING.md).
 
-## **Bugs and Errors**
+## **7. Bugs and Errors**
 
 A number of bugs and error occured during the developement 
 
@@ -336,11 +368,11 @@ try:
 
 ![integrity error](documentation/images/bugs_and_errors/integrity_error2.jpg)
 
-## **Deployment**
+## **7. Deployment**
 
 ### **Local Deployment**
 
-## **References and Credits:**
+## **8. References and Credits:**
 
 - The background image was created with Canva - Free Design Tool - https://www.canva.com/pl_pl/
 
@@ -361,4 +393,4 @@ try:
 
 - Sidebar background image: https://creator.nightcafe.studio/u/575RyajOr4V9EM3umpmEZLfLS2w1
 
-## **Credits:**
+## **9. Credits:**

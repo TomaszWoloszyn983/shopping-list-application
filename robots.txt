@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /*.pdf
+Disallow: /*.ppt
+Disallow: /*.doc
+Disallow: /*.xls
+Disallow: /*.txt
+
+User-agent: Yandex
+Allow: /events
+Allow: /contests
+Allow: /schools
+Disallow: /admin
+Crawl-delay: 3
+
+

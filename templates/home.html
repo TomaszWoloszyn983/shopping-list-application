@@ -30,12 +30,12 @@
       {% endfor %}
     {% else %}
     <h2 class="center">Click the list below to add items to the list or register to get access to more options</h2>
-    <p>One list must be added at the start of the application. 
+    <!-- <p>One list must be added at the start of the application. 
       It is possible to delete all lists so not logged in user 
       won't be able to use the app. On th eother hand only logeed in user 
       can delete a list so he can add a new one.
 
-    </p>
+    </p> -->
       {% for list in first_list|slice:":1" %}
       <div class="col s12 m12">
         <div class="card hoverable accent-3 darken-1">
