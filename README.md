@@ -344,6 +344,10 @@ try:
 
 - The background image was created with Canva - Free Design Tool - https://www.canva.com/pl_pl/
 
+- Article on robots.txt file - https://sitechecker.pro/site-audit-issues/robots-txt-not-found/
+
+- Stack overflow topic how to fix favicon.ico error - https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error
+
 - Tutorial on differences between MVC and MVT - https://www.youtube.com/watch?v=zhrLVCjNbyk
 
 - Vibhor Chandels YouTube channel on Agile methodology - https://www.youtube.com/watch?v=C2boBomE4aM&list=PLxO4vxvvorbtqmkL7sYi0Qc4kX-0RE9fp
