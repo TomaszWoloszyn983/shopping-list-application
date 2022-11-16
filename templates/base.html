@@ -19,6 +19,7 @@
     <link rel="shortcut icon" href="#">
     <title>Shopping List</title>
 </head>
+
 <body>
 <!-- top navbar -->
     <header>
@@ -26,7 +27,6 @@
         <nav class="navbar-fixed">
           <div class="nav-wrapper">
             <a href="{% url 'home' %}" class="brand-logo">Shopping List</a>
-            <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"> -->
             <a href="#" data-target="mobile-demo" class="sidenav-trigger" aria-label="side-navbar"><i class="large material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 {% if user.is_authenticated %}
@@ -78,7 +78,6 @@
       </ul>
     </header>
 
-
 <!-- The pages main content -->
     <main class="container">
       
@@ -87,7 +86,6 @@
 
     </main>
 
-    
 <!-- Footer -->
       <footer class="page-footer light-green darken-2">
         <div class="footer-copyright light-green darken-2">

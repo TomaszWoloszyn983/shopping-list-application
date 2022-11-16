@@ -4,9 +4,10 @@
 
 ## 1. Overview.
 
+Portfolio Porject 4.
 The subject of the project is the web shopping list application. 
-The application offers an easy way of adding items to buy, editing and deleting items from the list, as well as marking them as done/bought.
-The application also allows the user to register his own account what gives him access to a few useful functions that are accessible only for registered users.
+This is a very simple and easy to use application that offers the user few basic functionalities, such as to create, add and manage items. 
+It also allows the user to register his own account what gives him an access to addintional useful functions that are accessible only for registered users.
 
 
 ## Contents:
@@ -367,6 +368,20 @@ try:
 ```
 
 ![integrity error](documentation/images/bugs_and_errors/integrity_error2.jpg)
+
+### Not Found Favicon.ico
+
+![Not Found Favicon](documentation/images/bugs_and_errors/favicon_not_fount.jpg)
+
+Not found favicon.ico status 404 shows during the start of the application.
+Have solved this problem following the instruction I found in Stack Overflow:
+https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error
+
+### Not Found Robots.txt
+
+![Not Found Robots](documentation/images/bugs_and_errors/robots_txt_not_found.jpg)
+
+Not found robots.txt show during tha Lighthouse inspection.
 
 ## **7. Deployment**
 

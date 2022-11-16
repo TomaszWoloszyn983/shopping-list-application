@@ -116,7 +116,7 @@
     <!-- Delete Item Modal Structure -->
     <div id="delete_{{item.slug}}" class="modal bottom-sheet white-text">
         <div class="modal-content">
-            <h4>Are you sure you want to delete {{ item.name }}?</h4>
+            <h5>Are you sure you want to delete {{ item.name }}?</h5>
             <p>Click "Yes" to confirm or "No" to return.</p>
         </div>
         <div class="modal-footer">
@@ -163,24 +163,23 @@
             </div>
         </li>
     </ul>
-        <!-- Modal Structure for delete item button-->
-        <div id="delete_{{item.slug}}" class="modal bottom-sheet">
-            <div class="modal-content">
-            <h4>Are you sure you want to delete {{ item.name }}?</h4>
-            <p>Click "Yes" to confirm or "No" to return.</p>
-            </div>
-            <div class="modal-footer">
-            <a href="{% url 'delete_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
-            <a href="#" class="modal-close waves-effect waves-green btn green darken-2">NO</a>
-            </div>
+    <!-- Modal Structure for delete item button-->
+    <div id="delete_{{item.slug}}" class="modal bottom-sheet">
+        <div class="modal-content">
+        <h5>Are you sure you want to delete {{ item.name }}?</h5>
+        <p>Click "Yes" to confirm or "No" to return.</p>
         </div>
-        {% empty %}
-        <div class="center">
-            <h2>No items to buy on this list!</h2>
-            <h3>Click "ADD ITEM" button to add items.</h3>
+        <div class="modal-footer">
+        <a href="{% url 'delete_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
+        <a href="#" class="modal-close waves-effect waves-green btn green darken-2">NO</a>
         </div>
-        {% endfor %}
-    </ul>
+    </div>
+    {% empty %}
+    <div class="center">
+        <h2>No items to buy on this list!</h2>
+        <h3>Click "ADD ITEM" button to add items.</h3>
+    </div>
+    {% endfor %}
 
     <!-- Divider which separates item to buy from bought items. 
         Displays nothing if there is no items. -->
@@ -213,7 +212,7 @@
     <!-- Delete Item Modal Structure -->
     <div id="delete_{{item.slug}}" class="modal bottom-sheet white-text">
         <div class="modal-content">
-            <h4>Are you sure you want to delete {{ item.name }}?</h4>
+            <h5>Are you sure you want to delete {{ item.name }}?</h5>
             <p>Click "Yes" to confirm or "No" to return.</p>
         </div>
         <div class="modal-footer">
@@ -235,7 +234,7 @@
         <!-- Delete All Modal Structure -->
         <div id="clear_modal" class="modal bottom-sheet">
             <div class="modal-content">
-                <h4>Are you sure you want to delete all Items from the list?</h4>
+                <h5>Are you sure you want to delete all Items from the list?</h5>
                 <p>Click "Yes" to confirm or "No" to return.</p>
             </div>
             <div class="modal-footer">
