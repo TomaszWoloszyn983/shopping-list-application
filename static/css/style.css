@@ -4,7 +4,8 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-image: url("/static/images/green_shopping_list.jpg");
+  /* background-image: url("/static/images/green_shopping_list.jpg"); */
+  background-image: url("https://res.cloudinary.com/tomaszwoloszyn983/image/upload/v1668619763/green_shopping_list_hhlcmz.jpg");
   background-color: rgba(150, 151, 91, 0.856);
   background-blend-mode: color-dodge;
   background-attachment: fixed;
