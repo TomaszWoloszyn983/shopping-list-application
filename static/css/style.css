@@ -77,10 +77,10 @@ nav :hover{
   margin-bottom: 520px;
 }
 
-.login-panel {
+/* .login-panel {
     background-image: url("/static/images/green_shopping_list.jpg");
     background-size: cover; 
-}
+} */
 .login-panel .card-action{
   background: rgba(0, 0, 0, 0.6);
 }

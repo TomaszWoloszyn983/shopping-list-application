@@ -252,16 +252,14 @@ def add_ext_item(request, slug):
 
 
 def delete_list_item(request, slug):
-    items_slug = get_object_or_404(ItemExtended, slug=slug)
+    to_delete = get_object_or_404(ItemExtended, slug=slug)
     items = ItemExtended.objects.order_by('bought')
-    print(f'Editing {items_slug} element')
-
-    if request.method == "POST":
-        if to_delete.delete():
-            messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deletelistitem')
-            return redirect(reverse('show_list_items', args=[items_slug.list_name.slug]))
+    print(f'Deleteing {to_delete} item')
+    if to_delete.delete():
+        messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deleteextitem')
+        return redirect(reverse('show_list_items', args=[to_delete.list_name.slug]))
     context = {'slug': slug}
-    return render(request, 'delete_list.html', context)
+    return render(request, 'delete_list_item.html', context)
 
 
 def delete_ext_item(request, slug):
@@ -272,7 +270,7 @@ def delete_ext_item(request, slug):
         messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deleteextitem')
         return redirect(reverse("items"))
     context = {'slug': slug}
-    return render(request, 'delete_list.html', context)
+    return render(request, 'delete_ext_item.html', context)
     
 
 
