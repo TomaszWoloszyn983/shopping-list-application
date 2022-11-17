@@ -22,6 +22,21 @@
 
 <body>
 <!-- top navbar -->
+
+    <!-- Messages -->
+    {% for message in messages %}
+        {%if "deleteitem" in message.tags %}
+            <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
+        {% endif %}
+        {%if "updateitem" in message.tags %}
+            <p class="messages alert alert-success center-align">  {{message}} </p> 
+        {% endif %}
+        {%if "clearlist" in message.tags %}
+            <p class="messages alert alert-success center-align">  {{message}} </p> 
+        {% endif %}
+        <p class="messages alert center-align">  {{message}} </p> 
+    {% endfor %}
+
     <header>
       <div class="navbar-fixed">
         <nav class="navbar-fixed">

@@ -29,24 +29,14 @@
         <h3>No recently added lists! Click button below to create a new Shopping List</h3>
       {% endfor %}
     {% else %}
-    <h2 class="center">Click the list below to add items to the list or register to get access to more options</h2>
+    <h2 class="center">Please log in .</h2>
     <!-- <p>One list must be added at the start of the application. 
       It is possible to delete all lists so not logged in user 
       won't be able to use the app. On th eother hand only logeed in user 
       can delete a list so he can add a new one.
 
     </p> -->
-      {% for list in first_list|slice:":1" %}
-      <div class="col s12 m12">
-        <div class="card hoverable accent-3 darken-1">
-          <div class="card-content">
-            <a href="{% url 'show_list_items' list.slug %}">
-              <span class="card-title">{{ list.name }}</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
+    
     {% endif %}
 </div>
 

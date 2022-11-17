@@ -1,5 +1,5 @@
 from django import forms
-from .models import List, Item, ItemExtended
+from .models import List, Item
 
 
 class ListForm(forms.ModelForm):
@@ -7,13 +7,11 @@ class ListForm(forms.ModelForm):
         model = List
         fields = ("name",)
 
+
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ("name", "quantity")
-
-class ItemExForm(forms.ModelForm):
-    class Meta:
-        model = ItemExtended
-        fields = ("name", "quantity", "list_name",
-                  "favourite", "urgent", 'price', 'description')
+        fields = (
+            "name", 'slug', "quantity", "favourite",
+            "urgent", 'price', 'description'
+        )

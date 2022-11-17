@@ -3,19 +3,12 @@
 
 <h3 class="light-blue-text text-darken-4 center-align">Items</h3>
 
-{% if user.is_authenticated %}
 <div class="container_fluid">
     <div class="row">
         <div class="col-12 mt-1 center">
             <div class="row">
-                {%if "deleteitem" in message.tags %}
-                    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
-                {% endif %}
-                {%if "updateitem" in message.tags %}
-                    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
-                {% endif %}
                 <ul class="collection with-header, col-6 mt-1 center">
-                    {% for item in itemsextended %}
+                    {% for item in items %}
                         <li class="col s12 m12">
                             <div class="card">
                                 <div class="card-content white-text">
@@ -28,7 +21,7 @@
                                     </p>
                                 </div>
                                 <div class="card-action">
-                                    <a href="{% url 'edit_ext_item' item.slug %}" class="btn blue darken-2">Edit</a>
+                                    <a href="{% url 'edit_item' item.slug %}" class="btn blue darken-2">Edit</a>
                                     <a href="delete_{{item.slug}}" class="waves-effect waves-light white-text btn red darken-2 modal-trigger" data-target="delete_{{item.slug}}">Delete</a>
 
                                     <!-- Toggling between bought and to buy status -->
@@ -40,7 +33,7 @@
                                             <p>Click "Yes" to confirm or "No" to return.</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a href="{% url 'delete_ext_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
+                                            <a href="{% url 'delete_item' item.slug %}" class="waves-effect waves-red btn red">YES</a>
                                             <a href="#" class="modal-close waves-effect waves-green btn green darken-2">NO</a>
                                         </div>
                                     </div>
@@ -53,19 +46,5 @@
         </div>
     </div>
 </div>
-
-<div class="row">
-    <div class="col s12 m12 center">
-        <a href="{% url 'create_extended_item' %}" class="btn-large waves-effect waves-light blue">
-            Add Item <i class="fas fa-plus-square right"></i>
-        </a>
-    </div>
-</div>
-{% else %}
-<div class="center">
-    <h2>This content is available for logged in users only.</h2>
-    <h3>Register and Sign Up to display this page.</h3>
-</div>
-{% endif %}
 
 {% endblock %}

@@ -4,36 +4,39 @@ from django.views.generic import ListView
 from django.utils.text import slugify
 from django.contrib import messages
 from django.db import IntegrityError
-from .models import List, Item, ItemExtended
-from .forms import ListForm, ItemForm, ItemExForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from .models import List, Item
+from .forms import ListForm, ItemForm
 
 
+@login_required
 def showItems(request):
-    items = ItemExtended.objects.order_by('-id')
+    items = Item.objects.order_by('-id')
     context = {'items': items}
     return render(request, 'items.html', context)
 
+
+@login_required
 def show_list_items(request, slug):
     # Get requested elements slug
     # Get list of items filterd by mathing to the slug
     # Pass the list of items to the template
+    user = get_object_or_404(User, username=request.user)
     lists_slug = get_object_or_404(List, slug=slug)
-    lists = List.objects.order_by('-create_date')
+    if lists_slug.list_owner != user:
+        messages.error(request, "access denied. ")
+        return redirect(reverse("home"))
+    # lists = List.objects.order_by('-create_date')
     items = Item.objects.filter(list_name=lists_slug).order_by('-id')
     bought_items = items.filter(bought=True)
     items_to_buy = items.filter(bought=False)
-    items_ext = ItemExtended.objects.filter(list_name=lists_slug).order_by('-id')
-    bought_items_ext = items_ext.filter(bought=True)
-    items_to_buy_ext = items_ext.filter(bought=False)
     context = {
-        'lists': lists,
+        'list': lists_slug,
         'slug' : slug,
         'items': items,
         'bought_items': bought_items,
         'items_to_buy': items_to_buy,
-        'items_ext': items_ext,
-        'bought_items_ext': bought_items_ext,
-        'items_to_buy_ext': items_to_buy_ext
     }
     return render(request, 'show_list_items.html', context)
 
@@ -44,13 +47,15 @@ def show_list_items(request, slug):
 
 
 def home(request):
-    lists = List.objects.order_by("-id")
-    first_list = List.objects.order_by("id")
+    if request.user.is_authenticated:
+        lists = List.objects.filter(list_owner=request.user).order_by("-id")
 
-    context = {
-        'lists': lists,
-        'first_list': first_list
-    }
+        context = {
+            'lists': lists,
+            # 'first_list': first_list
+        }
+    else:
+        context = {}
     return render(request, 'home.html', context)
 
 
@@ -85,8 +90,10 @@ def add_list(request):
         return render(request, 'list.html', context)
     return render(request, 'add_list.html')
 
+
+@login_required
 def show_lists(request):
-    lists = List.objects.order_by('-create_date', "-id")
+    lists = List.objects.filter(list_owner=request.user).order_by('-create_date', "-id")
     # Output isn't propably used.
     output = ', '.join([list.name for list in lists])
     context = {'lists': lists}
@@ -206,10 +213,10 @@ def mark_as_bought(request, slug):
 # 
 #   Log in users section
 # 
-
+@login_required
 def showItems(request):
-    items = ItemExtended.objects.order_by('-id')
-    context = {'itemsextended': items}
+    items = Item.objects.filter(list_name__list_owner=request.user).order_by('-id')
+    context = {'items': items}
     return render(request, 'items.html', context)
 
 
@@ -230,33 +237,33 @@ def create_extended_item(request):
     return render(request, 'create_extended_item.html', context)
 
 
-def add_ext_item(request, slug):
+@login_required
+def add_item(request, slug):
     list = get_object_or_404(List, slug=slug)
-    item_ex_form = ItemExForm(request.POST or None)
+    item_form = ItemForm(request.POST or None)
 
     if request.method == "POST":
         try:
-            if item_ex_form.is_valid():
-                item_ex_form.instance.slug = slugify(request.POST.get("name"))
-                item_ex_form.instance.list_name = list
-                item_ex_form.save()
+            if item_form.is_valid():
+                item_form.instance.slug = slugify(request.POST.get("name"))
+                item_form.instance.list_name = list
+                item_form.save()
                 return redirect(reverse("show_list_items", args=[list.slug]))
         except IntegrityError as e:
             messages.error(request, f"Sorry! A problem occured. Please choose another name for this item.", extra_tags='invalid_slug')
 
     context = {
-        "item_ex_form": item_ex_form,
+        "item_form": item_form,
         "slug": slug
     }
-    return render(request, 'add_ext_item.html', context)
+    return render(request, 'add_item.html', context)
 
-
+@login_required
 def delete_list_item(request, slug):
-    to_delete = get_object_or_404(ItemExtended, slug=slug)
-    items = ItemExtended.objects.order_by('bought')
+    to_delete = get_object_or_404(Item, slug=slug)
     print(f'Deleteing {to_delete} item')
     if to_delete.delete():
-        messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deleteextitem')
+        messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deleteitem')
         return redirect(reverse('show_list_items', args=[to_delete.list_name.slug]))
     context = {'slug': slug}
     return render(request, 'delete_list_item.html', context)
@@ -273,17 +280,16 @@ def delete_ext_item(request, slug):
     return render(request, 'delete_ext_item.html', context)
     
 
-
+@login_required
 def edit_list_item(request, slug):
-    items_slug = get_object_or_404(ItemExtended, slug=slug)
-    items = ItemExtended.objects.order_by('bought')
+    items_slug = get_object_or_404(Item, slug=slug)
     print(f'Editing {items_slug} element')
-    item_form = ItemExForm(request.POST or None, instance=items_slug)
+    item_form = ItemForm(request.POST or None, instance=items_slug)
 
     if request.method == "POST":
         if item_form.is_valid():
             item_form.save()
-            messages.success(request, f"Item has been successfully updated!", extra_tags='updateexitem')
+            messages.success(request, f"Item has been successfully updated!", extra_tags='updateitem')
             return redirect(reverse('show_list_items', args=[items_slug.list_name.slug]))
 
     context = {
