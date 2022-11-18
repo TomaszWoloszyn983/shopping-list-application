@@ -6,23 +6,15 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('lists/', views.show_lists, name='lists'),
+
     path('add_list/', views.add_list, name='create_list'),
     path('edit_list/<slug:slug>/', views.edit_list, name='edit_list'),
     path('delete_list/<slug:slug>/', views.delete_list, name='delete_list'),
     path('show_list_items/<slug:slug>/', views.show_list_items, name='show_list_items'),
     path('clear_list/<slug:slug>/', views.clear_list, name='clear_list'),
+   
     path('add_item/<slug:slug>/', views.add_item, name='add_item'),
-    path('delete_item/<slug:slug>/', views.delete_item, name='delete_item'),
-    path('edit_item/<slug:slug>/', views.edit_item, name='edit_item'),
-    path('mark_as_bought/<slug:slug>/', views.mark_as_bought, name='mark_as_bought'),
-
-# urls for logged in users views:
-    path('create_extended_item/', views.create_extended_item, name='create_extended_item'),
-    # path('add_ext_item/<slug:slug>/', views.add_item, name='add_item'),
-    path('delete_ext_item/<slug:slug>/', views.delete_ext_item, name='delete_ext_item'),
-    path('delete_list_item/<slug:slug>/', views.delete_list_item, name='delete_list_item'),
-    path('edit_ext_item/<slug:slug>/', views.edit_ext_item, name='edit_ext_item'),
     path('edit_list_item/<slug:slug>/', views.edit_list_item, name='edit_list_item'),
-    path('mark_as_bought_ext/<slug:slug>/', views.mark_as_bought_ext, name='mark_as_bought_ext'),
-    path('clear_ex_list/<slug:slug>/', views.clear_ex_list, name='clear_ex_list'),
+    path('delete_list_item/<slug:slug>/', views.delete_list_item, name='delete_list_item'),
+    path('mark_as_bought/<slug:slug>/', views.mark_as_bought, name='mark_as_bought'),
 ]
