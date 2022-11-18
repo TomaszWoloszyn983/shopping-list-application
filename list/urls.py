@@ -7,7 +7,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('lists/', views.show_lists, name='lists'),
 
-    path('add_list/', views.add_list, name='create_list'),
+    path('add_list/', views.add_list, name='add_list'),
     path('edit_list/<slug:slug>/', views.edit_list, name='edit_list'),
     path('delete_list/<slug:slug>/', views.delete_list, name='delete_list'),
     path('show_list_items/<slug:slug>/', views.show_list_items, name='show_list_items'),

@@ -52,7 +52,6 @@ def home(request):
 
         context = {
             'lists': lists,
-            # 'first_list': first_list
         }
     else:
         context = {}
@@ -66,29 +65,37 @@ def about(request):
 def create_list(request):
     return render(request, 'add_list.html')
 
-
+@login_required
 def add_list(request):
     # Validation has to be added to prevent posting elements 
     # with dublicated names.
 
     # Lists that contain every item with bought status should be 
     # mark with a different color than the list with not bought items.
+    list_form = ListForm(request.POST or None)
     if request.method == "POST":
-        try:
-            list = request.POST.get("lists_name")
-            print(f'Create a new list: {list}')
-            slugified = slugify(list)
-            new_list = List(name = list, slug = slugified)
-            new_list.save()
-            messages.success(request, f"New list {list} has been created!", extra_tags='hello')
-        except IntegrityError as e:
-            messages.error(request, f"Sorry! A problem occured. Please choose another name for this list.", extra_tags='invalid_name')
+        # try:
+            if list_form.is_valid():
+                list = request.POST.get("name")
+                list_form.name = list
+                slugified = slugify(list)
+                list_form.slug = slugified
+                list_form.list_owner = user.id
+                list_owner = list_name__list_owner=request.user.id
+                print(f'\n\nList owner {list_owner}')
+                list_form.save()
+                messages.success(request, f"New list {list} has been created!", extra_tags='hello')
+                return redirect(reverse("lists"))
+        # except IntegrityError as e:
+        #     messages.error(request, f"Sorry! A problem occured. Please choose another name for this list.", extra_tags='invalid_name')
 
         # Redirecting to the page that displays all lists.
-        lists = List.objects.order_by('-create_date')
-        context = {'lists': lists}
-        return render(request, 'list.html', context)
-    return render(request, 'add_list.html')
+    lists = List.objects.order_by('-create_date')
+    context = {
+        'lists': lists,
+        'list_form': list_form,
+    }
+    return render(request, 'add_list.html', context)
 
 
 @login_required
@@ -107,10 +114,8 @@ def edit_list(request, slug):
     if request.method == "POST":
         if list_form.is_valid():
             list = request.POST.get("name")
-            print(f'Received from POST: {list}')
             list_form.name = list
             slugified = slugify(list)
-            print(f'Slugified: {slugified}')
             list_form.slug = slugified
             list_form.save()
             messages.success(request, f"List {list} has been updated!", extra_tags='editlist')
@@ -200,7 +205,6 @@ def mark_as_bought(request, slug):
 # The problem may be to call the mark_as_bought method.
     item = get_object_or_404(Item, slug=slug)
     list = get_object_or_404(List, slug=item.list_name.slug)
-    print(f'\n\nMarking {item} as bought/notbought')
 
     if item.bought:
         item.bought = False
