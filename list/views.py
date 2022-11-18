@@ -10,11 +10,11 @@ from .models import List, Item
 from .forms import ListForm, ItemForm
 
 
-@login_required
-def showItems(request):
-    items = Item.objects.order_by('-id')
-    context = {'items': items}
-    return render(request, 'items.html', context)
+# @login_required
+# def showItems(request):
+#     items = Item.objects.order_by('-id')
+#     context = {'items': items}
+#     return render(request, 'items.html', context)
 
 
 @login_required
@@ -183,7 +183,7 @@ def edit_item(request, slug):
     if request.method == "POST":
         if item_form.is_valid():
             item_form.save()
-            messages.success(request, f"Item has been successfully updated!", extra_tags='updateitem')
+            messages.success(request, f"edit_item Item has been successfully updated!", extra_tags='updateitem')
             return redirect(reverse('show_list_items', args=[items_slug.list_name.slug]))
 
     context = {
@@ -248,6 +248,7 @@ def add_item(request, slug):
                 item_form.instance.slug = slugify(request.POST.get("name"))
                 item_form.instance.list_name = list
                 item_form.save()
+                messages.success(request, f"The item {item_form} has been successfully added to the list!")
                 return redirect(reverse("show_list_items", args=[list.slug]))
         except IntegrityError as e:
             messages.error(request, f"Sorry! A problem occured. Please choose another name for this item.", extra_tags='invalid_slug')
@@ -274,7 +275,7 @@ def delete_ext_item(request, slug):
     items = ItemExtended.objects.order_by('bought')
     print(f'Deleteing {to_delete} item')
     if to_delete.delete():
-        messages.success(request, f"The item {to_delete} has been successfully deleted!", extra_tags='deleteextitem')
+        messages.success(request, f"delete_ext_item The item {to_delete} has been successfully deleted!", extra_tags='deleteextitem')
         return redirect(reverse("items"))
     context = {'slug': slug}
     return render(request, 'delete_ext_item.html', context)
@@ -289,7 +290,7 @@ def edit_list_item(request, slug):
     if request.method == "POST":
         if item_form.is_valid():
             item_form.save()
-            messages.success(request, f"Item has been successfully updated!", extra_tags='updateitem')
+            messages.success(request, f"edit_list_item Item has been successfully updated!", extra_tags='updateitem')
             return redirect(reverse('show_list_items', args=[items_slug.list_name.slug]))
 
     context = {
@@ -297,6 +298,7 @@ def edit_list_item(request, slug):
         "item_form": item_form,
     }
     return render(request, 'edit_list_item.html', context)
+
 
 def edit_ext_item(request, slug):
     items_slug = get_object_or_404(ItemExtended, slug=slug)
@@ -308,12 +310,11 @@ def edit_ext_item(request, slug):
         try:
             if item_form.is_valid():
                 item_form.save()
-                messages.success(request, f"Item has been successfully updated!", extra_tags='updateexitem')
+                messages.success(request, f"edit v_ex_item Item has been successfully updated!", extra_tags='updateexitem')
                 context = {'itemsextended': items}
                 return redirect(reverse("items"))
         except IntegrityError as e:
             messages.error(request, f"Sorry! A problem occured with {items_slug}. Please choose another name for this item.", extra_tags='invalid_name')
-
 
     context = {
         'slug': slug,
@@ -353,6 +354,3 @@ def mark_as_bought_ext(request, slug):
         print(f'Update {item} to True')
         item.save()
     return redirect(reverse('show_list_items', args=[list.slug]))
-
-# 
-# 
