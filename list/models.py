@@ -2,19 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-# Changes to be made in models: no default description, 
-# prize shouldn't be required, so default value should be added
-# increase max_lenght for quantity.
-# Decrease max_lenght of Items name to 30.
 
 class List(models.Model):
     list_owner = models.ForeignKey(User, on_delete=models.CASCADE)
     create_date = models.DateField(default=timezone.now)
-    name = models.CharField(blank=False, max_length=50, unique=True, default=("New List"))
-    slug = models.SlugField(blank=False, max_length=50, unique=True, default=("new_list"))
-
-    # class Meta:
-    #     ordering = ['-create_date']
+    name = models.CharField(blank=False, max_length=30, unique=True, default=("New List"))
+    slug = models.SlugField(blank=False, max_length=30, unique=True, default=("new_list"))
 
     def __str__(self):
         return self.name
@@ -23,13 +16,13 @@ class List(models.Model):
 class Item(models.Model):
     name = models.CharField(blank=False, max_length=50, unique=True, default="")
     slug = models.SlugField(blank=False, max_length=50, unique=True, default="")
-    quantity = models.CharField(max_length=5, default='1')
+    quantity = models.CharField(max_length=7, default='1')
     bought = models.BooleanField(default=False)
     list_name = models.ForeignKey(List, on_delete=models.CASCADE, related_name="items", default="None")
     favourite = models.BooleanField(default=False)
     urgent = models.BooleanField(default=False)
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
-    description = models.TextField(blank=True, null=True, default="No Description")
+    description = models.TextField(blank=True, null=True, default="")
 
     class Meta:
         ordering = ['-bought']
