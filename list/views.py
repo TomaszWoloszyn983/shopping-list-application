@@ -10,12 +10,6 @@ from .models import List, Item
 from .forms import ListForm, ItemForm
 
 
-# @login_required
-# def showItems(request):
-#     items = Item.objects.order_by('-id')
-#     context = {'items': items}
-#     return render(request, 'items.html', context)
-
 
 @login_required
 def show_list_items(request, slug):
@@ -41,11 +35,6 @@ def show_list_items(request, slug):
     return render(request, 'show_list_items.html', context)
 
 
-# 
-#   Log out users.
-# 
-
-
 def home(request):
     if request.user.is_authenticated:
         lists = List.objects.filter(list_owner=request.user).order_by("-id")
@@ -62,28 +51,25 @@ def about(request):
     return render(request, 'about.html')
 
 
-def create_list(request):
-    return render(request, 'add_list.html')
-
 @login_required
 def add_list(request):
-    # Validation has to be added to prevent posting elements 
-    # with dublicated names.
 
-    # Lists that contain every item with bought status should be 
-    # mark with a different color than the list with not bought items.
     list_form = ListForm(request.POST or None)
+    user = User.objects.get(id=request.user.id)
     if request.method == "POST":
         # try:
             if list_form.is_valid():
+                form = list_form.save(commit=False)
                 list = request.POST.get("name")
-                list_form.name = list
+                form.name = list
                 slugified = slugify(list)
-                list_form.slug = slugified
-                list_form.list_owner = user.id
-                list_owner = list_name__list_owner=request.user.id
-                print(f'\n\nList owner {list_owner}')
-                list_form.save()
+                form.slug = slugified
+                form.list_owner = User.objects.get(id=request.user.id)
+                # list_owner = User.objects.get(id=request.user.id)
+                # list_owner = list_name__list_owner=request.user.id
+                # list_form.list_owner = user
+                # print(f'\n\nList owner {list_owner}')
+                form.save()
                 messages.success(request, f"New list {list} has been created!", extra_tags='hello')
                 return redirect(reverse("lists"))
         # except IntegrityError as e:
@@ -106,6 +92,8 @@ def show_lists(request):
     context = {'lists': lists}
     return render(request, 'list.html', context)
 
+
+@login_required
 def edit_list(request, slug):
     lists_slug = get_object_or_404(List, slug=slug)
     print(f'Editing {lists_slug} element')
@@ -114,9 +102,9 @@ def edit_list(request, slug):
     if request.method == "POST":
         if list_form.is_valid():
             list = request.POST.get("name")
-            list_form.name = list
-            slugified = slugify(list)
-            list_form.slug = slugified
+            # list_form.name = list
+            # slugified = slugify(list)
+            # list_form.slug = slugified
             list_form.save()
             messages.success(request, f"List {list} has been updated!", extra_tags='editlist')
             return redirect(reverse("lists"))
@@ -126,6 +114,7 @@ def edit_list(request, slug):
         "list_form": list_form,
     }
     return render(request, 'edit_list.html', context)
+
 
 @login_required
 def delete_list(request, slug):
@@ -151,53 +140,6 @@ def clear_list(request, slug):
     }
     return render(request, 'show_list_items.html', context)
 
-# The name should be changed to add_item and create_item tempalate deleted
-# def create_item(request, slug):
-#     list = get_object_or_404(List, slug=slug)
-#     item_form = ItemForm(request.POST or None)
-
-#     if request.method == "POST":
-#         try:
-#             if item_form.is_valid():
-#                 item_form.instance.slug = slugify(request.POST.get("name"))
-#                 item_form.instance.list_name = list
-#                 item_form.save()
-#                 return redirect(reverse("show_list_items", args=[list.slug]))
-#         except IntegrityError as e:
-#             messages.error(request, f"Sorry! A problem occured. Please choose another name for this item.", extra_tags='invalid_slug')
-#     context = {
-#         "item_form": item_form,
-#         "slug": slug
-#     }
-#     return render(request, 'add_item.html', context)
-
-
-# def delete_item(request, slug):
-#     to_delete = get_object_or_404(Item, slug=slug)
-#     print(f'Deleteing {to_delete} item')
-#     if to_delete.delete():
-#         messages.success(request, f"Item {to_delete} has been successfully deleted!", extra_tags='deleteitem')
-#         return redirect(reverse('show_list_items', args=[to_delete.list_name.slug]))
-    
-#     context = {'slug': slug}
-#     return render(request, 'delete_item.html', context)
-
-# def edit_item(request, slug):
-#     items_slug = get_object_or_404(Item, slug=slug)
-#     print(f'Editing {items_slug} element')
-#     item_form = ItemForm(request.POST or None, instance=items_slug)
-
-#     if request.method == "POST":
-#         if item_form.is_valid():
-#             item_form.save()
-#             messages.success(request, f"edit_item Item has been successfully updated!", extra_tags='updateitem')
-#             return redirect(reverse('show_list_items', args=[items_slug.list_name.slug]))
-
-#     context = {
-#         'slug': slug,
-#         "item_form": item_form,
-#     }
-#     return render(request, 'edit_item.html', context)
 
 def mark_as_bought(request, slug):
 # mark_as_bought method is nothing but items update method, where
@@ -222,23 +164,6 @@ def showItems(request):
     items = Item.objects.filter(list_name__list_owner=request.user).order_by('-id')
     context = {'items': items}
     return render(request, 'items.html', context)
-
-
-# def create_extended_item(request):
-#     lists = List.objects.order_by("-id")
-#     items = ItemExtended.objects.order_by('-id')
-#     item_form = ItemExForm(request.POST or None)
-
-#     if request.method == "POST":
-#         if item_form.is_valid():
-#             item_form.instance.slug = slugify(request.POST.get("name"))
-#             item_form.save()
-#             return redirect(reverse('items'))
-
-#     context = {
-#         "item_form": item_form,
-#     }
-#     return render(request, 'create_extended_item.html', context)
 
 
 @login_required
@@ -274,17 +199,6 @@ def delete_list_item(request, slug):
         return redirect(reverse('show_list_items', args=[to_delete.list_name.slug]))
     context = {'slug': slug}
     return render(request, 'delete_list_item.html', context)
-
-
-# def delete_ext_item(request, slug):
-#     to_delete = get_object_or_404(ItemExtended, slug=slug)
-#     items = ItemExtended.objects.order_by('bought')
-#     print(f'Deleteing {to_delete} item')
-#     if to_delete.delete():
-#         messages.success(request, f"delete_ext_item The item {to_delete} has been successfully deleted!", extra_tags='deleteextitem')
-#         return redirect(reverse("items"))
-#     context = {'slug': slug}
-#     return render(request, 'delete_ext_item.html', context)
     
 
 @login_required
@@ -304,59 +218,3 @@ def edit_list_item(request, slug):
         "item_form": item_form,
     }
     return render(request, 'edit_list_item.html', context)
-
-
-# def edit_ext_item(request, slug):
-#     items_slug = get_object_or_404(ItemExtended, slug=slug)
-#     items = ItemExtended.objects.order_by('bought')
-#     print(f'Editing {items_slug} element')
-#     item_form = ItemExForm(request.POST or None, instance=items_slug)
-
-#     if request.method == "POST":
-#         try:
-#             if item_form.is_valid():
-#                 item_form.save()
-#                 messages.success(request, f"edit v_ex_item Item has been successfully updated!", extra_tags='updateexitem')
-#                 context = {'itemsextended': items}
-#                 return redirect(reverse("items"))
-#         except IntegrityError as e:
-#             messages.error(request, f"Sorry! A problem occured with {items_slug}. Please choose another name for this item.", extra_tags='invalid_name')
-
-#     context = {
-#         'slug': slug,
-#         "item_form": item_form,
-#     }
-#     return render(request, 'edit_ext_item.html', context)
-
-
-# def clear_ex_list(request, slug):
-#     lists_slug = get_object_or_404(List, slug=slug)
-#     items = ItemExtended.objects.filter(list_name=lists_slug).order_by('bought')
-#     if items.delete():
-#         messages.success(request, "All Items have been successfully deleted from the List", extra_tags='clearexlist')
-#         return redirect(reverse('show_list_items', args=[lists_slug.slug]))
-
-#     context = {
-#         'slug' : slug,
-#         'items': items
-#     }
-#     return render(request, 'clear_ex_list.html', context)
-
-
-# def mark_as_bought_ext(request, slug):
-# mark_as_bought method is nothing but items update method, where
-# we only update one element of the item, which is 'bought' variable.
-# The problem may be to call the mark_as_bought method.
-    # item = get_object_or_404(ItemExtended, slug=slug)
-    # list = get_object_or_404(List, slug=item.list_name.slug)
-    # print(f'\n\nMarking {item} as bought/notbought')
-
-    # if item.bought:
-    #     item.bought = False
-    #     print(f'Update {item} to False')
-    #     item.save()
-    # else:
-    #     item.bought = True
-    #     print(f'Update {item} to True')
-    #     item.save()
-    # return redirect(reverse('show_list_items', args=[list.slug]))
