@@ -26,8 +26,9 @@ It also allows the user to register his own account what gives him an access to 
 4. [Future Features](#4-future-features)
 5. [Technologies Used](#5-technologies-used)
 6. [Testing](#6-testing)
-7. [Deployment](#7-deployment)
-8. [References and Credits](#8-references-and-credits)
+7. [Bugs and Error](#7-bugs-and-errors)
+7. [Deployment](#8-deployment)
+8. [References and Credits](#9-references-and-credits)
 
 
 
@@ -383,11 +384,11 @@ https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error
 
 Not found robots.txt show during tha Lighthouse inspection.
 
-## **7. Deployment**
+## **8. Deployment**
 
 ### **Local Deployment**
 
-## **8. References and Credits:**
+## **9. References and Credits:**
 
 - The background image was created with Canva - Free Design Tool - https://www.canva.com/pl_pl/
 
@@ -408,4 +409,4 @@ Not found robots.txt show during tha Lighthouse inspection.
 
 - Sidebar background image: https://creator.nightcafe.studio/u/575RyajOr4V9EM3umpmEZLfLS2w1
 
-## **9. Credits:**
+## **10. Credits:**

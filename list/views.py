@@ -57,7 +57,7 @@ def add_list(request):
     list_form = ListForm(request.POST or None)
     user = User.objects.get(id=request.user.id)
     if request.method == "POST":
-        # try:
+        try:
             if list_form.is_valid():
                 form = list_form.save(commit=False)
                 list = request.POST.get("name")
@@ -70,10 +70,10 @@ def add_list(request):
                 # list_form.list_owner = user
                 # print(f'\n\nList owner {list_owner}')
                 form.save()
-                messages.success(request, f"New list {list} has been created!", extra_tags='hello')
+                messages.success(request, f"{list} has been created!", extra_tags='hello')
                 return redirect(reverse("lists"))
-        # except IntegrityError as e:
-        #     messages.error(request, f"Sorry! A problem occured. Please choose another name for this list.", extra_tags='invalid_name')
+        except IntegrityError as e:
+            messages.error(request, f"Sorry! A problem occured. Please choose another name for this list.", extra_tags='invalid_name')
 
         # Redirecting to the page that displays all lists.
     lists = List.objects.order_by('-create_date')
@@ -102,9 +102,9 @@ def edit_list(request, slug):
     if request.method == "POST":
         if list_form.is_valid():
             list = request.POST.get("name")
-            # list_form.name = list
-            # slugified = slugify(list)
-            # list_form.slug = slugified
+            list_form.name = list
+            slugified = slugify(list)
+            list_form.slug = slugified
             list_form.save()
             messages.success(request, f"List {list} has been updated!", extra_tags='editlist')
             return redirect(reverse("lists"))
