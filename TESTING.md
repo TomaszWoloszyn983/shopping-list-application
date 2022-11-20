@@ -48,29 +48,34 @@ No test yet.
 
 ## **Lighthouse Inspection reports**
  - There are some issues when the page is opening using Google Chrome browser.
-
-    * ![Google Chrome inspection](documentation/images/testing/light_1.jpg)
-
-    However inspecting the page in Incognito Mode without any browser extensions shows results as follows
-
-    * ![Google Chrome inspection](documentation/images/testing/light_2.jpg)
-
-    Making Lighthouse inspections using different browsers show very similar results. 
     
-    * ![Microsoft Egde inspection](documentation/images/testing/light_3.jpg)
+However the page inspection in Incognito Mode without any browser extensions shows results as follows
 
-    This is an example of Lighthouse inspection in Microsort Edge browser made using inPrivate mode.
+![Google Chrome inspection](documentation/images/testing/lighthouse_chrome.jpg)
+
+Results are similar for all the pages. 
+
+Although there are some differences between displaying the page on different browsers.
+
+Microsoft Edge:
+
+![Microsoft Egde inspection](documentation/images/testing/lighthoue_edge.jpg)
+
+And a less popular Netbox Browser:
+
+![Netbox inspection](documentation/images/testing/lighthouse_netbox.jpg)
+
 
 ## **Testing Functionalities:**
 
 User Stories Tests:
 * As a user I can mark an Item on the list as Urgent so that the Item will be moved to the top of the list or highlighted with a different color
-* As a the application user I can create and add items to the shopping list so that the items can be displayed and marked as Done/Bought
-* As a an application user I can mark an item as Bought so that the item will be moved to the botton of the list or removed from the list
-* As a user I can register and login so that I can receive access to additional functions.
-* As a user I can **Edit items already added to the list ** so that udpade items names and change quantity of the items
-* As a user I can remove items from the list so that I don't have to store unwanted items on my shopping list
-* As a user I can **remove all existing items at one click ** so that I can quickly remove one list and build a new one.
+* As a the application user I can create and add items to the shopping list so that the items can be displayed and marked as Done/Bought. [Link to tests](#add-item)
+* As a an application user I can mark an item as Bought so that the item will be moved to the botton of the list or removed from the list [Link to tests](#item-functionalities-testings)
+* As a user I can register and login so that I can receive access to additional functions. [Link to test](#authentication)
+* As a user I can Edit items already added to the list so that udpade items names and change quantity of the items [Link to test](#edit-item)
+* As a user I can remove items from the list so that I don't have to store unwanted items on my shopping list [Link to test](#delete-item)
+* As a user I can remove all existing items at one click so that I can quickly remove one list and build a new one. [Link to test](#clear-list)
 
 ### Home Page:
 
@@ -274,3 +279,5 @@ Bought items can be moved back to the items to buy list when clicked again.
 
 
 ## **Unfixed Bugs**
+* The only unfixed bug is possibility of dublicating slugs. Full description of the bug [here](README.md#7-bugs-and-errors).
+* There are no other bugs that I am aware of.

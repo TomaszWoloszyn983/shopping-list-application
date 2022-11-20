@@ -19,7 +19,6 @@ It also allows the user to register his own account what gives him an access to 
     * [Shopping List View](#shopping-list-page)
     * [Add Item](#add-item)
     * [Edit Item](#edit-item)
-    * [Item Page](#items-page)
     * [Register, Login/logout](#register-loginlogout-pages)
     * [List class](#list-class)
     * [Item Class](#item-class)
@@ -34,33 +33,30 @@ It also allows the user to register his own account what gives him an access to 
 
 ## **2. User Stories:**
 
-### **Non-registered user**
 
-- As a non-registered user I would like to be able to create quick and simple shopping list.
+- As a user I would like to be able to create quick and simple shopping list.
 
-- As a non-registered user I would like to save my shopping list in a database so it will be accessible wherever I am.
+- As a user I would like to save my shopping list in a database so it will be accessible wherever I am.
 
-- As a non-registered user I would like to mark items as bought, so the bought items will be separated from items to buy.
+- As a user I would like to mark items as bought, so the bought items will be separated from items to buy.
 
-- As a non-registered user I would like to mark items as bought, so the bought items will be separated from items to buy.
+- As a user I would like to mark items as bought, so the bought items will be separated from items to buy.
 
-- As a non-registered user I would like to edit or delete items.
+- As a user I would like to edit or delete items.
 
-- As a non-registered user I would like to clear the list with one click after my shoppings are done, so I don't have to delete each item separately.
+- As a user I would like to clear the list with one click after my shoppings are done, so I don't have to delete each item separately.
 
-
-### **Registered user**
 - As a registered user I would like to be able to log in to get access to additional functions.
 
-- As a registered user I would like to be able to create more than just one list, so I can create separate lists for different occasions and different users.
+- As a user I would like to be able to create more than just one list, so I can create separate lists for different occasions and different users.
 
-- As a registered user I would like to add items to favourite so I can easier add them to my shopping list.
+- As a user I would like to add items to favourite so I can easier add them to my shopping list.
 
-- As a registered user I would like to be able to mark items as urgent so they can be highlighted on the list and easier spotted.
+- As a user I would like to be able to mark items as urgent so they can be highlighted on the list and easier spotted.
 
-- As a registered user I would like to be able to share my list with another users.
+- As a user I would like to be able to share my list with another users.
 
-- As a registered user I would like to be able to assign price to items so I can know the assumed price of all items on the list.
+- As a user I would like to be able to assign price to items so I can know the assumed price of all items on the list.
 
 - As a registered user I would like to be able to print the shopping list, so I can use the list when I have no mobile devices with me.
 
@@ -69,40 +65,13 @@ It also allows the user to register his own account what gives him an access to 
 - I want to make the application user friendly
 - I want the application to be free from bugs and errors.
 
-<!-- - **Must do:**
-    - Create class Item and the model section for Items.
-    - Add, edit, delete item functions.
-    - Marking item as bought and sorting the list.
-    - Register and Login/logout functions that allow the register user to get access to additional functions (more about additional functions in the Could do section)
-    - Create a table in Postgres database for added items that will contain Columns for: Id, Name, quantity, urgent, bought.
-    - Adding each item to the list in Database, so they can be suggested during the future search.
-    - Create a responsive layout with Materialize, Bootstrap or Material Desing Bootstrap.
-    - Create a separate templates for each CRUD function that will inherit from the base template.
-    - Deploy to Heroku. Create Procfile and Requirements.txt file.
-    
-- **Could do:**
-    - Add additional columns for Item attributes such as: price, favorite.
-    - Add item to the favourite. Create the Favourite Item column in Database. Favorite item suggested during the search and have predefined price.
-
-
-
-- ***Additional Item's attributtes available only for register users***
-
-    - Favorite. Favorite item could be suggested during the search and it can have a predefined price.
-    - Price: Summed up value of all items could be displayed at the bottom of the list.
-    - Category that will contain different icons for each category
-    - Shopping counter showing how many times the item was added to the shopping list. -->
-
 
 ## **3. Features**
-The application includes following sections. Although accessibilty of those sections depends on whether the user is logged in or not.
+The application includes following sections.
 
 
 ### **Home Page**
 Home Page contain a short introduction to the application.
-In case of not logged in user it displays a default Shopping List where the user can add, delete or update item. 
-
-![Home Page](documentation/images/components/home_page2.jpg)
 
 In case of logged in user the Home Page displays last three list previously created by the user. There is also a button which redirects the user to the lists page where he can add more list and to manage already existing lists.
 
@@ -121,7 +90,7 @@ The top navbar is hoverable and it fades out when it is not used.
 
 Logged in users view. When the user logs in additional function shows on the navbar.
 
-![Top Navbar](documentation/images/components/top_navbar_3.jpg)
+![Top Navbar](documentation/images/components/navbar11.jpg)
 
 The navigation bar is fully responsive and it adjusts to the screen size.
 In smaller devices such tablets and mobile phones the all the buttons are move to the side navigation bar.
@@ -138,7 +107,7 @@ Not logged in users view.
 
 Logged in users view.
 
-![Top Navbar](documentation/images/components/side_navbar_2.jpg)
+![Top Navbar](documentation/images/components/side_navbar11.jpg)
 
 
 #### **Footer**  
@@ -199,17 +168,8 @@ To delete an existing List click Delete button. After approving that you want to
 ![Create List](documentation/images/components/del_list.jpg)
 
 
-
-
 ### **Add Item**
 This section displays a form that allows creating and adding a new item to the list.
-Views of this templeted vary depending on whether the user is logged in or not.
-
-For not logged in users it will look as follows
-
-![Add Item](documentation/images/components/add_item_1.jpg)
-
-Whereas the version for logged in users contains more informations about items.
 
 ![Add Item](documentation/images/components/add_item_2.jpg)
 
@@ -221,21 +181,12 @@ More information about Item classes available in the right section below or [her
 
 
 ### **Edit Item**
-This function allows user to edit items Name as well as other values.
+This function allows user to edit items name as well as other values.
 Not logged in user has only access to two values: Name and items quantity.
-
-![Edit Item](documentation/images/components/edit_item1.jpg)
-
-Logged in user version of the edit item form.
 
 ![Edit Item](documentation/images/components/edit_item2.jpg)
 
 By clicking **Submit Changes** button new values will be submitted and displayed in the updated list view.
-
-## **Items Page**
-This page is only accessible for logged in users and it allows users for creating and managing items.
-
-![Item Page](documentation/images/components/items_page.jpg)
 
 
 ## **Register, Login/logout Pages** 
@@ -244,7 +195,7 @@ After filling up the form where the user has to enter his user name, email and p
 
 ![Item Page](documentation/images/components/signup_page1.jpg)
 
-Login Page allows the user to login to his account what will give him access to additional function of the application.
+Login Page allows the user to login to his account what will give him access to all applications functions.
 
 ![Item Page](documentation/images/components/login_page1.jpg)
 
@@ -254,60 +205,65 @@ Login Page allows the user to login to his account what will give him access to 
 
 ## **List Class:**
 List class contains attributes such as: name and create_date, also it contains a variable of type slug.
-```
+```python
     class List(models.Model):
+        list_owner = models.ForeignKey(User, on_delete=models.CASCADE)
         create_date = models.DateField(default=timezone.now)
         name = models.CharField(blank=False, max_length=50, unique=True, default=("New List"))
         slug = models.SlugField(blank=False, max_length=50, unique=True, default=("new_list"))
 ```
+List owner - the logged in user who the list belongs to.
+
+Create date - Date when the list was created.
+
+Name - Lists name.
+
+Slug variable is generated automatically based on the items name.
+
 
 
 ## **Item class:**
 
-    Item class is the basic shopping list item, it is available to every user without the necessity of creating an account. 
+Item class is the basic shopping list item.
 
-```
-    class Item(models.Model):
-        name = models.CharField(blank=False, max_length=50, unique=True, default="")
-        slug = models.SlugField(blank=False, max_length=50, unique=True, default="")
-        quantity = models.CharField(max_length=5, default='1')
-        bought = models.BooleanField(default=False)
-        list_name = models.ForeignKey(List, on_delete=models.CASCADE, related_name="items", default="None")
-```
+The class contains elements such as items name and quantity. 
 
-    The class contains only the most needed elements such as items name and quantity. 
-    Slug variable is generated automatically based on the items name.
-    List name is the Foreign Key and it defines which Shopping List the item is assigned to. In case of the unregistered user this value is set to the default Shopping List.
-    bought variable is a boolean value set by the user with the "Mark as bought" toggle button.
+Slug variable is generated automatically based on the items name.
 
+List name is the Foreign Key and it defines which Shopping List the item is assigned to. 
 
-## **ItemExtended Class:**
+bought variable is a boolean value set by the user with the "Mark as bought" toggle button.
 
-    This is an extended version of the Item class that is available to the users that are registered and logged in compare to the basic Items class the extended Items contain a few additional elements
+Favourite - allows to mark the item as favourite.
 
-```
+Urgent - allows to mark the items as Urgent. ?????????????????????????????????
+
+Prize - allows the user to assign the prize of the item what in the future will allow to calculate the extimated value all the items on the list.
+
+Description - Allow to add short description to each item.
+
+```python
     class ItemExtended(models.Model):
         name = models.CharField(blank=False, max_length=50, unique=True, default="")
         slug = models.SlugField(blank=False, max_length=50, unique=True, default="")
         quantity = models.CharField(max_length=5, default='1')
         bought = models.BooleanField(default=False)
-        list_name = models.ForeignKey(List, on_delete=models.CASCADE, related_name="itemsextended", default="None")
+        list_name = models.ForeignKey(List, on_delete=models.CASCADE, related_name="item", default="None")
 
         favourite = models.BooleanField(default=False)
         urgent = models.BooleanField(default=False)
         price = models.DecimalField(max_digits=6, decimal_places=2)
         description = models.TextField(blank=True, null=True, default="No Description")
 ```
-Favourite - allows to mark the item as favourite.
-Urgent - allows to mark the items as Urgent. ?????????????????????????????????
-Prize - allows the user to assign the prize of the item what in the future will allow to calculate the extimated value all the items on the list.
 
 
 ## **4. Future Features**
 
 - Add a function to share a shopping list with other users.
+- Delete account function.
 - Function that allows to calculate the value of all items on the shopping list based on it prices.
 - Adding profile photos to the side navigation bar.
+- Style the side navbar, add 
 
 
 ## **5. Technologies used:**
