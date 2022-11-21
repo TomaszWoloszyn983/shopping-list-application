@@ -19,7 +19,7 @@ def show_list_items(request, slug):
     user = get_object_or_404(User, username=request.user)
     lists_slug = get_object_or_404(List, slug=slug)
     if lists_slug.list_owner != user:
-        messages.error(request, "access denied. ")
+        messages.error(request, "access denied.")
         return redirect(reverse("home"))
     # lists = List.objects.order_by('-create_date')
     items = Item.objects.filter(list_name=lists_slug).order_by('-id')
@@ -65,10 +65,6 @@ def add_list(request):
                 slugified = slugify(list)
                 form.slug = slugified
                 form.list_owner = User.objects.get(id=request.user.id)
-                # list_owner = User.objects.get(id=request.user.id)
-                # list_owner = list_name__list_owner=request.user.id
-                # list_form.list_owner = user
-                # print(f'\n\nList owner {list_owner}')
                 form.save()
                 messages.success(request, f"{list} has been created!", extra_tags='hello')
                 return redirect(reverse("lists"))
