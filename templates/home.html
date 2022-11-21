@@ -29,13 +29,14 @@
         <h3>No recently added lists! Go to the lists section to create a new Shopping List</h3>
       {% endfor %}
     {% else %}
-
-    <div class="home_page_image">
-      <h2 class="center">
-        Please <span href="{% url 'account_login' %}">sign in</span>.
-      </h2>
+    <div class="home-page-image center">
+      <a>
+        <h2 class="center">
+          <a class="center home-page-text" href="{% url 'account_login' %}">Please sign in.</a>
+        </h2>
+      </a>
+      
     </div>
-    
     {% endif %}
 </div>
 

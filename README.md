@@ -62,11 +62,16 @@ It also allows the user to register his own account what gives him an access to 
 
 
 ### **As the application creator:**
-- I want to make the application user friendly
+- I want the application to be friendly and easy to user. 
 - I want the application to be free from bugs and errors.
 
 
 ## **3. Features**
+The application is made of three main sections:
+- Home Page.
+- Lists section.
+- Lists items view.
+- Register and Login/logout sections.
 The application includes following sections.
 
 
