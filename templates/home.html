@@ -2,7 +2,7 @@
 {% block content %}
 
 <section>
-    <h1 class="light-blue-text text-darken-4 center">Welcome to our Shopping List Application.</h1>
+    <h1 class="light-blue-text text-darken-4 center">Shopping List Application.</h1>
 </section>
 
 <!-- <p>Footer and Edit and Delete contrast issue</p>
@@ -13,7 +13,7 @@
 
 <div class="row">
     {% if user.is_authenticated %}
-    <h2 class="center">Choose one of the list below or click "Go To Your Lists" button to manage your lists.</h2>
+    <h3 class="center">Choose one of the list below or click "Go To Your Lists" button to manage your lists.</h3>
       {% for list in lists|slice:":3" %}
       <div class="col s12 m12">
         <div class="card hoverable accent-3 darken-1">
@@ -26,16 +26,15 @@
         </div>
       </div>
       {% empty %}
-        <h3>No recently added lists! Click button below to create a new Shopping List</h3>
+        <h3>No recently added lists! Go to the lists section to create a new Shopping List</h3>
       {% endfor %}
     {% else %}
-    <h2 class="center">Please log in .</h2>
-    <!-- <p>One list must be added at the start of the application. 
-      It is possible to delete all lists so not logged in user 
-      won't be able to use the app. On th eother hand only logeed in user 
-      can delete a list so he can add a new one.
 
-    </p> -->
+    <div class="home_page_image">
+      <h2 class="center">
+        Please <span href="{% url 'account_login' %}">sign in</span>.
+      </h2>
+    </div>
     
     {% endif %}
 </div>

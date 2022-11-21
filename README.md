@@ -313,7 +313,7 @@ If you try to add a new item named item1 it will cause Integrity Error beacuse o
 I've temporarily solved the problem with handling the error with try/catch statement. 
 It would be useful to add slugs update functionality to Edit Items and Edit Lists functions.
 
-```
+```python
 try:
     if item_form.is_valid():
         item_form.instance.slug = slugify(request.POST.get("name"))

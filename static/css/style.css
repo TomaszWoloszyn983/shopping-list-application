@@ -4,7 +4,6 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  /* background-image: url("/static/images/green_shopping_list.jpg"); */
   background-image: url("https://res.cloudinary.com/tomaszwoloszyn983/image/upload/v1668619763/green_shopping_list_hhlcmz.jpg");
   background-color: rgba(150, 151, 91, 0.856);
   background-blend-mode: color-dodge;
@@ -21,6 +20,7 @@ main {
 
 h1 {
   font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
 h2, h3, h4{
   /* font-family: 'Nanum Pen Script', cursive; */
@@ -28,6 +28,12 @@ h2, h3, h4{
 }
 h5 {
   font-family: 'Roboto', sans-serif;
+}
+
+.home_page_image {
+  background-image: url(https://res.cloudinary.com/tomaszwoloszyn983/image/upload/v1668604639/static/images/shopping-list.jpg);
+  width: 50%;
+  height: fit-content;
 }
 
 /* I dont think that this is used */
