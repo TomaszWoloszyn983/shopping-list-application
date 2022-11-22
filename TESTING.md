@@ -11,7 +11,7 @@
     * No errors were detected when passing through the [W3C validator](https://validator.w3.org/nu/).
     ![html_validation](documentation/images/testing/nu_html_checker1.jpg).
     * Link to the validation testing for my Html file:
-    https://validator.w3.org/nu/?doc=https%3A%2F%2Ftomaszwoloszyn983.github.io%2Fswap-puzzle-game
+    https://validator.w3.org/nu/?doc=https%3A%2F%2Ftw-shopping-list.herokuapp.com%2F
 
 - CSS
     * No errors were detected when passing through the [jigsaw.w3 validator](https://jigsaw.w3.org/css-validator). 
@@ -29,22 +29,37 @@ No test yet.
 No test yet.
 
 ## **Browsers compatibility**
-- The Web Page is compatibile with every tested browser, such as:
+- The Web Page is compatibile with every tested browser and fully responsive in the full range of screen sizes:
     * Google Chrome:
 
-         ![Google Chrome](documentation/images/resp_chrome.jpg)
+    ![Google Chrome](documentation/images/testing/chrome1.jpg)
+
+    ![Google Chrome](documentation/images/testing/chrome2.jpg)
 
     * Microsoft Edge: 
     
-       ![Microsoft Edge](documentation/images/resp_edge.jpg)
+    ![Microsoft Edge](documentation/images/testing/ms_edge1.jpg)
+
+    ![Microsoft Edge](documentation/images/testing/ms_edge2.jpg)
 
     * Avast Browser: 
 
-        ![Avast Browser](documentation/images/resp_avast.jpg)
+    ![Avast Browser](documentation/images/testing/avast1.jpg)
+
+    ![Avast Browser](documentation/images/testing/avast2.jpg)
 
     * Netbox Browser:
 
-        ![Netbox Browser](documentation/images/resp_netbox.jpg)
+    ![Netbox Browser](documentation/images/testing/netbox1.jpg)
+
+    ![Netbox Browser](documentation/images/testing/netbox2.jpg)
+
+
+    * Mobile Devices:
+
+    ![Mobile Devices](documentation/images/testing/mobile_view1.jpg)
+    ![Mobile Devices](documentation/images/testing/mobile_view2.jpg)
+    ![Mobile Devices](documentation/images/testing/mobile_view3.jpg)
 
 ## **Lighthouse Inspection reports**
  - There are some issues when the page is opening using Google Chrome browser.
