@@ -7,76 +7,85 @@
 ![Am I Responsive](documentation/images/components/AmIResponsive.jpg)
 
 ## **Code Validator Testing**
-- HTML
+
+- **HTML**
+
     * No errors were detected when passing through the [W3C validator](https://validator.w3.org/nu/).
-    ![html_validation](documentation/images/testing/nu_html_checker1.jpg).
+
+        ![html_validation](documentation/images/testing/nu_html_checker1.jpg).
+
     * Link to the validation testing for my Html file:
     https://validator.w3.org/nu/?doc=https%3A%2F%2Ftw-shopping-list.herokuapp.com%2F
 
-- CSS
+- **CSS**
     * No errors were detected when passing through the [jigsaw.w3 validator](https://jigsaw.w3.org/css-validator). 
 
          ![css_validation](documentation/images/testing/w3c_css_checker1.jpg)
     
    
 
-- JAVASCRIPT
+- **JAVASCRIPT**
    
 No test yet.
 
-- PYTHON
+- **PYTHON**
 
 No test yet.
 
 ## **Browsers compatibility**
+
 - The Web Page is compatibile with every tested browser and fully responsive in the full range of screen sizes:
-    * Google Chrome:
+
+    * **Google Chrome:**
 
     ![Google Chrome](documentation/images/testing/chrome1.jpg)
 
     ![Google Chrome](documentation/images/testing/chrome2.jpg)
 
-    * Microsoft Edge: 
+
+    * **Microsoft Edge:**
     
     ![Microsoft Edge](documentation/images/testing/ms_edge1.jpg)
 
     ![Microsoft Edge](documentation/images/testing/ms_edge2.jpg)
 
-    * Avast Browser: 
+
+    * **Avast Browser:** 
 
     ![Avast Browser](documentation/images/testing/avast1.jpg)
 
     ![Avast Browser](documentation/images/testing/avast2.jpg)
 
-    * Netbox Browser:
+
+    * **Netbox Browser:**
 
     ![Netbox Browser](documentation/images/testing/netbox1.jpg)
 
     ![Netbox Browser](documentation/images/testing/netbox2.jpg)
 
 
-    * Mobile Devices:
+    * **Mobile Devices:**
 
     ![Mobile Devices](documentation/images/testing/mobile_view1.jpg)
     ![Mobile Devices](documentation/images/testing/mobile_view2.jpg)
     ![Mobile Devices](documentation/images/testing/mobile_view3.jpg)
 
 ## **Lighthouse Inspection reports**
- - There are some issues when the page is opening using Google Chrome browser.
+ - There are some issues when the page is opening using Google **Chrome browser**.
     
-However the page inspection in Incognito Mode without any browser extensions shows results as follows
+    However the page inspection in Incognito Mode without any browser extensions shows results as follows
 
 ![Google Chrome inspection](documentation/images/testing/lighthouse_chrome.jpg)
 
-Results are similar for all the pages. 
+    Results are similar for all the pages. 
 
-Although there are some differences between displaying the page on different browsers.
+    Although there are some differences between displaying the page on different browsers.
 
-Microsoft Edge:
+**Microsoft Edge:**
 
 ![Microsoft Egde inspection](documentation/images/testing/lighthoue_edge.jpg)
 
-And a less popular Netbox Browser:
+And a less popular **Netbox Browser**:
 
 ![Netbox inspection](documentation/images/testing/lighthouse_netbox.jpg)
 
@@ -93,8 +102,6 @@ User Stories Tests:
 * As a user I can remove all existing items at one click so that I can quickly remove one list and build a new one. [Link to test](#clear-list)
 
 ### Home Page:
-
-
 
 ![Home Page](documentation/images/testing/home_page0.jpg)
 
@@ -208,7 +215,6 @@ Deleting the list redirects the user to the Lists Page where information about d
 
 Adding and and manipulationg items is the main function this application. In this section I'm going to test Add, Edit and Delete functions as well as changing items status from "to buy" to "bought".
 
-### Show Items
 
 ### Add Item
 

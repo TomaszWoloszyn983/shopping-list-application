@@ -10,7 +10,6 @@ from .models import List, Item
 from .forms import ListForm, ItemForm
 
 
-
 @login_required
 def show_list_items(request, slug):
     # Get requested elements slug
@@ -84,7 +83,7 @@ def add_list(request):
 def show_lists(request):
     lists = List.objects.filter(list_owner=request.user).order_by('-create_date', "-id")
     # Output isn't propably used.
-    output = ', '.join([list.name for list in lists])
+    # output = ', '.join([list.name for list in lists])
     context = {'lists': lists}
     return render(request, 'list.html', context)
 
