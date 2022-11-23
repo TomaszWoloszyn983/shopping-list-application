@@ -7,13 +7,11 @@
 <div class="row light-blue-text text-darken-4">
   {% for message in messages %}
   {%if "invalid_slug" in message.tags %}
-      <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
+    <p class="messages alert alert-success" style="text-align: center;">  {{message}} </p> 
   {% endif %}
   {% endfor %}
   
-  <!-- This conditional seems not to be needed any more
-      This template will only serve the unauthorized user -->
-  <form class="col s12 " method="POST" action="{% url 'add_item' slug %}">
+  <form class="col s12" method="POST" action="{% url 'add_item' slug %}">
     {% csrf_token %}
     <div class="row">
       <div class="input-field col s6 center-align">

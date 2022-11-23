@@ -56,6 +56,7 @@ p {
   font-size: 20px;
 }
 
+
 /* Mavbars settings */
 nav {
   color: #fff;
@@ -82,6 +83,7 @@ nav :hover{
 .left {
   float: none;
 }
+
 
 /* Mark as bought buttons settings */
 .buy_button {
@@ -178,10 +180,12 @@ nav :hover{
   font-size: larger;
 }
 
+
 /* Messages */
 .my-text {
   color: red;
 }
+
 
 /* Footer */
 .fixed-footer {

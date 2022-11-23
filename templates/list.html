@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if user.is_authenticated %}
 <!-- Header -->
 <h1 class="light-blue-text text-darken-4 center-align">My Lists</h1>
 
@@ -8,7 +9,6 @@
 <div class="container_fluid">
     <div class="row">
         <div class="col-12 mt-1 center">
-            
             <div class="row">
                 <ul class="collection with-header, col-6 mt-1 center">
                     {% for item in items %}
@@ -25,7 +25,6 @@
     </div>
 </div>
 
-{% if user.is_authenticated %}
 <!-- List Card -->
 <div class="row">
     {% for list in lists %}
@@ -75,5 +74,4 @@
     <h3>Register and Sign Up to display this page.</h3>
 </div>
 {% endif %}
-
 {% endblock %}

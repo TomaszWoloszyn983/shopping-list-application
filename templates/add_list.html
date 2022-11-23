@@ -3,17 +3,13 @@
 
 <h3 class="light-blue-text text-darken-4 center-align">Create List</h3>
 
-
 <div class="row light-blue-text text-darken-4">
     <form class="col s12" method="POST" action="{% url 'add_list' %}">
       {% csrf_token %}
       <div class="row">
         <div class="input-field col s6 center-align">
-          <!-- <input placeholder="Shopping List" id="lists_name" name="lists_name" type="text" class="validate" required>
-          <label for="lists_name">Lists Name</label> -->
           {{ list_form.as_p }}
         </div>
-
         <div class="row">
             <divc class="col s12 center-align">
                 <button type="submit" href="{% url 'lists' %}" class="btn-large light-blue darken-1">
@@ -23,7 +19,6 @@
         </div>
     </form>
   </div>
-
 {% endblock %}
 
 {% block js %}

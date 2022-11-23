@@ -1,15 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if user.is_authenticated %}
 <!-- Header -->
 <div class="light-blue-text text-darken-4 center">
     <h1>{{ list.name }}</h1>
     <p>Created on {{ list.create_date }}</p>
 </div>
-
-
-<!-- Main content - Logged in Users-->
-
+<div>
     <!-- List of Items to buy -->
     {% for item in items_to_buy %}
     <ul class="collapsible card hoverable">
@@ -58,9 +56,9 @@
     <!-- Divider which separates item to buy from bought items. 
         Displays nothing if there is no items. -->
     {% for item in bought_items %}
-    {% if forloop.counter == 1 %}
-        <h2 class="light-blue-text text-darken-4 center-align">Bought Items:</h2>
-    {% endif %}
+        {% if forloop.counter == 1 %}
+            <h2 class="light-blue-text text-darken-4 center-align">Bought Items:</h2>
+        {% endif %}
     {% endfor %}
 
     <!-- Displays the list of items that are marked as bought-->
@@ -99,22 +97,22 @@
 </div>
     
 <!-- Add Item and Delete All buttons -->
-    <div class="row">
-        <div class="col s12 center-align">
-            <a href="{% url 'add_item' slug %}" class="btn-large light-blue darken-2">Add Item</a>
-            <a href="clear_modal" class="waves-effect waves-light red btn-large modal-trigger" data-target="clear_modal">Delete All</a>
+<div class="row">
+    <div class="col s12 center-align">
+        <a href="{% url 'add_item' slug %}" class="btn-large light-blue darken-2">Add Item</a>
+        <a href="clear_modal" class="waves-effect waves-light red btn-large modal-trigger" data-target="clear_modal">Delete All</a>
+    </div>
+    <!-- Delete All Modal Structure -->
+    <div id="clear_modal" class="modal bottom-sheet">
+        <div class="modal-content">
+            <h5>Are you sure you want to delete all Items from the list?</h5>
+            <p>Click "Yes" to confirm or "No" to return.</p>
         </div>
-        <!-- Delete All Modal Structure -->
-        <div id="clear_modal" class="modal bottom-sheet">
-            <div class="modal-content">
-                <h5>Are you sure you want to delete all Items from the list?</h5>
-                <p>Click "Yes" to confirm or "No" to return.</p>
-            </div>
-            <div class="modal-footer">
-                <a href="{% url 'clear_list' slug %}" class="waves-effect waves-red btn red">YES</a>
-                <a href="#" class="modal-close waves-effect waves-green btn green darken-2">NO</a>
-            </div>
+        <div class="modal-footer">
+            <a href="{% url 'clear_list' slug %}" class="waves-effect waves-red btn red">YES</a>
+            <a href="#" class="modal-close waves-effect waves-green btn green darken-2">NO</a>
         </div>
     </div>
-
+</div>
+{% endif %}
 {% endblock %}

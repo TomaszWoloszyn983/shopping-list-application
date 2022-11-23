@@ -283,6 +283,7 @@ Description - Allow to add short description to each item.
 * Gitpod - Online integrated development environment.
 * GitHub - Version control service used for storing and sharing development projects.
 * Heroku - a container-based cloud platform where developers can deploy their projects.
+* Cloudinary - Cloud platform I used for uploding and storing images used in this Project.
 
 ## **6. Testing**
 
@@ -294,7 +295,7 @@ A number of bugs and error occured during the developement
 
 ### **Checkbox issue**
 
-A problem occured when I tried to display forms in Materialize templates. 
+A problem occured when I tried to display forms using Materialize templates. 
 The template did not display checkboxes correctly in all of my forms.
 
 ![Checkbox issue](documentation/images/bugs_and_errors/issue_no_checkboxes.jpg)
