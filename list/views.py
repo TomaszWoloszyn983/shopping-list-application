@@ -26,7 +26,7 @@ def show_list_items(request, slug):
     items_to_buy = items.filter(bought=False)
     context = {
         'list': lists_slug,
-        'slug' : slug,
+        'slug': slug,
         'items': items,
         'bought_items': bought_items,
         'items_to_buy': items_to_buy,
@@ -37,7 +37,6 @@ def show_list_items(request, slug):
 def home(request):
     if request.user.is_authenticated:
         lists = List.objects.filter(list_owner=request.user).order_by("-id")
-
         context = {
             'lists': lists,
         }
@@ -54,6 +53,7 @@ def about(request):
 def add_list(request):
 
     list_form = ListForm(request.POST or None)
+    # check if user is used
     user = User.objects.get(id=request.user.id)
     if request.method == "POST":
         try:
@@ -65,12 +65,16 @@ def add_list(request):
                 form.slug = slugified
                 form.list_owner = User.objects.get(id=request.user.id)
                 form.save()
-                messages.success(request, f"{list} has been created!", extra_tags='hello')
+                messages.success(request, f"{list} has been created!",
+                                 extra_tags='hello')
                 return redirect(reverse("lists"))
         except IntegrityError as e:
-            messages.error(request, f"Sorry! A problem occured. Please choose another name for this list.", extra_tags='invalid_name')
+            messages.error(request,
+                           f"Sorry! A problem occured."
+                           f"Pleasechoose another name for this list.",
+                           extra_tags='invalid_name')
 
-        # Redirecting to the page that displays all lists.
+    # Redirecting to the page that displays all lists.
     lists = List.objects.order_by('-create_date')
     context = {
         'lists': lists,
@@ -81,9 +85,8 @@ def add_list(request):
 
 @login_required
 def show_lists(request):
-    lists = List.objects.filter(list_owner=request.user).order_by('-create_date', "-id")
-    # Output isn't propably used.
-    # output = ', '.join([list.name for list in lists])
+    lists = List.objects.filter(list_owner=request.user).order_by(
+        '-create_date', "-id")
     context = {'lists': lists}
     return render(request, 'list.html', context)
 
@@ -101,7 +104,8 @@ def edit_list(request, slug):
             slugified = slugify(list)
             list_form.slug = slugified
             list_form.save()
-            messages.success(request, f"List {list} has been updated!", extra_tags='editlist')
+            messages.success(request, f"List {list} has been updated!",
+                             extra_tags='editlist')
             return redirect(reverse("lists"))
 
     context = {
@@ -116,7 +120,9 @@ def delete_list(request, slug):
     to_delete = get_object_or_404(List, slug=slug)
     print(f'Deleteing {to_delete} list')
     to_delete.delete()
-    messages.success(request, f"The list {to_delete} has been successfully deleted!", extra_tags='deletelist')
+    messages.success(request, f"The list {to_delete}"
+                     " has been successfully deleted!",
+                     extra_tags='deletelist')
     context = {'slug': slug}
     return redirect(reverse("lists"))
 
@@ -126,20 +132,22 @@ def clear_list(request, slug):
     lists_slug = get_object_or_404(List, slug=slug)
     items = Item.objects.filter(list_name=lists_slug).order_by('bought')
     if items.delete():
-        messages.success(request, "All Items have been successfully deleted from the list", extra_tags='clearlist')
+        messages.success(request, "All Items have been successfully deleted"
+                         " from the list", extra_tags='clearlist')
         return redirect(reverse('show_list_items', args=[lists_slug.slug]))
 
     context = {
-        'slug' : slug,
+        'slug': slug,
         'items': items
     }
     return render(request, 'show_list_items.html', context)
 
 
 def mark_as_bought(request, slug):
-# mark_as_bought method is nothing but items update method, where
-# we only update one element of the item, which is 'bought' variable.
-# The problem may be to call the mark_as_bought method.
+    """
+    mark_as_bought method is nothing but items update method, where
+    we only update one element of the item, which is 'bought' variable.
+    """
     item = get_object_or_404(Item, slug=slug)
     list = get_object_or_404(List, slug=item.list_name.slug)
 
@@ -156,7 +164,8 @@ def mark_as_bought(request, slug):
 
 @login_required
 def showItems(request):
-    items = Item.objects.filter(list_name__list_owner=request.user).order_by('-id')
+    items = Item.objects.filter(list_name__list_owner=request.user).order_by(
+        '-id')
     context = {'items': items}
     return render(request, 'items.html', context)
 
@@ -173,10 +182,13 @@ def add_item(request, slug):
                 item_form.instance.slug = slugify(name)
                 item_form.instance.list_name = list
                 item_form.save()
-                messages.success(request, f"{name} has been successfully added to the list!")
+                messages.success(request, f"{name} has been successfully"
+                                          " added to the list!")
                 return redirect(reverse("show_list_items", args=[list.slug]))
         except IntegrityError as e:
-            messages.error(request, f"Sorry! A problem occured. Please choose another name for this item.", extra_tags='invalid_slug')
+            messages.error(request, f"Sorry! A problem occured. Please choose"
+                           " another name for this item.", extra_tags='invalid'
+                           'slug')
 
     context = {
         "item_form": item_form,
@@ -188,13 +200,15 @@ def add_item(request, slug):
 @login_required
 def delete_list_item(request, slug):
     to_delete = get_object_or_404(Item, slug=slug)
-    print(f'Deleteing {to_delete} item')
+    print(f'Deleting {to_delete} item')
     if to_delete.delete():
-        messages.success(request, f"Item {to_delete} has been successfully deleted!", extra_tags='deleteitem')
-        return redirect(reverse('show_list_items', args=[to_delete.list_name.slug]))
+        messages.success(request, f"Item {to_delete} has been successfully"
+                         " deleted!", extra_tags='deleteitem')
+        return redirect(reverse('show_list_items',
+                        args=[to_delete.list_name.slug]))
     context = {'slug': slug}
     return render(request, 'delete_list_item.html', context)
-    
+
 
 @login_required
 def edit_list_item(request, slug):
@@ -205,9 +219,11 @@ def edit_list_item(request, slug):
     if request.method == "POST":
         if item_form.is_valid():
             item_form.save()
-            messages.success(request, f"edit_list_item Item has been successfully updated!", extra_tags='updateitem')
-            return redirect(reverse('show_list_items', args=[items_slug.list_name.slug]))
-
+            messages.success(request, f"edit_list_item Item has been"
+                             " successfully updated!",
+                             extra_tags='updateitem')
+            return redirect(reverse('show_list_items',
+                            args=[items_slug.list_name.slug]))
     context = {
         'slug': slug,
         "item_form": item_form,
