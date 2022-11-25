@@ -39,9 +39,9 @@ h5 {
 }
 .home-page-text {
   color: black;
-  font-weight: 500;
+  font-weight: 600;
   opacity: 2;
-  margin-top: 80px;
+  margin: 80px, 0, 20px, 0;
 }
 .home-page-text :hover{
   color: red;
@@ -117,11 +117,6 @@ nav :hover{
   font-size: 32px;
   font-weight: 800;
 }
-.urgent {
-  color: rgb(30, 0, 85);
-  font-size: 32px;
-  font-weight: 800;
-}
 
 
 /* Item Card (Collapsible) */
@@ -162,6 +157,16 @@ nav :hover{
   font-weight: 200;
 }
 
+.urgent-item {
+  color: rgb(77, 0, 0);
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.desctription-text {
+  color: rgb(0, 0, 0);
+}
+
 
 /* Modals */
 .modal{
@@ -183,7 +188,7 @@ nav :hover{
 
 /* Messages */
 .my-text {
-  color: red;
+  color: rgb(51, 0, 0);
 }
 
 

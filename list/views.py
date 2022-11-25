@@ -211,8 +211,8 @@ def delete_list_item(request, slug):
 
 
 @login_required
-def edit_list_item(request, slug):
-    items_slug = get_object_or_404(Item, slug=slug)
+def edit_list_item(request, id, slug):
+    items_slug = get_object_or_404(Item, id=id)
     print(f'Editing {items_slug} element')
     item_form = ItemForm(request.POST or None, instance=items_slug)
 
@@ -225,6 +225,7 @@ def edit_list_item(request, slug):
             return redirect(reverse('show_list_items',
                             args=[items_slug.list_name.slug]))
     context = {
+        "id": id,
         'slug': slug,
         "item_form": item_form,
     }

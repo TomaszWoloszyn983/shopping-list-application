@@ -6,8 +6,7 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 {% load material_form %}
 
-{% block content %}
-
+{% block css %}
 <style>
   form {
     background-color: rgba(255, 255, 255, 0.397);
@@ -18,7 +17,9 @@
     font-weight: 700;
   }
 </style>
+{% endblock %}
 
+{% block content %}
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}

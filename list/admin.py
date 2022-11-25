@@ -13,6 +13,6 @@ class ItemAdmin(SummernoteModelAdmin):
 
 @admin.register(List)
 class ListAdmin(SummernoteModelAdmin):
-    list_display = ('create_date','name', 'slug','list_owner')
+    list_display = ('create_date', 'name', 'slug', 'list_owner')
     prepopulated_fields = {'slug': ('name',)}
     summernote_fields = ('content')
