@@ -214,8 +214,8 @@ List class contains attributes such as: name and create_date, also it contains a
     class List(models.Model):
         list_owner = models.ForeignKey(User, on_delete=models.CASCADE)
         create_date = models.DateField(default=timezone.now)
-        name = models.CharField(blank=False, max_length=50, unique=True, default=("New List"))
-        slug = models.SlugField(blank=False, max_length=50, unique=True, default=("new_list"))
+        name = models.CharField(blank=False, max_length=30)
+        slug = models.SlugField(blank=False, max_length=30)
 ```
 List owner - the logged in user who the list belongs to.
 
@@ -248,17 +248,18 @@ Prize - allows the user to assign the prize of the item what in the future will 
 Description - Allow to add short description to each item.
 
 ```python
-    class ItemExtended(models.Model):
-        name = models.CharField(blank=False, max_length=50, unique=True, default="")
-        slug = models.SlugField(blank=False, max_length=50, unique=True, default="")
-        quantity = models.CharField(max_length=5, default='1')
+    class Item(models.Model):
+        name = models.CharField(blank=False, max_length=50)
+        slug = models.SlugField(blank=False, max_length=50)
+        quantity = models.CharField(max_length=7, default='1')
         bought = models.BooleanField(default=False)
-        list_name = models.ForeignKey(List, on_delete=models.CASCADE, related_name="item", default="None")
-
+        list_name = models.ForeignKey(
+            List, on_delete=models.CASCADE, related_name="items")
         favourite = models.BooleanField(default=False)
         urgent = models.BooleanField(default=False)
-        price = models.DecimalField(max_digits=6, decimal_places=2)
-        description = models.TextField(blank=True, null=True, default="No Description")
+        price = models.DecimalField(
+            max_digits=6, decimal_places=2, null=True, blank=True)
+        description = models.TextField(blank=True, null=True, default="")
 ```
 
 
@@ -348,7 +349,66 @@ Not found robots.txt show during tha Lighthouse inspection.
 
 ## **8. Deployment**
 
-### **Local Deployment**
+The live deployed application can be found on [Heroku](https://tw-shopping-list.herokuapp.com).
+
+### Heroku Deployment
+
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+Deployment steps are as follows, after account setup:
+
+- Select *New* in the top-right corner of your Heroku Dashboard, and select *Create new app* from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select *Create App*.
+- From the new app *Settings*, click *Reveal Config Vars*, and set the following key/value pairs:
+  - `CLOUDINARY_URL` (insert your own Cloudinary API key here)
+  - `DATABASE_URL` (this comes from the **Resources** tab, you can get your own Postgres Database using the Free Hobby Tier)
+  - `SECRET_KEY` (this can be any random secret key)
+  - `PORT` (8000)
+
+Heroku needs two additional files in order to deploy properly.
+- requirements.txt
+- Procfile
+
+You can install this project's requirements (where applicable) using: `pip3 install -r requirements.txt`.
+If you have your own packages that have been installed, then the requirements file needs updated using: `pip3 freeze --local > requirements.txt`
+
+The Procfile can be created with the following command: `echo web: gunicorn shoppinglist.wsgi > Procfile`
+
+For Heroku deployment, follow these steps to connect your GitHub repository to the newly created app:
+
+Either:
+- Select "Automatic Deployment" from the Heroku app.
+
+Or:
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a <app_name>` (replace app_name with your app, without the angle-brackets)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type: `git push heroku main`
+
+The frontend terminal should now be connected and deployed to Heroku.
+
+### Local Deployment
+
+*Gitpod* IDE was used to write the code for this project.
+
+You can clone the repository by following these steps:
+
+1. Go to the [GitHub repository](https://github.com/TomaszWoloszyn983/shopping-list-application) 
+2. Locate the Code button above the list of files and click it 
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+4. Open Git Bash or Terminal
+5. Change the current working directory to the one where you want the cloned directory
+6. In your IDE Terminal, type the following command to clone my repository:
+	- `git clone https://github.com/TomaszWoloszyn983/shopping-list-application.git`
+7. Press Enter to create your local clone.
+
+You can install this project's requirements (where applicable) using: `pip3 install -r requirements.txt`.
+
+You will need to create a new file called `env.py`, and include the same environment variables listed above for Heroku deployment steps.
+
+Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/TomaszWoloszyn983/shopping-list-application)
+
 
 ## **9. References and Credits:**
 

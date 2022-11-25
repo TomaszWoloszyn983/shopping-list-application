@@ -26,5 +26,3 @@ document.addEventListener('DOMContentLoaded', function() {
     outDUration:400
   });
 });
-
-
