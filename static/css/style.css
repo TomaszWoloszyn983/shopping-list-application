@@ -39,11 +39,12 @@ h5 {
 }
 .home-page-text {
   color: black;
+  font-size: 32px;
   font-weight: 600;
-  opacity: 2;
-  margin: 80px, 0, 20px, 0;
+  margin: auto;
+  /* margin: 80px, 0, 20px, 0; */
 }
-.home-page-text :hover{
+.home-page-text:hover{
   color: red;
   font-weight: 700;
 }

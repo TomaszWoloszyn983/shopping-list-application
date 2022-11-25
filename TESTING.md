@@ -26,11 +26,38 @@
 
 - **JAVASCRIPT**
    
-No test yet.
+    * No errors were detected when passing through the jshint validator.
+
+         ![js_validation](documentation/images/testing/jshint_script.jpg)
 
 - **PYTHON**
 
-No test yet.
+    * No error detected when passing the following file through the CI Python Linter:
+
+    - views.py:
+
+        ![python_validation](documentation/images/testing/linter_views.jpg)
+
+    - admin.py 
+
+        ![python_validation](documentation/images/testing/linter_admin.jpg)
+
+    - forms.py
+
+        ![python_validation](documentation/images/testing/linter_forms.jpg)
+
+    - models.py
+
+        ![python_validation](documentation/images/testing/linter_models.jpg)
+
+    - list/urls.py
+
+        ![python_validation](documentation/images/testing/linter_urls.jpg)
+
+    - shopping/urls.py
+
+        ![python_validation](documentation/images/testing/linter_shopping_url.jpg)
+
 
 ## **Browsers compatibility**
 

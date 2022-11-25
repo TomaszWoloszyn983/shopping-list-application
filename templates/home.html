@@ -5,12 +5,6 @@
   <h1 class="light-blue-text text-darken-4 center">Shopping List Application.</h1>
 </section>
 
-<!-- <p>Footer and Edit and Delete contrast issue</p>
-<p>Eliminate render-blocking resources</p>
-<p>Does not use passive listeners to improve scrolling performance</p>
-<p>Ensure text remains visible during webfont load</p>
-<p>I may need to handle server error.</p> -->
-
 <div class="row">
   {% if user.is_authenticated %}
   <h3 class="center">Choose one of the list below or click "Go To Your Lists" button to manage your lists.</h3>
@@ -30,7 +24,7 @@
     {% endfor %}
   {% else %}
   <div>
-    <a class="center home-page-text" href="{% url 'account_login' %}">Click to sign in.</a>
+    <a href="{% url 'account_login' %}" class="hoverable center home-page-text">Click to sign in.</a>
     <div class="home-page-image center"></div>
   </div>
   {% endif %}
