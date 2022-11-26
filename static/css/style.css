@@ -37,6 +37,11 @@ h5 {
   margin: auto;
   background-size: cover;
 }
+.home-page-image:hover {
+  color: rgb(0, 38, 141);
+  opacity: 0.8;
+}
+
 .home-page-text {
   color: black;
   font-size: 32px;
@@ -45,7 +50,6 @@ h5 {
   /* margin: 80px, 0, 20px, 0; */
 }
 .home-page-text:hover{
-  color: red;
   font-weight: 700;
 }
 

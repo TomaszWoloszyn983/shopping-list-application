@@ -10,9 +10,48 @@
 
 - **HTML**
 
-    * No errors were detected when passing through the [W3C validator](https://validator.w3.org/nu/).
+    No errors were detected when passing through the [W3C validator](https://validator.w3.org/nu/) for all of the templates used in this project.
 
-        ![html_validation](documentation/images/testing/nu_html_checker1.jpg).
+    - Home Page:
+
+        ![html_validation](documentation/images/testing/html_home.jpg).
+
+        ![html_validation](documentation/images/testing/html_home_login.jpg).
+
+    - Lists Page:
+
+        ![html_validation](documentation/images/testing/html_lists.jpg).
+
+    - Items Page:
+
+        ![html_validation](documentation/images/testing/html_items.jpg).
+
+    - Edit List Template:
+
+        ![html_validation](documentation/images/testing/html_edit_list.jpg).
+
+    - Edit Item Template:
+
+
+
+    - About Page:
+
+        ![html_validation](documentation/images/testing/html_about.jpg).
+
+    - Register Page:
+
+        ![html_validation](documentation/images/testing/html_register.jpg).
+
+    - Login Page:
+
+
+
+    - Logout Page:
+
+        ![html_validation](documentation/images/testing/html_logout.jpg).
+
+        
+
 
     * Link to the validation testing for my Html file:
     https://validator.w3.org/nu/?doc=https%3A%2F%2Ftw-shopping-list.herokuapp.com%2F
@@ -22,7 +61,6 @@
 
          ![css_validation](documentation/images/testing/w3c_css_checker1.jpg)
     
-   
 
 - **JAVASCRIPT**
    
@@ -32,7 +70,7 @@
 
 - **PYTHON**
 
-    * No error detected when passing the following file through the CI Python Linter:
+     No error detected when passing the following file through the CI Python Linter:
 
     - views.py:
 
