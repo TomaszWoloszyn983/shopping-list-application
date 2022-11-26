@@ -108,15 +108,6 @@
       <script src="{% static 'js/script.js' %}"></script>
       
       {% block js %}
-      <script>
-        // Messages Timeout function
-        let messages = document.getElementById("message");
-
-        setTimeout(function(){ 
-          messages.style.display = "none"; 
-          }, 3000
-        );
-      </script>
       {% endblock %}
 
 </body>

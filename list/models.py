@@ -14,8 +14,8 @@ class List(models.Model):
 
 
 class Item(models.Model):
-    name = models.CharField(blank=False, max_length=50)
-    slug = models.SlugField(blank=False, max_length=50)
+    name = models.CharField(blank=False, max_length=30)
+    slug = models.SlugField(blank=False, max_length=30)
     quantity = models.CharField(max_length=7, default='1')
     bought = models.BooleanField(default=False)
     list_name = models.ForeignKey(
@@ -24,7 +24,7 @@ class Item(models.Model):
     urgent = models.BooleanField(default=False)
     price = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
-    description = models.TextField(blank=True, null=True, default="")
+    description = models.TextField(blank=True, null=True, max_length=30, default="")
 
     class Meta:
         ordering = ['-bought']

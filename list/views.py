@@ -23,7 +23,7 @@ def show_list_items(request, slug):
     # lists = List.objects.order_by('-create_date')
     items = Item.objects.filter(list_name=lists_slug).order_by('-id')
     bought_items = items.filter(bought=True)
-    items_to_buy = items.filter(bought=False)
+    items_to_buy = items.filter(bought=False).order_by('-urgent')
     context = {
         'list': lists_slug,
         'slug': slug,

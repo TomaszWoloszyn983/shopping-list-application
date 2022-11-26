@@ -32,22 +32,20 @@ h5 {
 .home-page-image {
   background-image: url("https://res.cloudinary.com/tomaszwoloszyn983/image/upload/v1668604639/static/images/shopping-list.jpg");
   opacity: 0.5;
-  /* width: 700px; */
   height: 500px;
   margin: auto;
   background-size: cover;
 }
 .home-page-image:hover {
   color: rgb(0, 38, 141);
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .home-page-text {
   color: black;
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 500;
   margin: auto;
-  /* margin: 80px, 0, 20px, 0; */
 }
 .home-page-text:hover{
   font-weight: 700;
@@ -62,7 +60,7 @@ p {
 }
 
 
-/* Mavbars settings */
+/* Navbars settings */
 nav {
   color: #fff;
   background-color: #689f388a;

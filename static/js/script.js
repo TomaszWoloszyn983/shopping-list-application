@@ -26,3 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
     outDUration:400
   });
 });
+
+// Messages Timeout function
+let messages = document.getElementById("message");
+try{
+  setTimeout(function(){ 
+    messages.style.display = "none"; 
+  }, 3000)
+} catch (error) {
+  console.error(error);
+};

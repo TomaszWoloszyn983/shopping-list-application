@@ -15,7 +15,7 @@
             <div class="collapsible-header brand-logo item-name ">
                 {% if item.urgent %}
                     <span class="card-title ">{{forloop.counter}}. 
-                        <i class="material-icons urgent-item" style="font-size: 2rem;">star_border</i> 
+                        <!-- <i class="material-icons urgent-item" style="font-size: 2rem;">star_border</i>  -->
                         {{ item.name }}: {{ item.quantity }}</span>
                 {% else %}
                     <span class="card-title urgent">{{forloop.counter}}.{{ item.name }}: {{ item.quantity }}</span>
@@ -31,7 +31,7 @@
                 <span>
                     <a href="{% url 'edit_list_item' item.id item.slug %}" class="btn blue">Edit Item</a>
                     <a href="delete_{{item.id}}" class="waves-effect waves-light btn red modal-trigger" data-target="delete_{{item.id}}">Delete Item</a>
-                    <a class="desctription-text"> {{ item.description }} </a>
+                    <a href="#" class="desctription-text"> {{ item.description }} </a>
                 </span>
             </div>
         </li>
