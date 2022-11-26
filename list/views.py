@@ -219,7 +219,7 @@ def edit_list_item(request, id, slug):
     if request.method == "POST":
         if item_form.is_valid():
             item_form.save()
-            messages.success(request, f"edit_list_item Item has been"
+            messages.success(request, f"{items_slug.name} Item has been"
                              " successfully updated!",
                              extra_tags='updateitem')
             return redirect(reverse('show_list_items',

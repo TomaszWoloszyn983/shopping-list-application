@@ -25,7 +25,6 @@ It also allows the user to register his own account what gives him an access to 
 4. [Future Features](#4-future-features)
 5. [Technologies Used](#5-technologies-used)
 6. [Testing](#6-testing)
-7. [Bugs and Error](#7-bugs-and-errors)
 7. [Deployment](#8-deployment)
 8. [References and Credits](#9-references-and-credits)
 
@@ -290,63 +289,6 @@ Description - Allow to add short description to each item.
 
 The applications code was tested using Pep8 code validator: http://pep8online.com/. More details about tesings are available in the dedicated testing section testing.md [here](TESTING.md).
 
-## **7. Bugs and Errors**
-
-A number of bugs and error occured during the developement 
-
-### **Checkbox issue**
-
-A problem occured when I tried to display forms using Materialize templates. 
-The template did not display checkboxes correctly in all of my forms.
-
-![Checkbox issue](documentation/images/bugs_and_errors/issue_no_checkboxes.jpg)
-
-The solution turned out to be instaling Material and displaying the forms as Material forms:
-{% form form=form %}{% endform %}
-
-You can find more detail about how to fix this bug here: https://stackoverflow.com/questions/54500348/django-checkbox-not-showing-up-in-html
-
-![Checkbox issue fixed](documentation/images/bugs_and_errors/issue_no_checkboxes_fixed.jpg)
-
-### **Integrity Error**
-
-A problem occured during updating items and lists.
-Edit Items function doesn't update the elements slug.
-So if you update items name from item1 to item2, the items slug will still be item1.
-If you try to add a new item named item1 it will cause Integrity Error beacuse of duplicating slugs.
-
-![integrity error](documentation/images/bugs_and_errors/integrity_error1.jpg)
-
-I've temporarily solved the problem with handling the error with try/catch statement. 
-It would be useful to add slugs update functionality to Edit Items and Edit Lists functions.
-
-```python
-try:
-    if item_form.is_valid():
-        item_form.instance.slug = slugify(request.POST.get("name"))
-        item_form.instance.list_name = list
-        item_form.save()
-        return redirect(reverse("show_list_items", args=[list.slug]))
-    except IntegrityError as e:
-        messages.error(request, f"Sorry! A problem occured. Please choose another name for this item.")
-```
-
-![integrity error](documentation/images/bugs_and_errors/integrity_error2.jpg)
-
-### Not Found Favicon.ico
-
-![Not Found Favicon](documentation/images/bugs_and_errors/favicon_not_fount.jpg)
-
-Not found favicon.ico status 404 shows during the start of the application.
-Have solved this problem following the instruction I found in Stack Overflow:
-https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error
-
-### Not Found Robots.txt
-
-![Not Found Robots](documentation/images/bugs_and_errors/robots_txt_not_found.jpg)
-
-Not found robots.txt show during tha Lighthouse inspection.
-
 ## **8. Deployment**
 
 The live deployed application can be found on [Heroku](https://tw-shopping-list.herokuapp.com).
@@ -432,3 +374,5 @@ Alternatively, if using Gitpod, you can click below to create your own workspace
 - Sidebar background image: https://creator.nightcafe.studio/u/575RyajOr4V9EM3umpmEZLfLS2w1
 
 ## **10. Credits:**
+
+I would like to especially thank to my mentor Tim Nelson from Code Institute for his great support, to my cohort facilitator - Kasia and the whole Code Institute Team.

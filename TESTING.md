@@ -8,47 +8,55 @@
 
 ## **Code Validator Testing**
 
-- **HTML**
+- ### **HTML**
 
-    No errors were detected when passing through the [W3C validator](https://validator.w3.org/nu/) for all of the templates used in this project.
+    No errors were detected when passing through the [W3C validator](https://validator.w3.org/nu/) for the most of templates used in the project.
+
+    Except of *login.html* template and *edit_item* template. Both templates are using material_forms implemented form django_material. This generates: Attribute for not allowed on element span at this point Error. 
+
+    - Edit Item Page:
+
+        ![html_validation](documentation/images/testing/html_edit_item_error.jpg)
+
+        ![html_validation](documentation/images/testing/html_edit_item_error2.jpg)
+
+    - Edit Item Page:
+
+        ![html_validation](documentation/images/testing/html_login_error.jpg)
+
+        ![html_validation](documentation/images/testing/html_login_error2.jpg)
+
+    The rest of the html Templates are error free.
 
     - Home Page:
 
-        ![html_validation](documentation/images/testing/html_home.jpg).
+        ![html_validation](documentation/images/testing/html_home.jpg)
 
-        ![html_validation](documentation/images/testing/html_home_login.jpg).
+        ![html_validation](documentation/images/testing/html_home_login.jpg)
 
     - Lists Page:
 
-        ![html_validation](documentation/images/testing/html_lists.jpg).
+        ![html_validation](documentation/images/testing/html_lists.jpg)
 
     - Items Page:
 
-        ![html_validation](documentation/images/testing/html_items.jpg).
+        ![html_validation](documentation/images/testing/html_items.jpg)
 
     - Edit List Template:
 
-        ![html_validation](documentation/images/testing/html_edit_list.jpg).
-
-    - Edit Item Template:
-
-
+        ![html_validation](documentation/images/testing/html_edit_list.jpg)
 
     - About Page:
 
-        ![html_validation](documentation/images/testing/html_about.jpg).
+        ![html_validation](documentation/images/testing/html_about.jpg)
 
     - Register Page:
 
-        ![html_validation](documentation/images/testing/html_register.jpg).
-
-    - Login Page:
-
-
+        ![html_validation](documentation/images/testing/html_register.jpg)
 
     - Logout Page:
 
-        ![html_validation](documentation/images/testing/html_logout.jpg).
+        ![html_validation](documentation/images/testing/html_logout.jpg)
 
         
 
@@ -56,19 +64,19 @@
     * Link to the validation testing for my Html file:
     https://validator.w3.org/nu/?doc=https%3A%2F%2Ftw-shopping-list.herokuapp.com%2F
 
-- **CSS**
+- ### **CSS**
     * No errors were detected when passing through the [jigsaw.w3 validator](https://jigsaw.w3.org/css-validator). 
 
          ![css_validation](documentation/images/testing/w3c_css_checker1.jpg)
     
 
-- **JAVASCRIPT**
+- ### **JAVASCRIPT**
    
     * No errors were detected when passing through the jshint validator.
 
          ![js_validation](documentation/images/testing/jshint_script.jpg)
 
-- **PYTHON**
+- ### **PYTHON**
 
      No error detected when passing the following file through the CI Python Linter:
 
@@ -364,6 +372,70 @@ Bought items can be moved back to the items to buy list when clicked again.
  ![Add Item](documentation/images/testing/mark3.jpg)
 
 
+## **7. Bugs and Errors**
+
+A number of bugs and error occured during the developement 
+
+### **Checkbox issue**
+
+A problem occured when I tried to display forms using Materialize templates. 
+The template did not display checkboxes correctly in all of my forms.
+
+![Checkbox issue](documentation/images/bugs_and_errors/issue_no_checkboxes.jpg)
+
+The solution turned out to be instaling Material and displaying the forms as Material forms:
+{% form form=form %}{% endform %}
+
+You can find more detail about how to fix this bug here: https://stackoverflow.com/questions/54500348/django-checkbox-not-showing-up-in-html
+
+![Checkbox issue fixed](documentation/images/bugs_and_errors/issue_no_checkboxes_fixed.jpg)
+
+### **Integrity Error**
+
+A problem occured during updating items and lists.
+Edit Items function doesn't update the elements slug.
+So if you update items name from item1 to item2, the items slug will still be item1.
+If you try to add a new item named item1 it will cause Integrity Error beacuse of duplicating slugs.
+
+![integrity error](documentation/images/bugs_and_errors/integrity_error1.jpg)
+
+I've temporarily solved the problem with handling the error with try/catch statement. 
+It would be useful to add slugs update functionality to Edit Items and Edit Lists functions.
+
+```python
+try:
+    if item_form.is_valid():
+        item_form.instance.slug = slugify(request.POST.get("name"))
+        item_form.instance.list_name = list
+        item_form.save()
+        return redirect(reverse("show_list_items", args=[list.slug]))
+    except IntegrityError as e:
+        messages.error(request, f"Sorry! A problem occured. Please choose another name for this item.")
+```
+
+![integrity error](documentation/images/bugs_and_errors/integrity_error2.jpg)
+
+
+
 ## **Unfixed Bugs**
-* The only unfixed bug is possibility of dublicating slugs. Full description of the bug [here](README.md#7-bugs-and-errors).
-* There are no other bugs that I am aware of.
+
+### Attribute for not allowed on element span at this point Error
+
+An error that comes from material_form which is implemented from django-material package.
+More detail about this error in the Html validation testing section 
+[Here](#code-validator-testing)
+
+### Not Found Favicon.ico
+
+![Not Found Favicon](documentation/images/bugs_and_errors/favicon_not_fount.jpg)
+
+Not found favicon.ico status 404 shows during the start of the application.
+Have solved this problem following the instruction I found in Stack Overflow:
+https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error
+
+### Not Found Robots.txt
+
+![Not Found Robots](documentation/images/bugs_and_errors/robots_txt_not_found.jpg)
+
+Not found robots.txt show during tha Lighthouse inspection.
+

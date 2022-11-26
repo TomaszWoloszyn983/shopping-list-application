@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Header -->
 <section>
   <h1 class="light-blue-text text-darken-4 center">Shopping List Application.</h1>
 </section>
 
+<!-- Page content -->
 <div class="row">
   {% if user.is_authenticated %}
   <h3 class="center">Choose one of the list below or click "Go To Your Lists" button to manage your lists.</h3>
@@ -30,6 +32,7 @@
   {% endif %}
 </div>
 
+<!-- Go to the list section button -->
 {% if user.is_authenticated %}
 <div class="row">
   <div class="col s12 center-align">
