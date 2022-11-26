@@ -109,16 +109,15 @@
       
       {% block js %}
       <script>
-        let message_ele = document.getElementById("message");
+        // Messages Timeout function
+        let messages = document.getElementById("message");
 
         setTimeout(function(){ 
-          message_ele.style.display = "none"; 
+          messages.style.display = "none"; 
           }, 3000
         );
-    </script>
+      </script>
       {% endblock %}
-
-
 
 </body>
 </html>
