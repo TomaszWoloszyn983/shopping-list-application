@@ -143,12 +143,12 @@ def clear_list(request, slug):
     return render(request, 'show_list_items.html', context)
 
 
-def mark_as_bought(request, slug):
+def mark_as_bought(request, id, slug):
     """
     mark_as_bought method is nothing but items update method, where
     we only update one element of the item, which is 'bought' variable.
     """
-    item = get_object_or_404(Item, slug=slug)
+    item = get_object_or_404(Item, id=id)
     list = get_object_or_404(List, slug=item.list_name.slug)
 
     if item.bought:
@@ -198,15 +198,18 @@ def add_item(request, slug):
 
 
 @login_required
-def delete_list_item(request, slug):
-    to_delete = get_object_or_404(Item, slug=slug)
+def delete_list_item(request, id, slug):
+    to_delete = get_object_or_404(Item, id=id)
     print(f'Deleting {to_delete} item')
     if to_delete.delete():
         messages.success(request, f"Item {to_delete} has been successfully"
                          " deleted!", extra_tags='deleteitem')
         return redirect(reverse('show_list_items',
                         args=[to_delete.list_name.slug]))
-    context = {'slug': slug}
+    context = {
+        'id': id,
+        'slug': slug
+        }
     return render(request, 'delete_list_item.html', context)
 
 

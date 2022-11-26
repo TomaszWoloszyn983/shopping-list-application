@@ -20,9 +20,9 @@ urlpatterns = [
         'edit_list_item/<int:id>/<slug:slug>/',
         views.edit_list_item, name='edit_list_item'),
     path(
-        'delete_list_item/<slug:slug>/',
+        'delete_list_item/<int:id>/<slug:slug>/',
         views.delete_list_item, name='delete_list_item'),
     path(
-        'mark_as_bought/<slug:slug>/',
+        'mark_as_bought/<int:id>/<slug:slug>/',
         views.mark_as_bought, name='mark_as_bought'),
 ]

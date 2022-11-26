@@ -386,7 +386,7 @@ The template did not display checkboxes correctly in all of my forms.
 The solution turned out to be instaling Material and displaying the forms as Material forms:
 {% form form=form %}{% endform %}
 
-You can find more detail about how to fix this bug here: https://stackoverflow.com/questions/54500348/django-checkbox-not-showing-up-in-html
+For more detail about how to fix this bug click here: https://stackoverflow.com/questions/54500348/django-checkbox-not-showing-up-in-html
 
 ![Checkbox issue fixed](documentation/images/bugs_and_errors/issue_no_checkboxes_fixed.jpg)
 
