@@ -29,10 +29,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Messages Timeout function
 let messages = document.getElementById("message");
-try{
+if (messages == null){
+  console.log("No message displayed")
+}else {
   setTimeout(function(){ 
-    messages.style.display = "none"; 
-  }, 3000)
-} catch (error) {
-  console.error(error);
+        messages.style.display = "none"; 
+      }, 3000)
 };
+// try{
+//   setTimeout(function(){ 
+//     messages.style.display = "none"; 
+//   }, 3000)
+// } catch (error) {
+//   console.log("Display "+(error));
+// };

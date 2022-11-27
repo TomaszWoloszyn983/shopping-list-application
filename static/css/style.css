@@ -121,8 +121,8 @@ nav :hover{
   color: rgb(0, 38, 141);
   font-size: 32px;
   font-weight: 800;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  /* text-overflow: ellipsis;
+  overflow: hidden; */
 }
 
 
@@ -171,14 +171,6 @@ nav :hover{
   font-size: 32px;
   font-weight: 800;
 }
-
-/* .desctription-text {
-  font-size: medium;
-  font-weight: lighter;
-  color: rgb(56, 73, 146);
-  text-overflow: ellipsis;
-  overflow: hidden;
-} */
 
 
 /* Modals */

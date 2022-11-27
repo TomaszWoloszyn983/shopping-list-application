@@ -415,7 +415,28 @@ try:
 
 ![integrity error](documentation/images/bugs_and_errors/integrity_error2.jpg)
 
+### **Cannot read properties of null (reading 'style')**
 
+An error that occured in the browsers console. The source of the error was timeout messages function defined in the static/js file.
+
+![integrity error](documentation/images/bugs_and_errors/type_error_style_null.jpg)
+
+The function makes the django.contrib.messages disappear after 3 seconds from the window view.
+But in case were there was no message a null value was passed as the argument of the function and the error was returned. 
+
+I fixed the error using if/else statement and I handled the case when a null value was passed as the argument.
+
+```js
+let messages = document.getElementById("message");
+
+if (messages == null){
+    console.log("No message displayed")
+}else {
+    setTimeout(function(){ 
+    messages.style.display = "none"; 
+    }, 3000)
+};
+```
 
 ## **Unfixed Bugs**
 
