@@ -109,8 +109,6 @@ nav :hover{
 .card {
   background-color: rgba(252, 87, 87, 0.3);
   color: #00345c;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .card p {
