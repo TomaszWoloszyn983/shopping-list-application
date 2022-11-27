@@ -12,15 +12,17 @@ from .forms import ListForm, ItemForm
 
 @login_required
 def show_list_items(request, slug):
-    # Get requested elements slug
-    # Get list of items filterd by mathing to the slug
-    # Pass the list of items to the template
+    '''
+    Get requested elements slug
+    Get list of items filterd by mathing to the slug
+    Pass the list of items to the template
+    '''
     user = get_object_or_404(User, username=request.user)
     lists_slug = get_object_or_404(List, slug=slug)
     if lists_slug.list_owner != user:
-        messages.error(request, "access denied.")
+        messages.error(request, "Access denied!")
         return redirect(reverse("home"))
-    # lists = List.objects.order_by('-create_date')
+
     items = Item.objects.filter(list_name=lists_slug).order_by('-id')
     bought_items = items.filter(bought=True)
     items_to_buy = items.filter(bought=False).order_by('-urgent')
@@ -53,7 +55,6 @@ def about(request):
 def add_list(request):
 
     list_form = ListForm(request.POST or None)
-    # check if user is used
     user = User.objects.get(id=request.user.id)
     if request.method == "POST":
         try:
@@ -94,7 +95,6 @@ def show_lists(request):
 @login_required
 def edit_list(request, slug):
     lists_slug = get_object_or_404(List, slug=slug)
-    print(f'Editing {lists_slug} element')
     list_form = ListForm(request.POST or None, instance=lists_slug)
 
     if request.method == "POST":
@@ -118,7 +118,6 @@ def edit_list(request, slug):
 @login_required
 def delete_list(request, slug):
     to_delete = get_object_or_404(List, slug=slug)
-    print(f'Deleteing {to_delete} list')
     to_delete.delete()
     messages.success(request, f"The list {to_delete}"
                      " has been successfully deleted!",
@@ -153,11 +152,9 @@ def mark_as_bought(request, id, slug):
 
     if item.bought:
         item.bought = False
-        print(f'Update {item} to False')
         item.save()
     else:
         item.bought = True
-        print(f'Update {item} to True')
         item.save()
     return redirect(reverse('show_list_items', args=[list.slug]))
 
@@ -166,7 +163,9 @@ def mark_as_bought(request, id, slug):
 def showItems(request):
     items = Item.objects.filter(list_name__list_owner=request.user).order_by(
         '-id')
-    context = {'items': items}
+    context = {
+        'items': items
+    }
     return render(request, 'items.html', context)
 
 
@@ -200,7 +199,6 @@ def add_item(request, slug):
 @login_required
 def delete_list_item(request, id, slug):
     to_delete = get_object_or_404(Item, id=id)
-    print(f'Deleting {to_delete} item')
     if to_delete.delete():
         messages.success(request, f"Item {to_delete} has been successfully"
                          " deleted!", extra_tags='deleteitem')
@@ -216,7 +214,6 @@ def delete_list_item(request, id, slug):
 @login_required
 def edit_list_item(request, id, slug):
     items_slug = get_object_or_404(Item, id=id)
-    print(f'Editing {items_slug} element')
     item_form = ItemForm(request.POST or None, instance=items_slug)
 
     if request.method == "POST":

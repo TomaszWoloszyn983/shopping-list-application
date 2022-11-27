@@ -240,7 +240,7 @@ bought variable is a boolean value set by the user with the "Mark as bought" tog
 
 Favourite - allows to mark the item as favourite.
 
-Urgent - allows to mark the items as Urgent. ?????????????????????????????????
+Urgent - items marked as urgent are going to be displayed always on the top of the list, so they can be better exposed.
 
 Prize - allows the user to assign the prize of the item what in the future will allow to calculate the extimated value all the items on the list.
 
@@ -287,7 +287,14 @@ Description - Allow to add short description to each item.
 
 ## **6. Testing**
 
-The applications code was tested using Pep8 code validator: http://pep8online.com/. More details about tesings are available in the dedicated testing section testing.md [here](TESTING.md).
+The Application is fully responsiveness and the applications code was tested using:
+* Nu Html Checker for html code.
+* W3C CSS Validator form css code.
+* Jshint for Java Script code.
+* CI Python Linter for Python code.
+
+There were no issues detected by most of the test, although there where some errors implemented from add-ons
+More details about tesings and unfixed issues are available in the dedicated testing section testing.md [here](TESTING.md).
 
 ## **8. Deployment**
 
