@@ -417,9 +417,12 @@ try:
 
 ### **Cannot read properties of null (reading 'style')**
 
-An error that occured in the browsers console. The source of the error was timeout messages function defined in the static/js file.
+An error that occured in the browsers console. 
 
 ![integrity error](documentation/images/bugs_and_errors/type_error_style_null.jpg)
+
+
+The source of the error was timeout messages function defined in the static/js file.
 
 The function makes the django.contrib.messages disappear after 3 seconds from the window view.
 But in case were there was no message a null value was passed as the argument of the function and the error was returned. 

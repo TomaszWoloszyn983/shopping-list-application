@@ -12,13 +12,15 @@
     {% for item in items_to_buy %}
     <ul class="collapsible card hoverable">
         <li class="flow-text">
-            <div class="collapsible-header brand-logo item-name ">
+            <div class="collapsible-header brand-logo item-name">
                 {% if item.urgent %}
-                    <span class="card-title ">
-                        {{forloop.counter}}. {{ item.name }}: {{ item.quantity }}
+                    <span id="urgent-item">
+                        {{forloop.counter}}. {{ item.name }}: {{ item.quantity }}  - Urgent!
                     </span>
                 {% else %}
-                    <span class="card-title urgent">{{forloop.counter}}.{{ item.name }}: {{ item.quantity }}</span>
+                    <span id="item-card-title">
+                        {{forloop.counter}}.{{ item.name }}: {{ item.quantity }}
+                    </span>
                 {% endif %}
             </div>
             <div class="card right-align">
@@ -64,7 +66,7 @@
 
     <!-- Displays the list of items that are marked as bought-->
     {% for item in bought_items %}
-    <ul class="collapsible hoverable  card">
+    <ul class="collapsible hoverable card">
         <li>
             <div class="collapsible-header brand-logo item-name">
                 <span class="card-title">{{ item.name }}: {{ item.quantity }}</span>

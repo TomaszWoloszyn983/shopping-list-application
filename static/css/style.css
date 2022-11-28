@@ -113,7 +113,10 @@ nav :hover{
 
 .card p {
   color: rgb(0, 38, 141);
+  font-size: 18px;
   font-weight: 400;
+  margin: 0;
+  padding: 5px 0 0 0;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -121,8 +124,14 @@ nav :hover{
   color: rgb(0, 38, 141);
   font-size: 32px;
   font-weight: 800;
-  /* text-overflow: ellipsis;
-  overflow: hidden; */
+}
+#item-card-title {
+  font-size: 24px;
+  font-weight: 400;
+}
+#urgent-item {
+  font-size: 24px;
+  font-weight: 500;
 }
 
 
@@ -141,13 +150,12 @@ nav :hover{
 }
 .collapsible-body {
   background-color: rgba(252, 87, 87, 0.5);
-  padding: 10px 15px;
+  padding: 2px 15px;
   text-align: center;
-  margin: auto;
+  margin: 0;
 }
-.collapsible-body :active{
-  background-color: rgba(252, 87, 87, 0.8);
-}
+
+
 .item-name {
   background-color: rgba(252, 87, 87, 0.0);
 }
@@ -164,12 +172,6 @@ nav :hover{
   line-height: 0;
   font-size: 32px;
   font-weight: 200;
-}
-
-.urgent-item {
-  color: rgb(77, 0, 0);
-  font-size: 32px;
-  font-weight: 800;
 }
 
 
@@ -192,7 +194,15 @@ nav :hover{
 
 
 /* Messages */
+.message-container {
+  min-height: 50px;
+}
+.message, .empty-message{
+  height: 35px;
+}
+
 .my-text {
+  font-size: medium;
   color: rgb(51, 0, 0);
 }
 

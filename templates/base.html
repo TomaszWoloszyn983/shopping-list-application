@@ -51,14 +51,6 @@
         </nav>
       </div>
       
-      <!-- Messages -->
-      {% for message in messages %}
-      <div id="message">
-        <p class="messages alert center-align my-text">  {{message}} </p> 
-        <a href="#" class="del-msg">&times;</a>
-      </div>
-      {% endfor %}
-
       <!-- mobile sidebar -->
       <ul class="sidenav my-sidenav" id="mobile-demo">
         <li>
@@ -71,26 +63,36 @@
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'lists' %}">Lists</a></li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+          <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
         </li>
         {% else %}
         <li><a href="{% url 'home' %}">Home</a></li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+          <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+          <a class="nav-link" href="{% url 'account_login' %}">Login</a>
         </li>
         {% endif %}
         <li><a href="{% url 'about' %}">About</a></li>
       </ul>
     </header>
+    
+    <!-- Messages -->
+    <div class="message-container">
+    {% for message in messages %}
+      <div id="message">
+        <p class="messages alert center-align my-text"> {{message}} </p> 
+        <a href="#" class="del-msg">&times;</a>
+      </div>
+    {% endfor %}
+    </div>
 
 <!-- The pages main content -->
     <main class="container">
       
-      {% block content %}
-      {% endblock %}
+    {% block content %}
+    {% endblock %}
 
     </main>
 

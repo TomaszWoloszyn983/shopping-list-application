@@ -287,9 +287,9 @@ Description - Allow to add short description to each item.
 
 ## **6. Testing**
 
-The Application is fully responsiveness and the applications code was tested using:
+The Application is fully responsive and the applications code was tested using:
 * Nu Html Checker for html code.
-* W3C CSS Validator form css code.
+* W3C CSS Validator for css code.
 * Jshint for Java Script code.
 * CI Python Linter for Python code.
 
