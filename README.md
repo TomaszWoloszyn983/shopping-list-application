@@ -206,6 +206,7 @@ Login Page allows the user to login to his account what will give him access to 
 
 ## **About Page** 
 
+Contains information about the application, contact information and copyrights.
 
 ## **List Class:**
 List class contains attributes such as: name and create_date, also it contains a variable of type slug.
@@ -268,7 +269,7 @@ Description - Allow to add short description to each item.
 - Delete account function.
 - Function that allows to calculate the value of all items on the shopping list based on it prices.
 - Adding profile photos to the side navigation bar.
-- Style the side navbar, add 
+- Style the side navbar, add users profile photo function. 
 
 
 ## **5. Technologies used:**
@@ -293,7 +294,7 @@ The Application is fully responsive and the applications code was tested using:
 * Jshint for Java Script code.
 * CI Python Linter for Python code.
 
-There were no issues detected by most of the test, although there where some errors implemented from add-ons
+There were no issues detected by most of the test, although there where some errors implemented with add-ons.
 More details about tesings and unfixed issues are available in the dedicated testing section testing.md [here](TESTING.md).
 
 ## **8. Deployment**

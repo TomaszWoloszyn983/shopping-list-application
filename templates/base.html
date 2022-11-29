@@ -82,7 +82,7 @@
     <div class="message-container">
     {% for message in messages %}
       <div id="message">
-        <p class="messages alert center-align my-text"> {{message}} </p> 
+        <p class="messages alert center-align message-text"> {{message}} </p> 
         <a href="#" class="del-msg">&times;</a>
       </div>
     {% endfor %}
@@ -108,6 +108,21 @@
     
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="{% static 'js/script.js' %}"></script>
+      <script>
+        // convert Item name to slug-format on front-end
+        /* jshint esversion: 11 */
+        let itemName = document.getElementById("id_name");
+        console.log("Catch item name: "+itemName)
+        let slug = document.getElementById("id_slug");
+        itemName?.addEventListener("keyup", convertToSlug);
+        slug?.addEventListener("keyup", convertToSlug);
+      
+        function convertToSlug() {
+          slug.value = itemName.value.toLowerCase()
+                     .replace(/ /g, '-')
+                     .replace(/[^\w-]+/g, '');
+        }
+      </script>
       
       {% block js %}
       {% endblock %}

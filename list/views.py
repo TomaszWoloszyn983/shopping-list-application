@@ -13,9 +13,8 @@ from .forms import ListForm, ItemForm
 @login_required
 def show_list_items(request, slug):
     '''
-    Get requested elements slug
-    Get list of items filterd by mathing to the slug
-    Pass the list of items to the template
+    The function displayes the list of items that 
+    belong to the list with a slug passed as the argument.
     '''
     user = get_object_or_404(User, username=request.user)
     lists_slug = get_object_or_404(List, slug=slug)
@@ -37,6 +36,9 @@ def show_list_items(request, slug):
 
 
 def home(request):
+    '''
+    Displays the Home Page
+    '''
     if request.user.is_authenticated:
         lists = List.objects.filter(list_owner=request.user).order_by("-id")
         context = {
@@ -48,12 +50,18 @@ def home(request):
 
 
 def about(request):
+    '''
+    Displays the About Page
+    '''
     return render(request, 'about.html')
 
 
 @login_required
 def add_list(request):
-
+    '''
+    Creates a new Lists and passes the list to the template
+    and the database.
+    '''
     list_form = ListForm(request.POST or None)
     user = User.objects.get(id=request.user.id)
     if request.method == "POST":
@@ -75,7 +83,6 @@ def add_list(request):
                            f"Pleasechoose another name for this list.",
                            extra_tags='invalid_name')
 
-    # Redirecting to the page that displays all lists.
     lists = List.objects.order_by('-create_date')
     context = {
         'lists': lists,
@@ -86,6 +93,9 @@ def add_list(request):
 
 @login_required
 def show_lists(request):
+    '''
+    Displays all list created by a logged in user.
+    '''
     lists = List.objects.filter(list_owner=request.user).order_by(
         '-create_date', "-id")
     context = {'lists': lists}

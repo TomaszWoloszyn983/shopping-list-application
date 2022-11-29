@@ -121,17 +121,19 @@ nav :hover{
   overflow: hidden;
 }
 .card span {
-  color: rgb(0, 38, 141);
-  font-size: 32px;
-  font-weight: 800;
-}
-#item-card-title {
-  font-size: 24px;
-  font-weight: 400;
-}
-#urgent-item {
+  color: #5f0000;
   font-size: 24px;
   font-weight: 500;
+}
+/* #item-card-title {
+  color: #5f0000;
+  font-size: 24px;
+  font-weight: 400;
+} */
+#urgent-item {
+  /* color: #5f0000;
+  font-size: 24px; */
+  font-weight: 600;
 }
 
 
@@ -149,8 +151,9 @@ nav :hover{
   margin-right: 70px;
 }
 .collapsible-body {
+  display: none;
   background-color: rgba(252, 87, 87, 0.5);
-  padding: 2px 15px;
+  padding: 5px 15px;
   text-align: center;
   margin: 0;
 }
@@ -195,14 +198,14 @@ nav :hover{
 
 /* Messages */
 .message-container {
+  padding: 10px;
   min-height: 50px;
 }
-.message, .empty-message{
-  height: 35px;
+#message {
+  height: 50px;
 }
-
-.my-text {
-  font-size: medium;
+.message-text {
+  font-size: 23px;
   color: rgb(51, 0, 0);
 }
 

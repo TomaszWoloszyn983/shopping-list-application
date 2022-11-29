@@ -31,7 +31,9 @@
 {% endblock %}
 
 {% block js %}
-<script>
+<!-- <script>
+  // Add item template
+  /* jshint esversion: 11 */
   let itemName = document.getElementById("id_name");
   let slug = document.getElementById("id_slug");
   itemName?.addEventListener("keyup", convertToSlug);
@@ -42,5 +44,5 @@
                .replace(/ /g, '-')
                .replace(/[^\w-]+/g, '');
   }
-</script>
+</script> -->
 {% endblock %}
