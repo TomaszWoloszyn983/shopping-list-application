@@ -14,7 +14,7 @@
     <div class="col s12 m12">
       <div class="card hoverable accent-3 darken-1">
         <div class="card-content">
-          <a href="{% url 'show_list_items' list.slug %}">
+          <a href="{% url 'show_list_items' list.id list.slug %}">
             <span class="card-title">{{ list.name }}</span>
             <p>Created on {{ list.create_date }}</p>
           </a>

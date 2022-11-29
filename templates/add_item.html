@@ -11,7 +11,7 @@
   {% endif %}
   {% endfor %}
   
-  <form class="col s12" method="POST" action="{% url 'add_item' slug %}">
+  <form class="col s12" method="POST" action="{% url 'add_item' id slug %}">
     {% csrf_token %}
     <div class="row">
       <div class="input-field col s6 center-align">

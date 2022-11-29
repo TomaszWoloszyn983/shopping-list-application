@@ -208,6 +208,8 @@ Login Page allows the user to login to his account what will give him access to 
 
 Contains information about the application, contact information and copyrights.
 
+![About Page](documentation/images/components/about_page.jpg)
+
 ## **List Class:**
 List class contains attributes such as: name and create_date, also it contains a variable of type slug.
 ```python
@@ -227,7 +229,7 @@ Slug variable is generated automatically based on the items name.
 
 
 
-## **Item class:**
+## **Item Class:**
 
 Item class is the basic shopping list item.
 

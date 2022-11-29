@@ -11,22 +11,24 @@ from .forms import ListForm, ItemForm
 
 
 @login_required
-def show_list_items(request, slug):
+def show_list_items(request, id, slug):
     '''
     The function displayes the list of items that 
     belong to the list with a slug passed as the argument.
     '''
     user = get_object_or_404(User, username=request.user)
-    lists_slug = get_object_or_404(List, slug=slug)
-    if lists_slug.list_owner != user:
+    # lists_slug = get_object_or_404(List, slug=slug)
+    list_id = get_object_or_404(List, id=id)
+    if list_id.list_owner != user:
         messages.error(request, "Access denied!")
         return redirect(reverse("home"))
 
-    items = Item.objects.filter(list_name=lists_slug).order_by('-id')
+    items = Item.objects.filter(list_name=list_id).order_by('-id')
     bought_items = items.filter(bought=True)
     items_to_buy = items.filter(bought=False).order_by('-urgent')
     context = {
-        'list': lists_slug,
+        'id': id,
+        'list': list_id,
         'slug': slug,
         'items': items,
         'bought_items': bought_items,
@@ -103,8 +105,8 @@ def show_lists(request):
 
 
 @login_required
-def edit_list(request, slug):
-    lists_slug = get_object_or_404(List, slug=slug)
+def edit_list(request, id, slug):
+    lists_slug = get_object_or_404(List, id=id)
     list_form = ListForm(request.POST or None, instance=lists_slug)
 
     if request.method == "POST":
@@ -119,6 +121,7 @@ def edit_list(request, slug):
             return redirect(reverse("lists"))
 
     context = {
+        'id': id,
         'slug': slug,
         "list_form": list_form,
     }
@@ -126,13 +129,16 @@ def edit_list(request, slug):
 
 
 @login_required
-def delete_list(request, slug):
-    to_delete = get_object_or_404(List, slug=slug)
+def delete_list(request, id, slug):
+    to_delete = get_object_or_404(List, id=id)
     to_delete.delete()
     messages.success(request, f"The list {to_delete}"
                      " has been successfully deleted!",
                      extra_tags='deletelist')
-    context = {'slug': slug}
+    context = {
+        'id': id,
+        'slug': slug
+        }
     return redirect(reverse("lists"))
 
 
@@ -143,7 +149,10 @@ def clear_list(request, slug):
     if items.delete():
         messages.success(request, "All Items have been successfully deleted"
                          " from the list", extra_tags='clearlist')
-        return redirect(reverse('show_list_items', args=[lists_slug.slug]))
+        return redirect(reverse('show_list_items',args=[
+                                lists_slug.id,
+                                lists_slug.slug
+                                ]))
 
     context = {
         'slug': slug,
@@ -166,7 +175,7 @@ def mark_as_bought(request, id, slug):
     else:
         item.bought = True
         item.save()
-    return redirect(reverse('show_list_items', args=[list.slug]))
+    return redirect(reverse('show_list_items', args=[list.id, list.slug]))
 
 
 @login_required
@@ -180,8 +189,8 @@ def showItems(request):
 
 
 @login_required
-def add_item(request, slug):
-    list = get_object_or_404(List, slug=slug)
+def add_item(request, id, slug):
+    list = get_object_or_404(List, id=id)
     item_form = ItemForm(request.POST or None)
 
     if request.method == "POST":
@@ -193,13 +202,15 @@ def add_item(request, slug):
                 item_form.save()
                 messages.success(request, f"{name} has been successfully"
                                           " added to the list!")
-                return redirect(reverse("show_list_items", args=[list.slug]))
+                return redirect(reverse("show_list_items",
+                    args=[list.id, list.slug]))
         except IntegrityError as e:
             messages.error(request, f"Sorry! A problem occured. Please choose"
                            " another name for this item.", extra_tags='invalid'
                            'slug')
 
     context = {
+        'id': id,
         "item_form": item_form,
         "slug": slug
     }
@@ -213,7 +224,10 @@ def delete_list_item(request, id, slug):
         messages.success(request, f"Item {to_delete} has been successfully"
                          " deleted!", extra_tags='deleteitem')
         return redirect(reverse('show_list_items',
-                        args=[to_delete.list_name.slug]))
+                        args=[
+                            to_delete.list_name.id,
+                            to_delete.list_name.slug
+                        ]))
     context = {
         'id': id,
         'slug': slug
@@ -233,7 +247,8 @@ def edit_list_item(request, id, slug):
                              " successfully updated!",
                              extra_tags='updateitem')
             return redirect(reverse('show_list_items',
-                            args=[items_slug.list_name.slug]))
+                            args=[items_slug.list_name.id,
+                            items_slug.list_name.slug]))
     context = {
         "id": id,
         'slug': slug,

@@ -5,7 +5,7 @@
 <h3 class="light-blue-text text-darken-4 center-align">Rename your list</h3>
 
 <div class="row light-blue-text text-darken-4">
-  <form class="col s12" method="POST" action="{% url 'edit_list' slug %}">
+  <form class="col s12" method="POST" action="{% url 'edit_list' id slug %}">
     {% csrf_token %}
     <div class="row">
       <div class="input-field col s6 center-align">
