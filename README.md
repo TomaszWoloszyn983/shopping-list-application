@@ -272,6 +272,9 @@ Description - Allow to add short description to each item.
 - Function that allows to calculate the value of all items on the shopping list based on it prices.
 - Adding profile photos to the side navigation bar.
 - Style the side navbar, add users profile photo function. 
+- Add category icons to items.
+- Create favourite items list.
+- Function of printing lists with printer.
 
 
 ## **5. Technologies used:**

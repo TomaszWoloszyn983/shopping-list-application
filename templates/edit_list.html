@@ -23,22 +23,5 @@
 </div>
 {% endblock %}
 
-{% block js %}
-<script>
-  // convert Item name to slug-format on front-end
-  /* jshint esversion: 11 */
-  let itemName = document.getElementById("id_name");
-  let slug = document.getElementById("id_slug");
-  itemName?.addEventListener("keyup", convertToSlug);
-  slug?.addEventListener("keyup", convertToSlug);
-
-  function convertToSlug() {
-    slug.value = itemName.value.toLowerCase()
-               .replace(/ /g, '-')
-               .replace(/[^\w-]+/g, '');
-  }
-</script>
-{% endblock %}
-
 {% include 'material/includes/material_css.html' %}
 {% include 'material/includes/material_js.html' %}

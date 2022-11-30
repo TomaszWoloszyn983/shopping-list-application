@@ -20,18 +20,3 @@
     </form>
   </div>
 {% endblock %}
-
-{% block js %}
-<script>
-  let itemName = document.getElementById("id_name");
-  let slug = document.getElementById("id_slug");
-  itemName?.addEventListener("keyup", convertToSlug);
-  slug?.addEventListener("keyup", convertToSlug);
-
-  function convertToSlug() {
-    slug.value = itemName.value.toLowerCase()
-               .replace(/ /g, '-')
-               .replace(/[^\w-]+/g, '');
-  }
-</script>
-{% endblock %}

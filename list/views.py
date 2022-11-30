@@ -96,7 +96,7 @@ def add_list(request):
 @login_required
 def show_lists(request):
     '''
-    Displays all list created by a logged in user.
+    Displays all lists created by a logged in user.
     '''
     lists = List.objects.filter(list_owner=request.user).order_by(
         '-create_date', "-id")
@@ -106,6 +106,10 @@ def show_lists(request):
 
 @login_required
 def edit_list(request, id, slug):
+    '''
+    Edit existing list by id.
+    Update the lists slug.
+    '''
     lists_slug = get_object_or_404(List, id=id)
     list_form = ListForm(request.POST or None, instance=lists_slug)
 
@@ -130,6 +134,9 @@ def edit_list(request, id, slug):
 
 @login_required
 def delete_list(request, id, slug):
+    '''
+    Delete the list from the database.
+    '''
     to_delete = get_object_or_404(List, id=id)
     to_delete.delete()
     messages.success(request, f"The list {to_delete}"
@@ -143,8 +150,11 @@ def delete_list(request, id, slug):
 
 
 @login_required
-def clear_list(request, slug):
-    lists_slug = get_object_or_404(List, slug=slug)
+def clear_list(request, id, slug):
+    '''
+    Delete all items from the list with given id.
+    '''
+    lists_slug = get_object_or_404(List, id=id)
     items = Item.objects.filter(list_name=lists_slug).order_by('bought')
     if items.delete():
         messages.success(request, "All Items have been successfully deleted"
@@ -155,6 +165,7 @@ def clear_list(request, slug):
                                 ]))
 
     context = {
+        'id': id,
         'slug': slug,
         'items': items
     }
@@ -179,17 +190,10 @@ def mark_as_bought(request, id, slug):
 
 
 @login_required
-def showItems(request):
-    items = Item.objects.filter(list_name__list_owner=request.user).order_by(
-        '-id')
-    context = {
-        'items': items
-    }
-    return render(request, 'items.html', context)
-
-
-@login_required
 def add_item(request, id, slug):
+    '''
+    Add item to the list with given id.
+    '''
     list = get_object_or_404(List, id=id)
     item_form = ItemForm(request.POST or None)
 
@@ -219,6 +223,9 @@ def add_item(request, id, slug):
 
 @login_required
 def delete_list_item(request, id, slug):
+    '''
+    Delete item from the list by requested id and from the database.
+    '''
     to_delete = get_object_or_404(Item, id=id)
     if to_delete.delete():
         messages.success(request, f"Item {to_delete} has been successfully"
@@ -237,6 +244,9 @@ def delete_list_item(request, id, slug):
 
 @login_required
 def edit_list_item(request, id, slug):
+    '''
+    Update items variables. Update the items slug.
+    '''
     items_slug = get_object_or_404(Item, id=id)
     item_form = ItemForm(request.POST or None, instance=items_slug)
 

@@ -15,7 +15,7 @@ urlpatterns = [
     path(
         'show_list_items/<int:id>/<slug:slug>/',
         views.show_list_items, name='show_list_items'),
-    path('clear_list/<slug:slug>/', views.clear_list, name='clear_list'),
+    path('clear_list/<int:id>/<slug:slug>/', views.clear_list, name='clear_list'),
 
     path('add_item/<int:id>/<slug:slug>/',
         views.add_item, name='add_item'),
