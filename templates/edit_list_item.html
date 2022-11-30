@@ -24,22 +24,6 @@
 {% endblock %}
 
 {% block js %}
-<!-- Sprubuj jeszcze z usunięciem block js -->
-<!-- <script>
-  // convert Item name to slug-format on front-end
-  /* jshint esversion: 11 */
-  let itemName = document.getElementById("id_name");
-  console.log("Catch item name: "+itemName)
-  let slug = document.getElementById("id_slug");
-  itemName?.addEventListener("keyup", convertToSlug);
-  slug?.addEventListener("keyup", convertToSlug);
-
-  function convertToSlug() {
-    slug.value = itemName.value.toLowerCase()
-               .replace(/ /g, '-')
-               .replace(/[^\w-]+/g, '');
-  }
-</script> -->
 {% endblock %}
 
 {% include 'material/includes/material_css.html' %}

@@ -112,9 +112,9 @@ def edit_list(request, id, slug):
     if request.method == "POST":
         if list_form.is_valid():
             list = request.POST.get("name")
-            list_form.name = list
+            list_form.instance.name = list
             slugified = slugify(list)
-            list_form.slug = slugified
+            list_form.instance.slug = slugified
             list_form.save()
             messages.success(request, f"List {list} has been updated!",
                              extra_tags='editlist')
@@ -242,6 +242,10 @@ def edit_list_item(request, id, slug):
 
     if request.method == "POST":
         if item_form.is_valid():
+            item = request.POST.get("name")
+            item_form.instance.name = item
+            slugified = slugify(item)
+            item_form.instance.slug = slugified
             item_form.save()
             messages.success(request, f"{items_slug.name} Item has been"
                              " successfully updated!",

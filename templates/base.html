@@ -24,108 +24,93 @@
 
 <body>
 <!-- top navbar -->
-<header>
-  <div class="navbar-fixed">
-    <nav class="navbar-fixed">
-      <div class="nav-wrapper">
-        <a href="{% url 'home' %}" class="brand-logo">Shopping List</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger" aria-label="side-navbar"><i class="large material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'lists' %}">Logged in as {{ user.username }}</a></li>
-                <li><a href="{% url 'lists' %}">Lists</a></li>
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-              </li>
-              {% else %}
+  <header>
+    <div class="navbar-fixed">
+      <nav class="navbar-fixed">
+        <div class="nav-wrapper">
+          <a href="{% url 'home' %}" class="brand-logo">Shopping List</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger" aria-label="side-navbar"><i class="large material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'lists' %}">Logged in as {{ user.username }}</a></li>
+              <li><a href="{% url 'lists' %}">Lists</a></li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-              </li>
-              {% endif %}
-              <li><a href="{% url 'about' %}">About</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      
-      <!-- mobile sidebar -->
-      <ul class="sidenav my-sidenav" id="mobile-demo">
-        <li>
-          <div class="background">
-            <img src="https://res.cloudinary.com/tomaszwoloszyn983/image/upload/v1668666485/profile_o7z2tz.webp" alt="profile_image" class="sidenav-image">
-          </div>
-        </li>
-        {% if user.is_authenticated %}
-        <li><a href="#">User: {{ user.username }}</a></li>
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'lists' %}">Lists</a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-        </li>
-        {% else %}
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-        </li>
-        {% endif %}
-        <li><a href="{% url 'about' %}">About</a></li>
-      </ul>
-    </header>
+              <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+            </li>
+            {% endif %}
+            <li><a href="{% url 'about' %}">About</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    
+    <!-- mobile sidebar -->
+    <ul class="sidenav my-sidenav" id="mobile-demo">
+      <li>
+        <div class="background">
+          <img src="https://res.cloudinary.com/tomaszwoloszyn983/image/upload/v1668666485/profile_o7z2tz.webp" alt="profile_image" class="sidenav-image">
+        </div>
+      </li>
+      {% if user.is_authenticated %}
+      <li><a href="#">User: {{ user.username }}</a></li>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'lists' %}">Lists</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+      </li>
+      {% else %}
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+      </li>
+      {% endif %}
+      <li><a href="{% url 'about' %}">About</a></li>
+    </ul>
+  </header>
     
     <!-- Messages -->
-    <div class="message-container">
-    {% for message in messages %}
-      <div id="message">
-        <p class="messages alert center-align message-text"> {{message}} </p> 
-        <a href="#" class="del-msg">&times;</a>
-      </div>
-    {% endfor %}
+  <div class="message-container">
+  {% for message in messages %}
+    <div id="message">
+      <p class="messages alert center-align message-text"> {{message}} </p> 
+      <a href="#" class="del-msg">&times;</a>
     </div>
+  {% endfor %}
+  </div>
 
 <!-- The pages main content -->
-    <main class="container">
-      
-    {% block content %}
-    {% endblock %}
+  <main class="container">
+    
+  {% block content %}
+  {% endblock %}
 
-    </main>
+  </main>
 
 <!-- Footer -->
-      <footer class="page-footer light-green darken-2">
-        <div class="footer-copyright light-green darken-2">
-          <div class="container footer-font">
-            <a href="#" class="footer-font">© All Copyrights Reserved</a>
-            <a href="https://codeinstitute.net" target="_blank" class="footer-font right">&copy; Code Institute</a>
-          </div>
-        </div>
-      </footer>
+  <footer class="page-footer light-green darken-2">
+    <div class="footer-copyright light-green darken-2">
+      <div class="container footer-font">
+        <a href="#" class="footer-font">© All Copyrights Reserved</a>
+        <a href="https://codeinstitute.net" target="_blank" class="footer-font right">&copy; Code Institute</a>
+      </div>
+    </div>
+  </footer>
     
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <script src="{% static 'js/script.js' %}"></script>
-      <script>
-        // convert Item name to slug-format on front-end
-        /* jshint esversion: 11 */
-        let itemName = document.getElementById("id_name");
-        console.log("Catch item name: "+itemName)
-        let slug = document.getElementById("id_slug");
-        itemName?.addEventListener("keyup", convertToSlug);
-        slug?.addEventListener("keyup", convertToSlug);
-      
-        function convertToSlug() {
-          slug.value = itemName.value.toLowerCase()
-                     .replace(/ /g, '-')
-                     .replace(/[^\w-]+/g, '');
-        }
-      </script>
-      
-      {% block js %}
-      {% endblock %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+
+  {% block js %}
+  {% endblock %}
 
 </body>
 </html>
