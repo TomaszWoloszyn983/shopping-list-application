@@ -427,19 +427,29 @@ The source of the error was timeout messages function defined in the static/js f
 The function makes the django.contrib.messages disappear after 3 seconds from the window view.
 But in case were there was no message a null value was passed as the argument of the function and the error was returned. 
 
-I fixed the error using if/else statement and I handled the case when a null value was passed as the argument.
+I fixed the error using if/else statement to prevent calling the function if the message value is equal to null.
 
 ```js
 let messages = document.getElementById("message");
 
-if (messages == null){
-    console.log("No message displayed")
-}else {
-    setTimeout(function(){ 
-    messages.style.display = "none"; 
-    }, 3000)
-};
+if (messages != null){
+  setTimeout(function(){ 
+        messages.style.display = "none"; 
+      }, 3000);
+}
 ```
+
+### Not Found Favicon.ico
+
+![Not Found Favicon](documentation/images/bugs_and_errors/favicon_not_fount.jpg)
+
+Not found favicon.ico status 404 shows during the start of the application.
+I tried to solve this problem following the instruction I found in Stack Overflow:
+https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error
+
+However as a result I added the icon to my cloudinary directory and linked it to the 
+base.html head section.
+
 
 ## **Unfixed Bugs**
 
@@ -449,17 +459,9 @@ An error that comes from material_form which is implemented from django-material
 More detail about this error in the Html validation testing section 
 [Here](#code-validator-testing)
 
-### Not Found Favicon.ico
-
-![Not Found Favicon](documentation/images/bugs_and_errors/favicon_not_fount.jpg)
-
-Not found favicon.ico status 404 shows during the start of the application.
-Have solved this problem following the instruction I found in Stack Overflow:
-https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error
 
 ### Not Found Robots.txt
 
 ![Not Found Robots](documentation/images/bugs_and_errors/robots_txt_not_found.jpg)
 
 Not found robots.txt show during tha Lighthouse inspection.
-

@@ -17,18 +17,17 @@ main {
   flex: 1 0 auto;
 }
 
+/* Headers */
 h1 {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-h2, h3, h4{
-  /* font-family: 'Nanum Pen Script', cursive; */
+h2, h3, h4, h5 {
   font-family: 'Roboto', sans-serif;
-}
-h5 {
-  font-family: 'Roboto', sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 #home-page-header {

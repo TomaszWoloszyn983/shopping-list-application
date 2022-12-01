@@ -110,8 +110,8 @@ def edit_list(request, id, slug):
     Edit existing list by id.
     Update the lists slug.
     '''
-    lists_slug = get_object_or_404(List, id=id)
-    list_form = ListForm(request.POST or None, instance=lists_slug)
+    lists_id = get_object_or_404(List, id=id)
+    list_form = ListForm(request.POST or None, instance=lists_id)
 
     if request.method == "POST":
         if list_form.is_valid():
@@ -154,14 +154,14 @@ def clear_list(request, id, slug):
     '''
     Delete all items from the list with given id.
     '''
-    lists_slug = get_object_or_404(List, id=id)
-    items = Item.objects.filter(list_name=lists_slug).order_by('bought')
+    list = get_object_or_404(List, id=id)
+    items = Item.objects.filter(list_name=list).order_by('bought')
     if items.delete():
         messages.success(request, "All Items have been successfully deleted"
                          " from the list", extra_tags='clearlist')
         return redirect(reverse('show_list_items', args=[
-                                lists_slug.id,
-                                lists_slug.slug
+                                list.id,
+                                list.slug
                                 ]))
 
     context = {
@@ -186,7 +186,7 @@ def mark_as_bought(request, id, slug):
     else:
         item.bought = True
         item.save()
-    return redirect(reverse('show_list_items', args=[list.id, list.id]))
+    return redirect(reverse('show_list_items', args=[list.id, list.slug]))
 
 
 @login_required
