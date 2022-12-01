@@ -9,16 +9,17 @@ urlpatterns = [
 
     path('add_list/', views.add_list, name='add_list'),
     path('edit_list/<int:id>/<slug:slug>/',
-        views.edit_list, name='edit_list'),
+         views.edit_list, name='edit_list'),
     path('delete_list/<int:id>/<slug:slug>/',
-        views.delete_list, name='delete_list'),
+         views.delete_list, name='delete_list'),
     path(
         'show_list_items/<int:id>/<slug:slug>/',
         views.show_list_items, name='show_list_items'),
-    path('clear_list/<int:id>/<slug:slug>/', views.clear_list, name='clear_list'),
+    path('clear_list/<int:id>/<slug:slug>/',
+         views.clear_list, name='clear_list'),
 
     path('add_item/<int:id>/<slug:slug>/',
-        views.add_item, name='add_item'),
+         views.add_item, name='add_item'),
     path(
         'edit_list_item/<int:id>/<slug:slug>/',
         views.edit_list_item, name='edit_list_item'),

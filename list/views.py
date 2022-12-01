@@ -13,7 +13,7 @@ from .forms import ListForm, ItemForm
 @login_required
 def show_list_items(request, id, slug):
     '''
-    The function displayes the list of items that 
+    The function displayes the list of items that
     belong to the list with a slug passed as the argument.
     '''
     user = get_object_or_404(User, username=request.user)
@@ -159,7 +159,7 @@ def clear_list(request, id, slug):
     if items.delete():
         messages.success(request, "All Items have been successfully deleted"
                          " from the list", extra_tags='clearlist')
-        return redirect(reverse('show_list_items',args=[
+        return redirect(reverse('show_list_items', args=[
                                 lists_slug.id,
                                 lists_slug.slug
                                 ]))
@@ -207,7 +207,7 @@ def add_item(request, id, slug):
                 messages.success(request, f"{name} has been successfully"
                                           " added to the list!")
                 return redirect(reverse("show_list_items",
-                    args=[list.id, list.slug]))
+                                args=[list.id, list.slug]))
         except IntegrityError as e:
             messages.error(request, f"Sorry! A problem occured. Please choose"
                            " another name for this item.", extra_tags='invalid'
@@ -261,8 +261,8 @@ def edit_list_item(request, id, slug):
                              " successfully updated!",
                              extra_tags='updateitem')
             return redirect(reverse('show_list_items',
-                            args=[items_slug.list_name.id,
-                            items_slug.list_name.slug]))
+                                    args=[items_slug.list_name.id,
+                                          items_slug.list_name.slug]))
     context = {
         "id": id,
         'slug': slug,

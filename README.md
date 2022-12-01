@@ -279,17 +279,17 @@ Description - Allow to add short description to each item.
 
 ## **5. Technologies used:**
 
-* Python - an interpreted, object-oriented, high-level programming language.
-* Django - Framework facilitating building full stack web application.
-* Django allauth - an authentication module that allows account authentication, registration and management.
-* Materialize - A design language that simplifies bulding front end templates with use of ready made components.
-* Javascript - High-level programming language.
-* HTML5 - Markup language used to make webpages.
+* Python - an interpreted, object-oriented, high-level programming language https://www.python.org/.
+* Django - Framework facilitating building full stack web application https://www.djangoproject.com/.
+* Django allauth - an authentication module that allows account authentication, registration and management https://django-allauth.readthedocs.io/en/latest/.
+* Materialize - A design language that simplifies bulding front end templates with use of ready made components https://materializecss.com/.
+* Javascript - High-level programming language https://www.javascript.com/.
+* HTML5 - Markup language used to make webpages https://html.com/html5/.
 * CSS3 - A language used to style HTML and XHTML documents presentations in web development.
-* Gitpod - Online integrated development environment.
-* GitHub - Version control service used for storing and sharing development projects.
-* Heroku - a container-based cloud platform where developers can deploy their projects.
-* Cloudinary - Cloud platform I used for uploding and storing images used in this Project.
+* Gitpod - Online integrated development environment https://www.gitpod.io/.
+* GitHub - Version control service used for storing and sharing development projects https://github.com/.
+* Heroku - a container-based cloud platform where developers can deploy their projects https://www.heroku.com/.
+* Cloudinary - Cloud platform I used for uploding and storing images used in this Project https://cloudinary.com/.
 
 ## **6. Testing**
 

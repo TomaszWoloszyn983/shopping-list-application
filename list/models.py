@@ -24,7 +24,8 @@ class Item(models.Model):
     urgent = models.BooleanField(default=False)
     price = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
-    description = models.TextField(blank=True, null=True, max_length=30, default="")
+    description = models.TextField(
+        blank=True, null=True, max_length=30, default="")
 
     class Meta:
         ordering = ['-bought']
