@@ -145,7 +145,7 @@ A bought item can be unmarked and it returns to the items to buy list.
 
 ### **Item View**
 
-Left-click on the item element drop-down menu, where the user can update or delete the item.
+Left-click on the item element drop-down menu, where the items description is deisplayed also the user can update or delete the item.
 More information about editing items [here](#edit-item)
 
 ![Create List](documentation/images/components/list_item1.jpg)
@@ -279,7 +279,7 @@ Description - Allow to add short description to each item.
 
 ## **5. Technologies used:**
 
-* Python - an interpreted, object-oriented, high-level programming language https://www.python.org/.
+* Python - an interpreted, object-oriented, high-level programming language [Python Page](https://www.python.org/){:target="_blank"}.
 * Django - Framework facilitating building full stack web application https://www.djangoproject.com/.
 * Django allauth - an authentication module that allows account authentication, registration and management https://django-allauth.readthedocs.io/en/latest/.
 * Materialize - A design language that simplifies bulding front end templates with use of ready made components https://materializecss.com/.

@@ -178,7 +178,7 @@ def mark_as_bought(request, id, slug):
     we only update one element of the item, which is 'bought' variable.
     """
     item = get_object_or_404(Item, id=id)
-    list = get_object_or_404(List, slug=item.list_name.slug)
+    list = get_object_or_404(List, id=item.list_name.id)
 
     if item.bought:
         item.bought = False
@@ -186,7 +186,7 @@ def mark_as_bought(request, id, slug):
     else:
         item.bought = True
         item.save()
-    return redirect(reverse('show_list_items', args=[list.id, list.slug]))
+    return redirect(reverse('show_list_items', args=[list.id, list.id]))
 
 
 @login_required
