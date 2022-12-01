@@ -7,7 +7,7 @@ body {
   background-image: url("https://res.cloudinary.com/tomaszwoloszyn983/image/upload/v1668619763/green_shopping_list_hhlcmz.jpg");
   background-color: rgba(150, 151, 91, 0.856);
   background-blend-mode: color-dodge;
-  background-attachment: scroll;
+  background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   font-family: 'Roboto', sans-serif;

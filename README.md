@@ -369,6 +369,8 @@ Alternatively, if using Gitpod, you can click below to create your own workspace
 
 - The background image was created with Canva - Free Design Tool - https://www.canva.com/pl_pl/
 
+- Favicon icon comes from - https://icon-library.com/icon/free-google-icon-29.html
+
 - Article on robots.txt file - https://sitechecker.pro/site-audit-issues/robots-txt-not-found/
 
 - Stack overflow topic how to fix favicon.ico error - https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error
