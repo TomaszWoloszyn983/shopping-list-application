@@ -33,10 +33,9 @@
           <a href="#" data-target="mobile-demo" class="sidenav-trigger" aria-label="side-navbar"><i class="large material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
               {% if user.is_authenticated %}
-              <li><a href="{% url 'lists' %}">Logged in as {{ user.username }}</a></li>
               <li><a href="{% url 'lists' %}">Lists</a></li>
               <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+              <a class="nav-link" href="{% url 'account_logout' %}">{{ user.username }} Logout</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -60,11 +59,10 @@
         </div>
       </li>
       {% if user.is_authenticated %}
-      <li><a href="#">User: {{ user.username }}</a></li>
       <li><a href="{% url 'home' %}">Home</a></li>
       <li><a href="{% url 'lists' %}">Lists</a></li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+        <a class="nav-link" href="{% url 'account_logout' %}">{{ user.username }} Logout</a>
       </li>
       {% else %}
       <li><a href="{% url 'home' %}">Home</a></li>
