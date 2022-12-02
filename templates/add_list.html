@@ -4,22 +4,23 @@
 <h3 class="light-blue-text text-darken-4 center-align">Create List</h3>
 
 <div class="row light-blue-text text-darken-4">
-    <form class="col s12" method="POST" action="{% url 'add_list' %}">
-      {% csrf_token %}
+  <form class="col s12" method="POST" action="{% url 'add_list' %}">
+    {% csrf_token %}
+    <div class="row">
+      <div class="input-field col s6 center-align">
+        {{ list_form.as_p }}
+      </div>
+    </div>
       <div class="row">
-        <div class="input-field col s6 center-align">
-          {{ list_form.as_p }}
-        </div>
-        <div class="row">
-            <divc class="col s12 center-align">
-                <button type="submit" href="{% url 'lists' %}" class="btn-large light-blue darken-1">
-                    Create List <i class="fas fa plus=square right"></i>
-                </button>
-                <button type="reset" class="waves-light red btn-large" onclick="history.go(-1)">
-                  Cancel
-              </button>
-            </div>
-        </div>
-    </form>
-  </div>
+        <div class="col s12 center-align">
+            <button type="submit" class="btn-large light-blue darken-1">
+                Create List <i class="fas fa plus=square right"></i>
+            </button>
+            <button type="reset" class="waves-light red btn-large" onclick="history.go(-1)">
+              Cancel
+            </button>
+          </div>
+      </div>
+  </form>
+</div>
 {% endblock %}

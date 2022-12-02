@@ -134,7 +134,9 @@ nav :hover{
   font-weight: 500;
 }
 
-#urgent-item {
+.urgent-item {
+  color: #5f0000;
+  font-size: 24px;
   font-weight: 600;
 }
 
