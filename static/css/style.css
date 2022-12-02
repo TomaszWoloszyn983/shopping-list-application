@@ -60,6 +60,8 @@ h2, h3, h4, h5 {
 .mymothenig {
   font-size: 30px;
   text-align: center;
+  text-overflow: clip;
+  overflow: hidden;
 }
 p {
   font-size: 20px;
@@ -131,14 +133,8 @@ nav :hover{
   font-size: 24px;
   font-weight: 500;
 }
-/* #item-card-title {
-  color: #5f0000;
-  font-size: 24px;
-  font-weight: 400;
-} */
+
 #urgent-item {
-  /* color: #5f0000;
-  font-size: 24px; */
   font-weight: 600;
 }
 

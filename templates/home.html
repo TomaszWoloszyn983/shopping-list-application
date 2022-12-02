@@ -9,7 +9,7 @@
 <!-- Page content -->
 <div class="row">
   {% if user.is_authenticated %}
-  <h3 class="center">Choose one of the list below or click "Go To Your Lists" button to manage your lists.</h3>
+  <h2 class="center">Choose one of the list below or click "Go To Your Lists" button to manage your lists.</h2>
     {% for list in lists|slice:":3" %}
     <div class="col s12 m12">
       <div class="card hoverable accent-3 darken-1">
@@ -22,7 +22,7 @@
       </div>
     </div>
     {% empty %}
-      <h3>No recently added lists! Go to the lists section to create a new Shopping List</h3>
+      <h2>No recently added lists! Go to the lists section to create a new Shopping List</h2>
     {% endfor %}
   {% else %}
   <div class="center">

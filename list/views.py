@@ -247,8 +247,8 @@ def edit_list_item(request, id, slug):
     '''
     Update items variables. Update the items slug.
     '''
-    items_slug = get_object_or_404(Item, id=id)
-    item_form = ItemForm(request.POST or None, instance=items_slug)
+    items = get_object_or_404(Item, id=id)
+    item_form = ItemForm(request.POST or None, instance=items)
 
     if request.method == "POST":
         if item_form.is_valid():
@@ -257,12 +257,12 @@ def edit_list_item(request, id, slug):
             slugified = slugify(item)
             item_form.instance.slug = slugified
             item_form.save()
-            messages.success(request, f"{items_slug.name} Item has been"
+            messages.success(request, f"{items.name} Item has been"
                              " successfully updated!",
                              extra_tags='updateitem')
             return redirect(reverse('show_list_items',
-                                    args=[items_slug.list_name.id,
-                                          items_slug.list_name.slug]))
+                                    args=[items.list_name.id,
+                                          items.list_name.slug]))
     context = {
         "id": id,
         'slug': slug,

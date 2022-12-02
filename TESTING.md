@@ -10,11 +10,14 @@
 
 - ### **HTML**
 
-    No errors were detected when passing through the [W3C validator](https://validator.w3.org/nu/) for the most of templates used in the project.
+    An error was detected during validation testings with use of [W3C validator](https://validator.w3.org/nu/).
 
-    Except of *login.html* template and *edit_item* template. Both templates are using material_forms implemented form django_material. This generates: Attribute for not allowed on element span at this point Error. 
+    According to the tests the error comes from material_forms and it is implemented form django_material. 
+    This generates: Attribute for not allowed on element span at this point Error. 
+    The same error occures in a few templates.
 
-    - Edit Item Page:
+
+    - Edit List Page:
 
         ![html_validation](documentation/images/testing/html_edit_item_error.jpg)
 
@@ -26,25 +29,40 @@
 
         ![html_validation](documentation/images/testing/html_login_error2.jpg)
 
-    The rest of the html Templates are error free.
+    - Items Page
+
+        Depending on the input method the error above may occure in show_list_items.html template:
+
+        Check by address:
+
+        ![html_validation](documentation/images/testing/check_items.jpg)
+
+        ![html_validation](documentation/images/testing/check_items3.jpg)
+
+        Check by text-input doesn't show any errors or warnings in this template.
+
+        ![html_validation](documentation/images/testing/html_items.jpg)
+
+    - Lists Page:
+
+        In case of lists_html template the situation looks similarly as in the template above. 
+
+        Check by address:
+
+        ![html_validation](documentation/images/testing/check_lists.jpg)
+
+        Check by text-input:
+
+        ![html_validation](documentation/images/testing/html_lists.jpg)
+
+
+    The rest of the html Templates show no errors no matter how the input was applied.
 
     - Home Page:
 
         ![html_validation](documentation/images/testing/html_home.jpg)
 
         ![html_validation](documentation/images/testing/html_home_login.jpg)
-
-    - Lists Page:
-
-        ![html_validation](documentation/images/testing/html_lists.jpg)
-
-    - Items Page:
-
-        ![html_validation](documentation/images/testing/html_items.jpg)
-
-    - Edit List Template:
-
-        ![html_validation](documentation/images/testing/html_edit_list.jpg)
 
     - About Page:
 
