@@ -29,11 +29,17 @@
 
         ![html_validation](documentation/images/testing/html_login_error2.jpg)
 
+    - Login Page:
+
+        ![html_validation](documentation/images/testing/html_login_error.jpg)
+
+        ![html_validation](documentation/images/testing/html_login_error2.jpg)
+
     - Items Page
 
-        Depending on the input method the test shows slightly different results: 
+        In some cases the test shows slightly different results depending on the input method: 
 
-        If we enter data with Check by address the validator shows the error mensioned above:
+        If we enter data with Check by address the validator shows the error mentioned above:
 
         ![html_validation](documentation/images/testing/check_items.jpg)
 
