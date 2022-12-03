@@ -17,7 +17,6 @@ def show_list_items(request, id, slug):
     belong to the list with a slug passed as the argument.
     '''
     user = get_object_or_404(User, username=request.user)
-    # lists_slug = get_object_or_404(List, slug=slug)
     list_id = get_object_or_404(List, id=id)
     if list_id.list_owner != user:
         messages.error(request, "Access denied!")
