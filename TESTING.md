@@ -12,9 +12,9 @@
 
     An error was detected during validation testings with use of [W3C validator](https://validator.w3.org/nu/).
 
-    According to the tests the error comes from material_forms and it is implemented form django_material. 
-    This generates: Attribute for not allowed on element span at this point Error. 
-    The same error occures in a few templates.
+    According to the tests the error comes from material_forms and it is implemented form django_material add-on. 
+    This generates: "Attribute for not allowed on element span at this point" Error. 
+    The same error occures in a few other templates.
 
 
     - Edit List Page:
@@ -31,9 +31,9 @@
 
     - Items Page
 
-        Depending on the input method the error above may occure in show_list_items.html template:
+        Depending on the input method the test shows slightly different results: 
 
-        Check by address:
+        If we enter data with Check by address the validator shows the error mensioned above:
 
         ![html_validation](documentation/images/testing/check_items.jpg)
 
@@ -45,7 +45,7 @@
 
     - Lists Page:
 
-        In case of lists_html template the situation looks similarly as in the template above. 
+        The situation looks similarly in the lists_html template. 
 
         Check by address:
 

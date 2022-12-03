@@ -4,10 +4,10 @@
 
 ## 1. Overview.
 
-Portfolio Porject 4.
+Portfolio Project 4.
 The subject of the project is the web shopping list application. 
-This is a very simple and easy to use application that offers the user few basic functionalities, such as to create, add and manage items. 
-It also allows the user to register his own account what gives him an access to addintional useful functions that are accessible only for registered users.
+This is a very simple and easy to use application that offers users a few basic functionalities, such as creating multiple shopping lists managing those lists and adding items to the lists, updating them or deleting them from the lists. 
+It also allows the user to register his own account what gives him an access to application functionalities.
 
 
 ## Contents:
@@ -39,13 +39,11 @@ It also allows the user to register his own account what gives him an access to 
 
 - As a user I would like to mark items as bought, so the bought items will be separated from items to buy.
 
-- As a user I would like to mark items as bought, so the bought items will be separated from items to buy.
-
 - As a user I would like to edit or delete items.
 
 - As a user I would like to clear the list with one click after my shoppings are done, so I don't have to delete each item separately.
 
-- As a registered user I would like to be able to log in to get access to additional functions.
+- As a registered user I would like to be able to create an account so my shopping list are not visible to other users.
 
 - As a user I would like to be able to create more than just one list, so I can create separate lists for different occasions and different users.
 
@@ -66,7 +64,7 @@ It also allows the user to register his own account what gives him an access to 
 
 
 ## **3. Features**
-The application is made of three main sections:
+The application is made of four main sections:
 - Home Page.
 - Lists section.
 - Lists items view.
@@ -75,9 +73,9 @@ The application includes following sections.
 
 
 ### **Home Page**
-Home Page contain a short introduction to the application.
+Home Page contains a short introduction to the application.
 
-In case of logged in user the Home Page displays last three list previously created by the user. There is also a button which redirects the user to the lists page where he can add more list and to manage already existing lists.
+In case of a logged in user the Home Page displays last three lists previously created by the user. There is also a button which redirects the user to the lists page where he can add more list and to manage already existing lists.
 
 ![Home Page](documentation/images/components/home_page1.jpg)
 
@@ -107,11 +105,11 @@ In smaller size devices the navigation bar buttons are moved to the pop up side 
 
 Not logged in users view.
 
-![Top Navbar](documentation/images/components/side_navbar_1.jpg)
+![Side Navbar](documentation/images/components/side_navbar_1.jpg)
 
 Logged in users view.
 
-![Top Navbar](documentation/images/components/side_navbar11.jpg)
+![Side Navbar](documentation/images/components/side_navbar11.jpg)
 
 
 #### **Footer**  
@@ -127,9 +125,9 @@ This page is only accessible for logged in users and it allows users to create n
 
 ### **Shopping List Page**
 
-![List](documentation/images/components/list_view_1.jpg)
-
 This section displays items added to the list. It also allows to add new Items by cliking Add Item Button or to edit existing Items by clicking Edit Item Button:
+
+![List](documentation/images/components/list_view_1.jpg)
 
 In this section the user can also click the green round button:
 
@@ -153,7 +151,15 @@ More information about editing items [here](#edit-item)
 
 ### **Create a new list**
 
+Click "Add New List" button which is placed on the bottom of the List Page to create a new Shopping List.
+
+![Create List](documentation/images/components/add_list_button.jpg)
+
+Name your list and click "Create List" button to submit the lists name or click "Cancel" button to cancel the process.
+
 ![Create List](documentation/images/components/create_list.jpg)
+
+After submiting your choice you should be redirected to the Lists Page.
 
 
 ### **Edit list**
@@ -162,7 +168,11 @@ To change the name of a list click Edit button.
 
 ![Edit List](documentation/images/components/edit_list.jpg)
 
-![Edit List](documentation/images/components/list_update_message.jpg)
+Then enter the new Lists name or click "Cancel" to return to the Lists Page.
+
+![Edit List](documentation/images/components/edit_list2.jpg)
+
+If the user submits the changes, he should be redirected to the Lists Page and an information message should be displayed.
 
 
 ### **Delete list**
@@ -173,6 +183,7 @@ To delete an existing List click Delete button. After approving that you want to
 
 
 ### **Add Item**
+
 This section displays a form that allows creating and adding a new item to the list.
 
 ![Add Item](documentation/images/components/add_item_1.jpg)
@@ -211,12 +222,12 @@ Login Page allows the user to login to his account what will give him access to 
 
 ## **About Page** 
 
-Contains information about the application, contact information and copyrights.
+This Page contains information about the application, contact information and copyrights.
 
 ![About Page](documentation/images/components/about_page.jpg)
 
 ## **List Class:**
-List class contains attributes such as: name and create_date, also it contains a variable of type slug.
+The List class contains attributes such as: name and create_date, also it contains a variable of type slug.
 ```python
     class List(models.Model):
         list_owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -236,7 +247,7 @@ Slug variable is generated automatically based on the items name.
 
 ## **Item Class:**
 
-Item class is the basic shopping list item.
+The Item class is the basic shopping list item.
 
 The class contains elements such as items name and quantity. 
 
@@ -244,7 +255,7 @@ Slug variable is generated automatically based on the items name.
 
 List name is the Foreign Key and it defines which Shopping List the item is assigned to. 
 
-bought variable is a boolean value set by the user with the "Mark as bought" toggle button.
+Bought variable is a boolean value set by the user with the "Mark as bought" toggle button.
 
 Favourite - allows to mark the item as favourite.
 
@@ -252,7 +263,7 @@ Urgent - items marked as urgent are going to be displayed always on the top of t
 
 Prize - allows the user to assign the prize of the item what in the future will allow to calculate the extimated value all the items on the list.
 
-Description - Allow to add short description to each item.
+Description - Allow to add a short description to each item.
 
 ```python
     class Item(models.Model):
@@ -299,13 +310,13 @@ Description - Allow to add short description to each item.
 ## **6. Testing**
 
 The Application is fully responsive and the applications code was tested using:
-* Nu Html Checker for html code.
-* W3C CSS Validator for css code.
-* Jshint for Java Script code.
-* CI Python Linter for Python code.
+* Nu Html Checker for html code https://validator.w3.org/nu/.
+* W3C CSS Validator for css code https://jigsaw.w3.org/css-validator/.
+* Jshint for Java Script code https://jshint.com/.
+* CI Python Linter for Python code https://pep8ci.herokuapp.com/.
 
 There were no issues detected by most of the test, although there where some errors implemented with add-ons.
-More details about tesings and unfixed issues are available in the dedicated testing section testing.md [here](TESTING.md).
+More details about testings and unfixed issues are available in the dedicated testing section [here](TESTING.md).
 
 ## **8. Deployment**
 
