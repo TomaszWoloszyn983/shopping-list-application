@@ -281,6 +281,8 @@ More information about the error in the Bugs and Errors section [here](README.md
 
 Created lists are displayed in the Lists Page.
 
+![Add List](documentation/images/testing/lists_page.jpg)
+
 ### Edit List
 
 To change the list name click the "Edit" button on the list card. Enter the new name and submit changes clicking the "Submit Changes" button.
